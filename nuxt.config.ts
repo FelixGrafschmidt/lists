@@ -1,6 +1,13 @@
 import { defineNuxtConfig } from 'nuxt3'
 
-// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-	buildModules: ["nuxt-windicss"],
+	vue: { config: { performance: true } },
+	buildModules: [
+		"nuxt-windicss",
+		'@pinia/nuxt'
+	],
+	alias: {
+		"#config": "node_modules/nuxt3/dist/app/"
+	},
+	typescript: { strict: true },
 })
