@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { Collection, getHash, newCollection } from "~~/models/interfaces/Collection";
 import { newList } from "~~/models/interfaces/List";
 
-export const useStore = defineStore('collection', {
+export const useCollectionStore = defineStore('collection', {
 	state: () => ({
 		collection: newCollection(""),
 		listToDelete: newList(""),
@@ -10,9 +10,6 @@ export const useStore = defineStore('collection', {
 		ready: false
 	}),
 	actions: {
-		async saveCollection() {
-			await $fetch("/api/save_collection", { method: "POST", body: this.collection })
-		},
 		async loadCollection() {
 			let collectionId = window.localStorage.getItem("collectionId");
 			const collection = newCollection();
@@ -30,7 +27,7 @@ export const useStore = defineStore('collection', {
 					this.collection = collection;
 					this.originalHash = getHash(collection);
 				} finally {
-					localStorage.setItem("collectionId", collectionId!);
+					localStorage.setItem("collectionId", collectionId);
 					this.ready = true;
 				}
 
@@ -40,6 +37,14 @@ export const useStore = defineStore('collection', {
 				localStorage.setItem("collectionId", collection.id);
 				this.ready = true;
 			}
-		}
+		},
+		async saveChanges() {
+			try {
+				await $fetch("/api/save_collection", { method: "POST", body: this.collection })
+				this.originalHash = getHash(this.collection);
+			} catch (error) {
+				console.error(error);
+			}
+		},
 	}
 })

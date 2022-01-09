@@ -6,7 +6,6 @@ import { Config } from "windicss/types/interfaces"
 
 
 const config: Config = {
-	darkMode: "media",
 	theme: {
 		extend: {
 			colors: {

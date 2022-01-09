@@ -22,7 +22,7 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
 			await client.exists(id)
 			const response = await client.get(id)
 			if (typeof response === "string") {
-				collection = JSON.parse(response) as { id: string; lists: Array<any> };
+				collection = JSON.parse(response) as { id: string; lists: Array<List> };
 				res.statusCode = 200;
 			}
 			return collection
