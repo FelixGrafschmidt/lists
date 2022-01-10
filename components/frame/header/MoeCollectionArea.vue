@@ -2,24 +2,24 @@
 	<div class="w-[50%] flex gap-3 items-center justify-end mr-4">
 		<span>{{ collection.id }}</span>
 		<div v-if="copied">
-			<CommonMoeButtonDark @click="copyID">Copied!</CommonMoeButtonDark>
+			<MoeButtonDark @click="copyID">Copied!</MoeButtonDark>
 		</div>
-		<CommonMoeTooltip v-else text="Copy ID">
-			<CommonMoeButtonDark icon="fas fa-copy" class="h-10 w-10" @click="copyID" />
-		</CommonMoeTooltip>
-		<CommonMoeTooltip text="Load Collection">
-			<CommonMoeButtonDark icon="fas fa-folder-open" class="h-10 w-10" @click="loadCollection" />
-		</CommonMoeTooltip>
-		<CommonMoeTooltip text="Export Collection">
-			<CommonMoeButtonDark icon="fas fa-download" class="h-10 w-10" @click="exportCollection" />
-		</CommonMoeTooltip>
-		<CommonMoeTooltip text="Unload Collection" extra-classes="mr-16" class>
-			<CommonMoeButtonDark
+		<MoeTooltip v-else text="Copy ID">
+			<MoeButtonDark icon="fas fa-copy" class="h-10 w-10" @click="copyID" />
+		</MoeTooltip>
+		<MoeTooltip text="Load Collection">
+			<MoeButtonDark icon="fas fa-folder-open" class="h-10 w-10" @click="loadCollection" />
+		</MoeTooltip>
+		<MoeTooltip text="Export Collection">
+			<MoeButtonDark icon="fas fa-download" class="h-10 w-10" @click="exportCollection" />
+		</MoeTooltip>
+		<MoeTooltip text="Unload Collection" extra-classes="mr-16" class>
+			<MoeButtonDark
 				icon="fas fa-times"
 				class="dark-hover:!bg-red-700 hover:!bg-red-500 !text-color-unset h-10 w-10"
 				@click="unloadCollection"
 			/>
-		</CommonMoeTooltip>
+		</MoeTooltip>
 	</div>
 </template>
 

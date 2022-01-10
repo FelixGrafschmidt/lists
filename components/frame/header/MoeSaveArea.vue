@@ -6,12 +6,12 @@
 			<p v-else class="text-red-600">OFF</p>
 		</div>
 
-		<CommonMoeButtonDark v-if="autosave" class="h-10" @click="disableAutosave">Disable autosave</CommonMoeButtonDark>
-		<CommonMoeButtonDark v-else class="h-10" @click="enableAutosave">Enable autosave</CommonMoeButtonDark>
+		<MoeButtonDark v-if="autosave" class="h-10" @click="disableAutosave">Disable autosave</MoeButtonDark>
+		<MoeButtonDark v-else class="h-10" @click="enableAutosave">Enable autosave</MoeButtonDark>
 
-		<CommonMoeTooltip text="Save">
-			<CommonMoeButtonDark icon="fas fa-save" class="h-10 w-10" @click="saveChanges" />
-		</CommonMoeTooltip>
+		<MoeTooltip text="Save">
+			<MoeButtonDark icon="fas fa-save" class="h-10 w-10" @click="saveChanges" />
+		</MoeTooltip>
 
 		<div v-if="changes" class="text-lg font-medium max-w-[2rem] 2xl:max-w-none">
 			<div class="text-red-600 z-90">UNSAVED CHANGES</div>

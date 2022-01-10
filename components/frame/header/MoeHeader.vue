@@ -4,18 +4,22 @@
 		role="navigation"
 		aria-label="main navigation"
 	>
-		<CommonMoeButtonDark :icon="modeIcon" class="max-w-[5%]" @click="changeMode" />
+		<MoeButtonDark :icon="modeIcon" class="max-w-[5%]" @click="changeMode" />
 		<div class="w-[50%] gap-3 flex items-center justify-start">
-			<nuxt-link v-slot="{ navigate }" custom to="/">
+			<NuxtLink v-slot="{ navigate }" custom to="/">
 				<h2
 					class="text-xl cursor-pointer title caps-small dark:text-white"
 					role="link"
 					@click="navigate"
 				>Character List Manager</h2>
-			</nuxt-link>
-			<FrameHeaderMoeSaveArea />
+			</NuxtLink>
+			<ClientOnly>
+				<MoeSaveArea />
+			</ClientOnly>
 		</div>
-		<FrameHeaderMoeCollectionArea />
+		<ClientOnly>
+			<MoeCollectionArea />
+		</ClientOnly>
 	</nav>
 </template>
 

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { Collection, getHash, newCollection } from "~~/models/interfaces/Collection";
-import { newList } from "~~/models/interfaces/List";
+import { List, newList } from "~~/models/interfaces/List";
 
 export const useCollectionStore = defineStore('collection', {
 	state: () => ({
@@ -46,5 +46,27 @@ export const useCollectionStore = defineStore('collection', {
 				console.error(error);
 			}
 		},
+		setCollection(collection: Collection) {
+			this.collection = collection;
+			this.originalHash = getHash(collection);
+		},
+		addListToCollection(list: List) {
+			this.collection.lists.push(list);
+		},
+		renameList({ id, name }: { id: string; name: string }) {
+			this.collection.lists.filter((list) => list.id === id)[0].name = name;
+		},
+		setListToDelete(list: List) {
+			this.listToDelete = list;
+		},
+		deleteList(id: string) {
+			this.collection.lists = this.collection.lists.filter((list) => list.id !== id);
+			// if (this.list.id === id) {
+			// 	this.list = { id: "", name: "", characters: new Array<Character>(), sortorder: Sortorder.DEFAULT };
+			// }
+		},
+		removeListFromCollection(id: string) {
+			this.collection.lists = this.collection.lists.filter((list) => list.id !== id);
+		}
 	}
 })
