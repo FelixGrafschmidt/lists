@@ -8,6 +8,9 @@ client.connect()
 export default async (req: IncomingMessage, res: ServerResponse) => {
 	let body = ""
 
+	console.log(req.headers);
+
+
 	req.on('data', (chunk) => {
 		body += chunk;
 	});

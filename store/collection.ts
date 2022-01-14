@@ -40,7 +40,7 @@ export const useCollectionStore = defineStore('collection', {
 		},
 		async saveChanges() {
 			try {
-				await $fetch("/api/save_collection", { method: "POST", body: this.collection })
+				await $fetch("/api/save_collection", { method: "POST", body: this.collection, headers: { "Content-Type": "application/json" } })
 				this.originalHash = getHash(this.collection);
 			} catch (error) {
 				console.error(error);

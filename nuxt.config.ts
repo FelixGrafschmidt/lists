@@ -56,7 +56,7 @@ export default defineNuxtConfig({
 		"~/components/frame/header",
 		"~/components/frame/footer",
 		"~/components/modal",
-		// "~/components/tutorial",
+		"~/components/tutorial",
 		"~/components/common",
 	],
 	vue: { config: { performance: true } },
