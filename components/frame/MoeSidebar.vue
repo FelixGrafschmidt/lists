@@ -49,10 +49,6 @@
 <script setup lang="ts">
 import { Character } from "~~/models/interfaces/Character";
 import { List } from "~~/models/interfaces/List";
-import { useCharacterStore } from "~~/store/character";
-import { useCollectionStore } from "~~/store/collection";
-import { useListStore } from "~~/store/list";
-import { useMainStore } from "~~/store/main";
 
 const showScrollbars = ref(false);
 

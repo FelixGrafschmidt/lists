@@ -36,7 +36,6 @@
 
 <script setup lang="ts">
 import { Modal } from "~~/models/enums/Modal";
-import { useMainStore } from "~~/store/main";
 
 const mainStore = useMainStore()
 

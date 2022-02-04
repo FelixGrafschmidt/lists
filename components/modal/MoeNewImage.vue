@@ -16,7 +16,6 @@
 		<label class="h-[10%]">
 			<span>Image URL</span>
 			<input
-				v-autofocus
 				:value="src"
 				type="text"
 				class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 mb-8 w-80"
@@ -38,8 +37,6 @@
 
 
 <script setup lang="ts">import { Modal } from "~~/models/enums/Modal";
-import { useCharacterStore } from "~~/store/character";
-import { useMainStore } from "~~/store/main";
 
 
 const src = ref("")

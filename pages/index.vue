@@ -1,9 +1,19 @@
 <template>
-	<div></div>
+	<div class="mt-4">
+		<h2 class="text-xl font-bold">To get started select a menu item on the left</h2>
+	</div>
 </template>
 
-<script lang="ts">
-defineNuxtComponent({})
-</script>
+<script setup lang="ts">import { Modal } from "~~/models/enums/Modal";
 
-<style lang="postcss" scoped></style>
+const mainStore = useMainStore()
+
+onMounted(() => {
+	const lsTutorial = window.localStorage.getItem("tutorial");
+	if (lsTutorial) {
+		mainStore.tutorial = parseInt(lsTutorial);
+	} else {
+		mainStore.modal = Modal.TUTORIAL;
+	}
+})
+</script>

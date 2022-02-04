@@ -1,7 +1,4 @@
 import { defineStore } from "pinia";
-import { useCollectionStore } from "./collection";
-import { useListStore } from "./list";
-import { useCharacterStore } from "./character";
 import { Modal } from "~~/models/enums/Modal";
 
 export const useMainStore = defineStore('main', {

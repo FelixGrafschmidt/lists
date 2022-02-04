@@ -8,7 +8,6 @@
 			<span class="ml-2">Paste collection id below.</span>
 			<input
 				v-model="id"
-				v-autofocus
 				type="text"
 				class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 mb-8 mt-2 mx-2 sm:w-80"
 			/>
@@ -25,10 +24,8 @@
 </template>
 
 
-<script setup lang="ts">import { Modal } from "~~/models/enums/Modal";
-import { useCollectionStore } from "~~/store/collection";
-import { useMainStore } from "~~/store/main";
-
+<script setup lang="ts">
+import { Modal } from "~~/models/enums/Modal";
 
 const id = ref("")
 
@@ -36,7 +33,7 @@ const mainStore = useMainStore()
 const collectionStore = useCollectionStore()
 
 function loadCollection() {
-	window.localStorage.setItem("collectionId", id.value);
+	useCookie("collectionId").value = id.value
 	collectionStore.loadCollection();
 	mainStore.modal = Modal.NONE
 }

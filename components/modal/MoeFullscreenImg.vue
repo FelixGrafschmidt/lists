@@ -6,7 +6,7 @@
 				:visible="true"
 				:imgs="imagesRaw"
 				:index="index"
-				class="max-h-screen !z-0"
+				class="max-h-screen"
 				@hide="mainStore.modal = Modal.NONE"
 			/>
 		</client-only>
@@ -36,8 +36,6 @@
 
 <script setup lang="ts">
 import { Modal } from "~~/models/enums/Modal";
-import { useCharacterStore } from "~~/store/character";
-import { useMainStore } from "~~/store/main";
 
 const showThumbs = ref(false)
 const index = ref(0)

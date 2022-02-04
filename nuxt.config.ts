@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 	loading: { color: "#2f847c" },
 	components: [
 		"~/components",
-		// "~/components/collection",
+		"~/components/collection",
 		// "~/components/list",
 		// "~/components/character",
 		// "~/components/gallery",

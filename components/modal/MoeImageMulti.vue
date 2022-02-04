@@ -8,7 +8,6 @@
 			<span>Insert urls seperated by linebreaks</span>
 			<textarea-autosize
 				v-model="src"
-				v-autofocus
 				max-height="500"
 				type="text"
 				class="resize-none block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80 scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-300 scrollbar-thumb-gray-500 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-500 overflow-y-scroll'"
@@ -28,8 +27,6 @@
 
 
 <script setup lang="ts">import { Modal } from "~~/models/enums/Modal";
-import { useCharacterStore } from "~~/store/character";
-import { useMainStore } from "~~/store/main";
 
 
 const src = ref("")

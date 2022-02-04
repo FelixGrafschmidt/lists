@@ -39,7 +39,6 @@
 							<span>New Attribute</span>
 							<input
 								v-model="attributes[i]"
-								v-autofocus
 								type="text"
 								class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80 h-8"
 							/>
@@ -73,8 +72,6 @@
 
 <script setup lang="ts">
 import { Modal } from "~~/models/enums/Modal";
-import { useListStore } from "~~/store/list";
-import { useMainStore } from "~~/store/main";
 
 // eslint-disable-next-line no-array-constructor
 const attributes = ref(new Array<string>())

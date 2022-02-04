@@ -21,9 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { useCharacterStore } from "~~/store/character";
-import { useListStore } from "~~/store/list";
-import { useMainStore } from "~~/store/main";
 import { Modal } from "~~/models/enums/Modal";
 
 const mainStore = useMainStore()

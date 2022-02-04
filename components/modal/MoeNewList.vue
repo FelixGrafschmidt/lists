@@ -8,7 +8,6 @@
 			<span>Type a name for your new list.</span>
 			<input
 				v-model="name"
-				v-autofocus
 				type="text"
 				class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80"
 			/>
@@ -24,10 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { useMainStore } from "~~/store/main";
-import { useCollectionStore } from "~~/store/collection";
 import { List, newList } from "~~/models/interfaces/List";
-import { useListStore } from "~~/store/list";
 import { Modal } from "~~/models/enums/Modal";
 
 const name = ref("")

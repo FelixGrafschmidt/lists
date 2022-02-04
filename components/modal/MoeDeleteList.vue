@@ -24,8 +24,6 @@
 
 
 <script setup lang="ts">
-import { useCollectionStore } from "~~/store/collection";
-import { useMainStore } from "~~/store/main";
 import { Modal } from "~~/models/enums/Modal";
 
 

@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="border-teal-700 border-l border-r flex items-center flex-col mr-px justify-around z-10 w-[8rem] dark:bg-gray-800 bg-gray-500"
+		class="border-teal-700 border-l border-r flex items-center flex-col mr-px justify-around w-[8rem] dark:bg-gray-800 bg-gray-500"
 	>
 		<NuxtLink v-slot="{ navigate }" custom to="/imprint">
 			<h2
@@ -32,7 +32,6 @@
 
 <script setup lang="ts">
 import { Modal } from "~~/models/enums/Modal";
-import { useMainStore } from "~~/store/main";
 
 
 const mainStore = useMainStore()

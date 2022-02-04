@@ -11,14 +11,12 @@
 
 		<MoeButtonDark v-tooltip="'Save'" icon="fas fa-save" class="h-10 w-10" @click="saveChanges" />
 		<div v-if="changes" class="text-lg font-medium max-w-[2rem] 2xl:max-w-none">
-			<div class="text-red-600 z-90">UNSAVED CHANGES</div>
+			<div class="text-red-600">UNSAVED CHANGES</div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { useCollectionStore } from "~~/store/collection";
-import { useMainStore } from "~~/store/main";
 import { getHash } from "~/models/interfaces/Collection";
 import { Modal } from "~~/models/enums/Modal";
 

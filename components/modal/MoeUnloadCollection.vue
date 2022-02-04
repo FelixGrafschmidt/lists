@@ -26,10 +26,9 @@
 </template>
 
 
-<script setup lang="ts">import { Modal } from "~~/models/enums/Modal";
+<script setup lang="ts">
+import { Modal } from "~~/models/enums/Modal";
 import { newCollection } from "~~/models/interfaces/Collection";
-import { useCollectionStore } from "~~/store/collection";
-import { useMainStore } from "~~/store/main";
 
 
 const mainStore = useMainStore()

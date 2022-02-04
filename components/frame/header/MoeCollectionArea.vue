@@ -29,8 +29,6 @@
 <script setup lang="ts">
 import { saveAs } from "file-saver"
 import { Modal } from "~~/models/enums/Modal";
-import { useCollectionStore } from "~~/store/collection";
-import { useMainStore } from "~~/store/main";
 let copied = false
 
 const collectionStore = useCollectionStore()

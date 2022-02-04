@@ -1,8 +1,8 @@
-import * as url from "url";
 import type { IncomingMessage, ServerResponse } from 'http'
 import { createClient } from "redis";
 import { nanoid } from "nanoid";
 import { List } from "~~/models/interfaces/List"
+import { useCookie, setCookie } from 'h3'
 
 const client = createClient({ url: "redis://127.0.0.1:6378" });
 client.connect()
@@ -10,12 +10,12 @@ client.connect()
 export default async (req: IncomingMessage, res: ServerResponse) => {
 	// eslint-disable-next-line no-array-constructor
 	let collection = { id: nanoid(), lists: new Array<List>() };
-	const params: url.URLSearchParams = new url.URL(req.url!, "https://localhost").searchParams;
 
 	res.setHeader("Content-Type", "application/json");
 	res.statusCode = 404;
 
-	const id: string = params.get("id") || "";
+	const id = useCookie(req, "collectionId");
+
 	if (id) {
 		collection = { id, lists: [] };
 		try {
@@ -30,6 +30,7 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
 			console.error(error);
 		}
 	} else {
+		setCookie(res, "collectionId", collection.id, { path: "/", secure: true, httpOnly: true, sameSite: true })
 		return collection
 	}
 }

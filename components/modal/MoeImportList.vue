@@ -7,7 +7,6 @@
 		<label class="mx-12">
 			<span>Paste the content of your exported list below.</span>
 			<textarea
-				v-autofocus
 				type="text"
 				class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80"
 				@input="parseJSONInput"
@@ -32,8 +31,6 @@ import { nanoid } from "nanoid";
 import { Ref } from "nuxt3/dist/app/compat/capi";
 import { newList } from "~/models/interfaces/List";
 import { Modal } from "~~/models/enums/Modal";
-import { useCollectionStore } from "~~/store/collection";
-import { useMainStore } from "~~/store/main";
 import { fixImportListJSON } from "~~/utils/json";
 
 const json = ref("")

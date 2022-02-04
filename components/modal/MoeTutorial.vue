@@ -38,8 +38,8 @@
 	</div>
 </template>
 
-<script setup lang="ts">import { Modal } from "~~/models/enums/Modal";
-import { useMainStore } from "~~/store/main";
+<script setup lang="ts">
+import { Modal } from "~~/models/enums/Modal";
 
 
 const step = computed(() => {
