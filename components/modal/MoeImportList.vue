@@ -1,6 +1,6 @@
 <template>
 	<form
-		class="rounded-2xl dark:bg-gray-800 bg-gray-400 dark:text-gray-100 text-gray-900 flex flex-col relative m-auto pb-10 pt-5 max-h-[80vh] w-[40vw] items-center"
+		class="rounded-2xl bg-gray-800 text-gray-100 flex flex-col relative m-auto pb-10 pt-5 max-h-[80vh] w-[40vw] items-center"
 		@click.stop
 		@submit.prevent="json !== '' ? importList() : undefined"
 	>
@@ -15,10 +15,10 @@
 		<p v-if="json !== '' && !valid" class="text-red-600">Invalid file</p>
 		<MoeButtonDark
 			:class="{ 'cursor-not-allowed': json === '' || valid === undefined }"
-			class="m-auto"
+			class="m-auto bg-gray-500"
 		>Import List</MoeButtonDark>
 		<div
-			class="items-center justify-center top-1 right-1 flex dark:bg-red-600 bg-red-400 dark-hover:bg-red-700 hover:bg-red-500 dark:text-gray-900 text-gray-100 h-6 w-6 rounded-2xl cursor-pointer absolute"
+			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
 			@click="mainStore.modal = Modal.NONE"
 		>
 			<div class="fas fa-times"></div>

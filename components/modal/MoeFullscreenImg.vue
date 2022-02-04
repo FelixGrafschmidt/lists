@@ -17,7 +17,7 @@
 		>
 			<div
 				v-show="showThumbs"
-				class="flex overflow-x-scroll px-8 gap-1 h-1/2 max-h-[6rem] min-h-[6rem] scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track-gray-300 scrollbar-thumb-gray-500 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-500 bg-gray-700 bg-opacity-50"
+				class="flex overflow-x-scroll px-8 gap-1 h-1/2 max-h-[6rem] min-h-[6rem] scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 bg-gray-700 bg-opacity-50"
 			>
 				<figure
 					v-for="(image, i) in images"

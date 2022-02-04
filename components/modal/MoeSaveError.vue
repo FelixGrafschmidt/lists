@@ -1,8 +1,5 @@
 <template>
-	<div
-		class="flex rounded-2xl dark:bg-gray-800 bg-gray-400 dark:text-gray-100 text-gray-900 relative m-auto pb-10"
-		@click.stop
-	>
+	<div class="flex rounded-2xl bg-gray-800 text-gray-100 relative m-auto pb-10" @click.stop>
 		<MoeSVG :name="'error'" alt="error" class="ml-10 mt-10 h-16 w-16" />
 		<div class="mx-12">
 			<div class="mt-16 text-xl flex flex-col">
@@ -10,9 +7,9 @@
 				<span>Your changes have NOT been saved!</span>
 			</div>
 			<div class="mt-8">
-				<MoeButtonDark @click="saveChanges">Try again</MoeButtonDark>
-				<MoeButtonDark @click="exportData">Export your data</MoeButtonDark>
-				<MoeButtonDark @click="contactUs">Contact us</MoeButtonDark>
+				<MoeButtonDark class="bg-gray-500" @click="saveChanges">Try again</MoeButtonDark>
+				<MoeButtonDark class="bg-gray-500" @click="exportData">Export your data</MoeButtonDark>
+				<MoeButtonDark class="bg-gray-500" @click="contactUs">Contact us</MoeButtonDark>
 			</div>
 		</div>
 	</div>

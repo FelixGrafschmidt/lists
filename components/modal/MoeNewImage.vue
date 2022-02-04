@@ -1,6 +1,6 @@
 <template>
 	<form
-		class="justify-end rounded-2xl dark:bg-gray-800 bg-gray-400 dark:text-gray-100 text-gray-900 flex flex-col relative m-auto py-10 h-[80vh] w-[40vw] items-center"
+		class="justify-end rounded-2xl bg-gray-800 text-gray-100 flex flex-col relative m-auto py-10 h-[80vh] w-[40vw] items-center"
 		@click.stop
 		@submit.prevent="src !== '' ? addImage() : undefined"
 	>
@@ -24,10 +24,13 @@
 		</label>
 		<p v-if="!valid" class="text-red-600">Invalid image url</p>
 		<div class="h-[10%]">
-			<MoeButtonDark :class="{ 'cursor-not-allowed': src === '' }" class="mt-4 mx-auto">Add Image</MoeButtonDark>
+			<MoeButtonDark
+				:class="{ 'cursor-not-allowed': src === '' }"
+				class="mt-4 mx-auto bg-gray-500"
+			>Add Image</MoeButtonDark>
 		</div>
 		<div
-			class="items-center justify-center top-1 right-1 flex dark:bg-red-600 bg-red-400 dark-hover:bg-red-700 hover:bg-red-500 dark:text-gray-900 text-gray-100 h-6 w-6 rounded-2xl cursor-pointer absolute"
+			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
 			@click="mainStore.modal = Modal.NONE"
 		>
 			<div class="fas fa-times"></div>

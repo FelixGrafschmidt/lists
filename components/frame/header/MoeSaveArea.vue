@@ -2,15 +2,20 @@
 	<div class="flex gap-3 items-center">
 		<div class="flex font-medium items-center gap-1">
 			Autosave:
-			<p v-if="autosave" class="dark:text-green-400 text-green-700">{{ countdown }}</p>
+			<p v-if="autosave" class="text-green-400">{{ countdown }}</p>
 			<p v-else class="text-red-600">OFF</p>
 		</div>
 
-		<MoeButtonDark v-if="autosave" class="h-10" @click="disableAutosave">Disable autosave</MoeButtonDark>
-		<MoeButtonDark v-else class="h-10" @click="enableAutosave">Enable autosave</MoeButtonDark>
+		<MoeButtonDark v-if="autosave" class="h-10 bg-gray-500" @click="disableAutosave">Disable autosave</MoeButtonDark>
+		<MoeButtonDark v-else class="h-10 bg-gray-500" @click="enableAutosave">Enable autosave</MoeButtonDark>
 
-		<MoeButtonDark v-tooltip="'Save'" icon="fas fa-save" class="h-10 w-10" @click="saveChanges" />
-		<div v-if="changes" class="text-lg font-medium max-w-[2rem] 2xl:max-w-none">
+		<MoeButtonDark
+			v-tooltip="'Save'"
+			icon="fas fa-save"
+			class="h-10 w-10 bg-gray-500"
+			@click="saveChanges"
+		/>
+		<div v-if="changes" class="text-lg font-medium max-w-[2rem] 2xl:max-w-none bg-gray-500">
 			<div class="text-red-600">UNSAVED CHANGES</div>
 		</div>
 	</div>

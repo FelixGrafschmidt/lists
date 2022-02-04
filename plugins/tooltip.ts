@@ -4,28 +4,30 @@ import { arrow, computePosition, flip, shift, offset } from "@floating-ui/dom"
 import { DirectiveBinding, VNode } from "nuxt3/dist/app/compat/capi";
 
 export default defineNuxtPlugin((nuxtApp) => {
-	nuxtApp.vueApp.directive("tooltip", (el: HTMLElement, binding: DirectiveBinding, vnode: VNode, prevVnode: VNode) => {
-		const tooltipElement = document.createElement("div")
-		const arrowElement = document.createElement("div")
+	nuxtApp.vueApp.directive("tooltip", {
+		created(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
+			const tooltipElement = document.createElement("div")
+			const arrowElement = document.createElement("div")
 
-		tooltipElement.textContent = binding.value
+			tooltipElement.textContent = binding.value
 
-		tooltipElement.classList.add("hidden", "absolute", "bg-gray-300", "text-black", "p-1", "rounded", "font-sm", "pointer-none")
-		arrowElement.classList.add("absolute", "bg-gray-300", "w-2", "h-2", "rotate-45")
+			tooltipElement.classList.add("hidden", "absolute", "bg-gray-300", "text-black", "p-1", "rounded", "font-sm", "pointer-none")
+			arrowElement.classList.add("absolute", "bg-gray-300", "w-2", "h-2", "rotate-45")
 
-		el.addEventListener("mouseenter", () => {
-			tooltipElement.classList.remove("hidden")
-			tooltipElement.classList.add("block")
-			update(el, tooltipElement, arrowElement)
-		})
-		el.addEventListener("mouseleave", () => {
-			tooltipElement.classList.remove("block")
-			tooltipElement.classList.add("hidden")
-			update(el, tooltipElement, arrowElement)
-		})
+			el.addEventListener("mouseenter", () => {
+				tooltipElement.classList.remove("hidden")
+				tooltipElement.classList.add("block")
+				update(el, tooltipElement, arrowElement)
+			})
+			el.addEventListener("mouseleave", () => {
+				tooltipElement.classList.remove("block")
+				tooltipElement.classList.add("hidden")
+				update(el, tooltipElement, arrowElement)
+			})
 
-		tooltipElement.appendChild(arrowElement)
-		document.body.appendChild(tooltipElement)
+			tooltipElement.appendChild(arrowElement)
+			document.body.appendChild(tooltipElement)
+		}
 	})
 })
 

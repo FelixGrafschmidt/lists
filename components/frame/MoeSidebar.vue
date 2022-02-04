@@ -1,9 +1,5 @@
 <template>
-	<aside
-		class="dark:bg-gray-700 bg-gray-400 py-4 px-4"
-		@mouseenter="captureScroll"
-		@mouseleave="releaseScroll"
-	>
+	<aside class="bg-gray-700 py-4 px-4" @mouseenter="captureScroll" @mouseleave="releaseScroll">
 		<h3 v-if="list.id" class="text-lg max-w-[15rem] whitespace-nowrap truncate">
 			<span class="cursor-pointer" @click="navigateToList(list)">{{ list.name }}</span> |
 			<span class="cursor-pointer" @click="toGallery">Gallery</span>
@@ -11,7 +7,7 @@
 		<h3 v-else class="text-lg max-w-[15rem] whitespace-nowrap truncate">No list selected</h3>
 		<div
 			:class="{
-				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-300 scrollbar-thumb-gray-500 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-500 overflow-y-scroll':
+				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded  scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll':
 					showScrollbars,
 			}"
 			class="rounded max-h-[40%] min-h-[40%] overflow-hidden"
@@ -19,8 +15,8 @@
 			<div
 				v-for="characteritem of list.characters"
 				:key="characteritem.id"
-				:class="{ 'bg-teal-500 dark-hover:bg-teal-400 hover:bg-teal-400': character.id && characteritem.id === character.id }"
-				class="dark-hover:bg-gray-800 hover:bg-gray-500 rounded pl-6 py-1 cursor-pointer"
+				:class="{ 'hover:bg-teal-400 hover:bg-teal-400': character.id && characteritem.id === character.id }"
+				class="hover:bg-gray-800 rounded pl-6 py-1 cursor-pointer"
 				role="link"
 				@click="navigateToCharacter(characteritem)"
 			>{{ characteritem.name }}</div>
@@ -28,7 +24,7 @@
 		<h3 class="text-lg caps-small cursor-pointer pt-2" @click="toCollection">Lists</h3>
 		<div
 			:class="{
-				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-300 scrollbar-thumb-gray-500 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-500 overflow-y-scroll':
+				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded  scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll':
 					showScrollbars,
 			}"
 			class="rounded max-h-[40%] min-h-[40%] overflow-hidden"
@@ -36,8 +32,8 @@
 			<div
 				v-for="listitem of collection.lists"
 				:key="listitem.id"
-				:class="{ 'bg-teal-500 dark-hover:bg-teal-400 hover:bg-teal-400': listitem.id === list.id }"
-				class="dark-hover:bg-gray-800 hover:bg-gray-500 rounded pl-6 py-1 cursor-pointer"
+				:class="{ 'bg-teal-500 hover:bg-teal-400': listitem.id === list.id }"
+				class="hover:bg-gray-800 rounded pl-6 py-1 cursor-pointer"
 				role="link"
 				@click="navigateToList(listitem)"
 			>{{ listitem.name }}</div>

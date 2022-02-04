@@ -4,13 +4,13 @@
 			v-tooltip="'Create New List'"
 			@click.native="addNewList"
 			icon="fas fa-plus"
-			class="w-24"
+			class="w-24 bg-gray-500"
 		/>
 		<MoeButtonDark
 			v-tooltip="'Import List'"
 			@click.native="importFromFile"
 			icon="fas fa-file-import"
-			class="w-24"
+			class="w-24 bg-gray-500"
 		/>
 	</div>
 </template>

@@ -16,7 +16,7 @@ if (!collectionStore.collection.id) {
 	const path = useNuxtApp().ssrContext!.url.split("/");
 
 	const collectionid = path[1];
-	if (!collectionid.match(/\w+/)) {
+	if (!collectionid.match(/\w{21}/)) {
 		useRouter().push("/")
 	}
 	await collectionStore.loadCollection();

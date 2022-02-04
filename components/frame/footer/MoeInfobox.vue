@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="border-teal-700 border-l border-r flex items-center flex-col mr-px justify-around w-[8rem] dark:bg-gray-800 bg-gray-500"
+		class="border-teal-700 border-l border-r flex items-center flex-col mr-px justify-around w-[8rem] bg-gray-800"
 	>
 		<NuxtLink v-slot="{ navigate }" custom to="/imprint">
 			<h2

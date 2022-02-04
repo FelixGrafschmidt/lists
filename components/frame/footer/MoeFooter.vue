@@ -1,5 +1,5 @@
 <template>
-	<footer class="flex dark:bg-gray-800 bg-gray-500 h-12 justify-center items-center relative">
+	<footer class="flex bg-gray-800 h-12 justify-center items-center relative">
 		<!-- <div
 			class="absolute left-0 flex flex-col-reverse gap-4 bottom-2 w-[8rem] mr-1 cursor-pointer"
 			@mouseenter="showLangSwitcher = true"

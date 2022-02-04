@@ -1,13 +1,13 @@
 <template>
 	<nav
-		class="dark:bg-gray-800 bg-gray-500 pl-2 min-w-full flex items-center h-16 gap-3"
+		class="bg-gray-800 pl-2 min-w-full flex items-center h-16 gap-3"
 		role="navigation"
 		aria-label="main navigation"
 	>
 		<div class="w-[50%] gap-3 flex items-center justify-start">
 			<NuxtLink v-slot="{ navigate }" custom to="/">
 				<h2
-					class="text-xl cursor-pointer [letter-spacing:1px] font [font-variant-caps:small-caps] dark:text-white"
+					class="text-xl cursor-pointer [letter-spacing:1px] font [font-variant-caps:small-caps]"
 					role="link"
 					@click="navigate"
 				>Character List Manager</h2>
