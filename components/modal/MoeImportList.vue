@@ -31,7 +31,6 @@ import { nanoid } from "nanoid";
 import { Ref } from "nuxt3/dist/app/compat/capi";
 import { newList } from "~/models/interfaces/List";
 import { Modal } from "~~/models/enums/Modal";
-import { fixImportListJSON } from "~~/utils/json";
 
 const json = ref("")
 const valid: Ref<undefined | boolean> = ref(undefined)
@@ -73,7 +72,7 @@ function importList() {
 function parseJSONInput(event: Event) {
 	try {
 		json.value = (event.target as HTMLInputElement).value;
-		list = JSON.parse(json.value, fixImportListJSON);
+		list = JSON.parse(json.value);
 		list.characters.forEach((character) => {
 			if (!character.id) {
 				character.id = nanoid();

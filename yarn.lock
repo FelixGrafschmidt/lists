@@ -1468,6 +1468,11 @@
     jiti "^1.12.9"
     windicss "^3.4.3"
 
+"@windicss/plugin-scrollbar@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-scrollbar/-/plugin-scrollbar-1.2.3.tgz#4796e999e98a4bca6c269fa1faffd2e9b5452cac"
+  integrity sha512-+cqv1pEmaNPITeBJ/lO6tc8IjBzRhQ+V9G8r249MMXivYoxUO4DtModBrRGHVvBgsYZgPXDsIv2jqtxc4NqYEg==
+
 "@windicss/plugin-utils@1.6.3", "@windicss/plugin-utils@^1.1.1", "@windicss/plugin-utils@^1.6.3":
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-1.6.3.tgz#b321804b4e84e7a20a5c79f50c7fd83eb8202917"
@@ -3060,10 +3065,20 @@ eslint-plugin-unicorn@^39.0.0:
     semver "^7.3.5"
     strip-indent "^3.0.0"
 
-eslint-plugin-vue@^8.1.1, eslint-plugin-vue@^8.4.0:
+eslint-plugin-vue@^8.1.1:
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-8.4.0.tgz#16e59b356386b4428fb7d886b6d8ee5df2bbc09d"
   integrity sha512-Ga96QRG8GA9AyzKtEDxqYRCMt/VJM4SLkcNmm4FvUiFBE4jpaBr25unRBi9iVmHLYhA9EZ/4I+jD8n1vfWzyAA==
+  dependencies:
+    eslint-utils "^3.0.0"
+    natural-compare "^1.4.0"
+    semver "^7.3.5"
+    vue-eslint-parser "^8.0.1"
+
+eslint-plugin-vue@^8.4.1:
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-8.4.1.tgz#0a25493bbfee6baa21614e637e3fd390617c0bb4"
+  integrity sha512-nmWOhNmDx9TZ+yP9ZhezTkZUupSHsYA2TocRm+efPSXMOyFrVczVlaIuQcLBjCtI8CbkBiUQ3VcyQsjlIhDrhA==
   dependencies:
     eslint-utils "^3.0.0"
     natural-compare "^1.4.0"

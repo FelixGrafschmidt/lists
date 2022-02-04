@@ -7,5 +7,5 @@
 </template>
 
 <script setup lang="ts">
-import '@unocss/reset/tailwind.css'
+// import '@unocss/reset/tailwind.css'
 </script>

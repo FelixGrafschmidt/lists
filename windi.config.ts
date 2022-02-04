@@ -1,11 +1,11 @@
 // const darkmode = require("tailwindcss-dark-mode");
 // const forms = require("@tailwindcss/forms");
-// const scrollbar = require("tailwind-scrollbar");
 // const typography = require("tailwindcss-typography");
-import { Config } from "windicss/types/interfaces"
+import scrollbar from "@windicss/plugin-scrollbar"
+import { defineConfig } from 'windicss/helpers'
 
 
-const config: Config = {
+export default defineConfig({
 	theme: {
 		extend: {
 			colors: {
@@ -31,10 +31,13 @@ const config: Config = {
 			},
 		}
 	},
-	// plugins: [darkmode(), forms, scrollbar, typography],
-}
+	plugins: [scrollbar],
+	extract: {
+		include: ['**/*.{vue,html,jsx,tsx,ts,js}'],
+	}
+})
 
-export default config
+
 
 // module.exports = {
 // 	theme: {

@@ -1,5 +1,5 @@
 <template>
-	<button class="p-2 rounded-md text-sm font-medium hover:text-teal-500">
+	<button class="p-2 rounded-md text-sm font-medium hover:text-teal-400">
 		<i v-if="icon !== ''" :class="icon"></i>
 		<slot />
 	</button>
