@@ -14,10 +14,10 @@
 			/>
 		</label>
 		<div class="h-[10%]">
-			<MoeButtonDark
+			<MoeButton
 				:class="{ 'cursor-not-allowed': src === '' }"
 				class="mt-4 mx-auto bg-gray-500"
-			>Add Images</MoeButtonDark>
+			>Add Images</MoeButton>
 		</div>
 		<div
 			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"

@@ -6,31 +6,7 @@ import { defineConfig } from 'windicss/helpers'
 
 
 export default defineConfig({
-	theme: {
-		extend: {
-			colors: {
-				teal: {
-					100: "#97ffff",
-					200: "#7dffff",
-					300: "#33ffff",
-					400: "#00cccc",
-					500: "#00a3a3",
-					600: "#008282",
-					700: "#006868",
-					800: "#005353",
-					900: "#004242",
-				},
-			},
-			spacing: {
-				72: "18rem",
-				84: "21rem",
-				96: "24rem",
-			},
-			outline: {
-				blue: ["4px solid #3b82f6", "-8px"],
-			},
-		}
-	},
+	theme: {},
 	plugins: [scrollbar],
 	extract: {
 		include: ['**/*.{vue,html,jsx,tsx,ts,js}'],

@@ -18,14 +18,14 @@
 			</div>
 		</div>
 		<div class="flex justify-between">
-			<MoeButtonDark
+			<MoeButton
 				:class="{ 'pointer-events-none cursor-not-allowed bg-gray-500': mainStore.tutorial === 1, 'bg-gray-700': mainStore.tutorial !== 1 }"
 				:disabled="mainStore.tutorial === 1"
 				icon="fas fa-angle-left"
 				@click="previous"
 			/>
 			<component :is="step" class="h-72 pt-8 px-8 w-full" />
-			<MoeButtonDark
+			<MoeButton
 				:class="{ 'pointer-events-none cursor-not-allowed bg-gray-500': mainStore.tutorial === 3, 'bg-gray-700': mainStore.tutorial !== 3 }"
 				:disabled="mainStore.tutorial === 3"
 				icon="fas fa-angle-right"
@@ -33,11 +33,7 @@
 			/>
 		</div>
 		<div class="flex justify-center h-8">
-			<MoeButtonDark
-				class="bg-gray-700"
-				v-show="mainStore.tutorial === 3"
-				@click="newList"
-			>Create New List</MoeButtonDark>
+			<MoeButton class="bg-gray-700" v-show="mainStore.tutorial === 3" @click="newList">Create New List</MoeButton>
 		</div>
 	</div>
 </template>

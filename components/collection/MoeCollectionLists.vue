@@ -30,19 +30,19 @@
 			</div>
 			<div class="w-1/6 text-center flex gap-2 justify-center">
 				<!-- <MoeButton :text="'Share'" class="w-16" color="bg-gray-600 m-1" /> -->
-				<MoeButtonDark
+				<MoeButton
 					v-tooltip="'Export'"
 					@click.stop.native="exportList(list)"
 					class="w-10 bg-gray-500"
 					icon="fas fa-file-export"
 				/>
-				<MoeButtonDark
+				<MoeButton
 					v-tooltip="'Delete'"
 					@click.stop.native="deleteList(list)"
 					class="w-10 bg-red-600"
 					icon="fas fa-trash"
 				/>
-				<MoeButtonDark
+				<MoeButton
 					v-tooltip="'Copy'"
 					@click.stop.native="copyList(list)"
 					class="w-10 bg-gray-500"

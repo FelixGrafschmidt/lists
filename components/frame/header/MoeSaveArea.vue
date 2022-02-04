@@ -6,10 +6,10 @@
 			<p v-else class="text-red-600">OFF</p>
 		</div>
 
-		<MoeButtonDark v-if="autosave" class="h-10 bg-gray-500" @click="disableAutosave">Disable autosave</MoeButtonDark>
-		<MoeButtonDark v-else class="h-10 bg-gray-500" @click="enableAutosave">Enable autosave</MoeButtonDark>
+		<MoeButton v-if="autosave" class="h-10 bg-gray-500" @click="disableAutosave">Disable autosave</MoeButton>
+		<MoeButton v-else class="h-10 bg-gray-500" @click="enableAutosave">Enable autosave</MoeButton>
 
-		<MoeButtonDark
+		<MoeButton
 			v-tooltip="'Save'"
 			icon="fas fa-save"
 			class="h-10 w-10 bg-gray-500"

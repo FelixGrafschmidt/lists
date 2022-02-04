@@ -1,12 +1,12 @@
 <template>
 	<div class="flex mt-7 justify-center mb-20 gap-2">
-		<MoeButtonDark
+		<MoeButton
 			v-tooltip="'Create New List'"
 			@click.native="addNewList"
 			icon="fas fa-plus"
 			class="w-24 bg-gray-500"
 		/>
-		<MoeButtonDark
+		<MoeButton
 			v-tooltip="'Import List'"
 			@click.native="importFromFile"
 			icon="fas fa-file-import"

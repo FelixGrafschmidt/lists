@@ -48,7 +48,7 @@ export default defineNuxtConfig({
 	components: [
 		"~/components",
 		"~/components/collection",
-		// "~/components/list",
+		"~/components/list",
 		// "~/components/character",
 		// "~/components/gallery",
 		// "~/components/mobile",
@@ -70,5 +70,4 @@ export default defineNuxtConfig({
 		"#config": "node_modules/nuxt3/dist/app/"
 	},
 	typescript: { strict: true },
-	unocss: { attributify: true }
 })

@@ -12,7 +12,7 @@
 				class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80"
 			/>
 		</label>
-		<MoeButtonDark :class="{ 'cursor-not-allowed': name === '' }" class="m-auto bg-gray-500">Add List</MoeButtonDark>
+		<MoeButton :class="{ 'cursor-not-allowed': name === '' }" class="m-auto bg-gray-500">Add List</MoeButton>
 		<div
 			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
 			@click="mainStore.modal = Modal.NONE"

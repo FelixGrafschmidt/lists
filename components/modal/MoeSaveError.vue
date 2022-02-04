@@ -7,9 +7,9 @@
 				<span>Your changes have NOT been saved!</span>
 			</div>
 			<div class="mt-8">
-				<MoeButtonDark class="bg-gray-500" @click="saveChanges">Try again</MoeButtonDark>
-				<MoeButtonDark class="bg-gray-500" @click="exportData">Export your data</MoeButtonDark>
-				<MoeButtonDark class="bg-gray-500" @click="contactUs">Contact us</MoeButtonDark>
+				<MoeButton class="bg-gray-500" @click="saveChanges">Try again</MoeButton>
+				<MoeButton class="bg-gray-500" @click="exportData">Export your data</MoeButton>
+				<MoeButton class="bg-gray-500" @click="contactUs">Contact us</MoeButton>
 			</div>
 		</div>
 	</div>

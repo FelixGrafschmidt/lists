@@ -45,7 +45,7 @@
 						</label>
 					</div>
 					<div class="flex justify-center">
-						<MoeButtonDark
+						<MoeButton
 							v-tooltip="'New Attribute'"
 							icon="fas fa-plus"
 							class="py-2 w-48 bg-gray-500"
@@ -56,11 +56,11 @@
 			</form>
 		</div>
 
-		<MoeButtonDark
+		<MoeButton
 			:class="{ 'cursor-not-allowed': attributes.length === 0 }"
 			class="m-auto bg-gray-500"
 			@click.prevent="attributes.length !== 0 ? addAttributes() : undefined"
-		>Add all Attributes</MoeButtonDark>
+		>Add all Attributes</MoeButton>
 		<div
 			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
 			@click="mainStore.modal = Modal.NONE"

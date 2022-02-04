@@ -1,25 +1,25 @@
 <template>
 	<div class="w-[50%] flex gap-3 items-center justify-end mr-4">
 		<span>{{ collection.id }}</span>
-		<MoeButtonDark
+		<MoeButton
 			v-tooltip="'Copy ID'"
 			icon="fas fa-copy"
 			class="h-10 w-10 bg-gray-500"
 			@click="copyID"
 		/>
-		<MoeButtonDark
+		<MoeButton
 			v-tooltip="'Load Collection'"
 			icon="fas fa-folder-open"
 			class="bg-gray-500 h-10 w-10"
 			@click="loadCollection"
 		/>
-		<MoeButtonDark
+		<MoeButton
 			v-tooltip="'Export Collection'"
 			icon="fas fa-download"
 			class="bg-gray-500 h-10 w-10"
 			@click="exportCollection"
 		/>
-		<MoeButtonDark
+		<MoeButton
 			v-tooltip="'Unload Collection'"
 			icon="fas fa-times"
 			class="hover:bg-red-700 bg-gray-500 h-10 w-10"
