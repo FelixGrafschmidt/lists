@@ -57,7 +57,7 @@ onMounted(() => {
 </script>
 
 <style lang="postcss" scoped>
-::v-deep .vel-toolbar {
+:deep .vel-toolbar {
 	position: absolute;
 	top: 0;
 	height: fit-content;

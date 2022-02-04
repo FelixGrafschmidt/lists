@@ -30,12 +30,11 @@
 					class="scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700 dark:scrollbar-thumb-gray-500 scrollbar-track-rounded scrollbar-thumb-rounded overflow-y-scroll px-2"
 				>
 					<div v-for="(attribute, i) in attributes" :key="i">
-						<MoeTooltip text="Remove Attribute" position="left" extra-classes="mt-16">
-							<span
-								class="items-center justify-center top-6 right-0 flex dark:bg-red-600 bg-red-400 dark-hover:bg-red-700 hover:bg-red-500 dark:text-gray-900 text-gray-100 h-8 w-8 rounded-lg cursor-pointer absolute fas fa-times"
-								@click="removeAttribute(i)"
-							></span>
-						</MoeTooltip>
+						<span
+							v-tooltip="'Remove Attribute'"
+							class="items-center justify-center top-6 right-0 flex dark:bg-red-600 bg-red-400 dark-hover:bg-red-700 hover:bg-red-500 dark:text-gray-900 text-gray-100 h-8 w-8 rounded-lg cursor-pointer absolute fas fa-times"
+							@click="removeAttribute(i)"
+						></span>
 						<label>
 							<span>New Attribute</span>
 							<input
@@ -47,9 +46,12 @@
 						</label>
 					</div>
 					<div class="flex justify-center">
-						<MoeTooltip text="New Attribute" class="mb-8" position="top">
-							<MoeButtonDark icon="fas fa-plus" class="py-2 w-48" @click.prevent="attributes.push('')" />
-						</MoeTooltip>
+						<MoeButtonDark
+							v-tooltip="'New Attribute'"
+							icon="fas fa-plus"
+							class="py-2 w-48"
+							@click.prevent="attributes.push('')"
+						/>
 					</div>
 				</div>
 			</form>

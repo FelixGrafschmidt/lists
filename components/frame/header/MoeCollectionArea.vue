@@ -4,22 +4,25 @@
 		<div v-if="copied">
 			<MoeButtonDark @click="copyID">Copied!</MoeButtonDark>
 		</div>
-		<MoeTooltip v-else text="Copy ID">
-			<MoeButtonDark icon="fas fa-copy" class="h-10 w-10" @click="copyID" />
-		</MoeTooltip>
-		<MoeTooltip text="Load Collection">
-			<MoeButtonDark icon="fas fa-folder-open" class="h-10 w-10" @click="loadCollection" />
-		</MoeTooltip>
-		<MoeTooltip text="Export Collection">
-			<MoeButtonDark icon="fas fa-download" class="h-10 w-10" @click="exportCollection" />
-		</MoeTooltip>
-		<MoeTooltip text="Unload Collection" extra-classes="mr-16" class>
-			<MoeButtonDark
-				icon="fas fa-times"
-				class="dark-hover:!bg-red-700 hover:!bg-red-500 !text-color-unset h-10 w-10"
-				@click="unloadCollection"
-			/>
-		</MoeTooltip>
+		<MoeButtonDark v-else v-tooltip="'Copy ID'" icon="fas fa-copy" class="h-10 w-10" @click="copyID" />
+		<MoeButtonDark
+			v-tooltip="'Load Collection'"
+			icon="fas fa-folder-open"
+			class="h-10 w-10"
+			@click="loadCollection"
+		/>
+		<MoeButtonDark
+			v-tooltip="'Export Collection'"
+			icon="fas fa-download"
+			class="h-10 w-10"
+			@click="exportCollection"
+		/>
+		<MoeButtonDark
+			v-tooltip="'Unload Collection'"
+			icon="fas fa-times"
+			class="dark-hover:!bg-red-700 hover:!bg-red-500 !text-color-unset h-10 w-10"
+			@click="unloadCollection"
+		/>
 	</div>
 </template>
 

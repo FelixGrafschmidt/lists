@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col min-h-screen justify-between">
-		<MoeHeader class="h-16 fixed z-10 border-b border-teal-700" />
+		<MoeHeader class="h-16 fixed border-b border-teal-700" />
 		<div class="flex">
 			<MoeSidebar class="w-1/6 fixed h-full mt-16 mb-32 border-r border-teal-700" />
 			<ClientOnly>

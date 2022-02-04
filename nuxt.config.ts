@@ -61,11 +61,14 @@ export default defineNuxtConfig({
 	],
 	vue: { config: { performance: true } },
 	buildModules: [
-		"nuxt-windicss",
-		'@pinia/nuxt'
+		// "nuxt-windicss",
+		'@unocss/nuxt',
+		'@pinia/nuxt',
+		'@vueuse/nuxt'
 	],
 	alias: {
 		"#config": "node_modules/nuxt3/dist/app/"
 	},
 	typescript: { strict: true },
+	unocss: { attributify: true }
 })

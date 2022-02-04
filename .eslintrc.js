@@ -18,8 +18,6 @@ module.exports = {
 	rules: {
 		"no-console": "off",
 		"no-debugger": "off",
-		"vue/comment-directive": "off",
-		"no-unused-vars": "off",
 	},
 	ignorePatterns: [".nuxt/"],
 };
