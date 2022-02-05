@@ -2,12 +2,12 @@
 	<aside class="bg-gray-700 py-4 px-4" @mouseenter="captureScroll" @mouseleave="releaseScroll">
 		<h3 v-if="list.id" class="text-lg max-w-[15rem] whitespace-nowrap truncate">
 			<span class="cursor-pointer" @click="navigateToList(list)">{{ list.name }}</span> |
-			<span class="cursor-pointer" @click="toGallery">Gallery</span>
+			<!-- <span class="cursor-pointer" @click="toGallery">Gallery</span> -->
 		</h3>
 		<h3 v-else class="text-lg max-w-[15rem] whitespace-nowrap truncate">No list selected</h3>
 		<div
 			:class="{
-				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded  scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll':
+				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll':
 					showScrollbars,
 			}"
 			class="rounded max-h-[40%] min-h-[40%] overflow-hidden"
@@ -68,9 +68,9 @@ function navigateToCharacter(character: Character) {
 	mainStore.toCharacter();
 }
 
-function toGallery() {
-	mainStore.toGallery();
-}
+// function toGallery() {
+// 	mainStore.toGallery();
+// }
 
 function toCollection() {
 	mainStore.toCollection();

@@ -39,7 +39,8 @@
 </template>
 
 
-<script setup lang="ts">import { Modal } from "~~/models/enums/Modal";
+<script setup lang="ts">
+import { Modal } from "~~/models/enums/Modal";
 
 
 const src = ref("")

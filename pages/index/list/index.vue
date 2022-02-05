@@ -6,7 +6,6 @@
 	</div>
 </template>
 
-
 <script setup lang="ts">
 
 const mainStore = useMainStore()
@@ -15,6 +14,7 @@ const listStore = useListStore()
 
 
 if (process.server) {
+	await collectionStore.loadCollection()
 	const path = useNuxtApp().ssrContext!.url.split("/");
 	const listid = path[2];
 	const lists = collectionStore.collection.lists.filter((list) => list.id === listid);

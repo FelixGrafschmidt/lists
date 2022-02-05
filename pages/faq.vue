@@ -5,6 +5,11 @@
 	</div>
 </template>
 
-<script lang="ts">
-defineNuxtComponent({})
+<script setup lang="ts">
+
+const collectionStore = useCollectionStore()
+
+if (process.server) {
+	await collectionStore.loadCollection()
+}
 </script>

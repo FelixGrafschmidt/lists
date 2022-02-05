@@ -6,11 +6,7 @@
 	>
 		<div class="w-[50%] gap-3 flex items-center justify-start">
 			<NuxtLink v-slot="{ navigate }" custom to="/">
-				<h2
-					class="text-xl cursor-pointer [letter-spacing:1px] font [font-variant-caps:small-caps]"
-					role="link"
-					@click="navigate"
-				>Character List Manager</h2>
+				<h2 class="text-xl cursor-pointer title" role="link" @click="navigate">Character List Manager</h2>
 			</NuxtLink>
 			<MoeSaveArea />
 		</div>
@@ -19,7 +15,9 @@
 </template>
 
 <style scoped>
-.font {
+.title {
 	font-family: "Alfa Slab One", cursive;
+	letter-spacing: 1px;
+	font-variant-caps: small-caps;
 }
 </style>

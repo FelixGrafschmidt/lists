@@ -11,7 +11,7 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
 
 	const id: string = (body as Collection).id;
 
-	setCookie(res, "collectionId", id, { path: "/", secure: true, httpOnly: true, sameSite: true })
+	setCookie(res, "collectionId", id, { path: "/", secure: true, httpOnly: true, sameSite: true, maxAge: 365 * 24 * 60 * 60 })
 
 	if (id) {
 		try {

@@ -16,7 +16,8 @@
 	</div>
 </template>
 
-<script setup lang="ts">import { Modal } from "~~/models/enums/Modal";
+<script setup lang="ts">
+import { Modal } from "~~/models/enums/Modal";
 import { newCharacter } from "~~/models/interfaces/Character";
 
 

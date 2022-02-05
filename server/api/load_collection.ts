@@ -30,7 +30,7 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
 			console.error(error);
 		}
 	} else {
-		setCookie(res, "collectionId", collection.id, { path: "/", secure: true, httpOnly: true, sameSite: true })
+		setCookie(res, "collectionId", collection.id, { path: "/", secure: true, httpOnly: true, sameSite: true, maxAge: 365 * 24 * 60 * 60 })
 		return collection
 	}
 }

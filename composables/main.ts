@@ -12,33 +12,28 @@ export const useMainStore = defineStore('main', {
 	actions: {
 		toCollection() {
 			const collectionId = useCollectionStore().collection.id
-			useRouter().push(`/${collectionId}`);
+			useRouter().push(`/collection/${collectionId}`);
 		},
 
 		toList() {
-			const collectionId = useCollectionStore().collection.id
 			const listId = useListStore().list.id
-			useRouter().push(`/${collectionId}/${listId}`);
+			useRouter().push(`/list/${listId}`);
 		},
 
 		toCharacter() {
-			const collectionId = useCollectionStore().collection.id
-			const listId = useListStore().list.id
 			const characterId = useCharacterStore().character.id
-			useRouter().push(`/${collectionId}/${listId}/${characterId}`);
+			useRouter().push(`/character/${characterId}`);
 		},
 
-		toGallery() {
-			const collectionId = useCollectionStore().collection.id
-			const listId = useListStore().list.id
-			useRouter().push(`/${collectionId}/${listId}/gallery`);
-		},
+		// toGallery() {
+		// 	const listId = useListStore().list.id
+		// 	useRouter().push(`/${listId}/gallery`);
+		// },
 
-		toGalleryCharacter() {
-			const collectionId = useCollectionStore().collection.id
-			const listId = useListStore().list.id
-			const characterId = useCharacterStore().character.id
-			useRouter().push(`/${collectionId}/${listId}/gallery/${characterId}`);
-		},
+		// toGalleryCharacter() {
+		// 	const listId = useListStore().list.id
+		// 	const characterId = useCharacterStore().character.id
+		// 	useRouter().push(`/${listId}/gallery/${characterId}`);
+		// },
 	}
 })
