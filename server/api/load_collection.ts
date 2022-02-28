@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { List } from "~~/models/interfaces/List"
 import { useCookie, setCookie } from 'h3'
 
-const client = createClient({ url: "redis://127.0.0.1:6378" });
+const client = createClient({ url: "redis://127.0.0.1:6379" });
 client.connect()
 
 export default async (req: IncomingMessage, res: ServerResponse) => {

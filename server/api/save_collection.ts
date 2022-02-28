@@ -3,7 +3,7 @@ import { createClient } from "redis";
 import { Collection } from "~~/models/interfaces/Collection";
 import { useBody, setCookie } from 'h3'
 
-const client = createClient({ url: "redis://127.0.0.1:6378" });
+const client = createClient({ url: "redis://127.0.0.1:6379" });
 client.connect()
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
