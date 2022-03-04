@@ -17,14 +17,18 @@
 				></div>
 			</div>
 		</div>
-		<div class="flex justify-between">
+		<div class="flex justify-betwee">
 			<MoeButton
 				:class="{ 'pointer-events-none cursor-not-allowed bg-gray-500': mainStore.tutorial === 1, 'bg-gray-700': mainStore.tutorial !== 1 }"
 				:disabled="mainStore.tutorial === 1"
 				icon="fas fa-angle-left"
 				@click="previous"
 			/>
-			<component :is="step" class="h-72 pt-8 px-8 w-full" />
+			<!-- TODO: Why does this not work anymore??? -->
+			<!-- <component :is="step" class="h-72 pt-8 px-8 w-full" /> -->
+			<MoeTutorial1 class="h-72 px-8 pt-8 w-full" v-if="step === 'MoeTutorial1'" />
+			<MoeTutorial2 class="h-72 pt-8 px-8 w-full" v-else-if="step === 'MoeTutorial2'" />
+			<MoeTutorial3 class="h-72 pt-8 px-8 w-full" v-else-if="step === 'MoeTutorial3'" />
 			<MoeButton
 				:class="{ 'pointer-events-none cursor-not-allowed bg-gray-500': mainStore.tutorial === 3, 'bg-gray-700': mainStore.tutorial !== 3 }"
 				:disabled="mainStore.tutorial === 3"
