@@ -49,7 +49,7 @@ export default defineNuxtConfig({
 		"~/components",
 		"~/components/collection",
 		"~/components/list",
-		// "~/components/character",
+		"~/components/character",
 		// "~/components/gallery",
 		// "~/components/mobile",
 		"~/components/frame",

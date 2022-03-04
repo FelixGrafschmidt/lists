@@ -20,15 +20,9 @@ import { Modal } from "~~/models/enums/Modal";
 const mainStore = useMainStore()
 const collectionStore = useCollectionStore()
 const listStore = useListStore()
+const characterStore = useCharacterStore()
 
 if (process.server) {
-	// TODO: Implement direct loading vie url
-	// if (useRoute().name === "index-collection-collection") {
-	// 	const id = useRoute().path.split("/")[2]
-	// 	if (id.match(/\w{21}/)) {
-	// 		useCookie("collectionId").value = id
-	// 	}
-	// }
 	const [_, collectionId, listId, characterId] = useRoute().fullPath.split("/")
 	if (collectionId && collectionId.match(/\w{21}/)) {
 		useCookie("collectionId").value = collectionId
@@ -40,8 +34,14 @@ if (process.server) {
 			mainStore.toCollection();
 		}
 		listStore.setList(lists[0]);
+		if (characterId && characterId.match(/\w{21}/)) {
+			const characters = listStore.list.characters.filter((character) => character.id === characterId);
+			if (characters.length === 0) {
+				mainStore.toList();
+			}
+			characterStore.setCharacter(characters[0]);
+		}
 	}
-	// console.log("character", character);
 }
 
 onMounted(() => {

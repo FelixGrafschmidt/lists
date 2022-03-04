@@ -1,0 +1,166 @@
+<template>
+	<form
+		@submit.prevent="isNewCharacter ? saveNewCharacter() : saveChanges()"
+		class="w-1/2 flex flex-col h-[80vh] justify-between"
+	>
+		<div
+			class="max-h-[85%] min-h-[85%] pr-8 scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll pl-1"
+		>
+			<div class="py-2">
+				<label>
+					Name
+					<input
+						:value="character.name"
+						@input="changeName"
+						type="text"
+						class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+					/>
+				</label>
+			</div>
+			<div class="py-2">
+				<label>
+					Origin
+					<input
+						:value="character.origin"
+						@input="changeOrigin"
+						type="text"
+						class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+					/>
+				</label>
+			</div>
+			<div v-for="(attribute, i) in character.attributeArray" :key="i" class="py-2 relative">
+				<span
+					@click="removeAttribute(attribute)"
+					v-tooltip="'Remove Attribute'"
+					class="items-center justify-center top-[1.4rem] right-0 flex bg-red-600 hover:bg-red-700 text-gray-900 h-8 w-8 rounded-lg cursor-pointer absolute fas fa-times"
+				></span>
+				<label>
+					<input
+						v-model="attribute.name"
+						type="text"
+						class="h-4 block border border-teal-500 rounded text-gray-100 bg-gray-900 focus:outline-none w-32 mb-1 pl-0"
+					/>
+					<input
+						v-model="attribute.value"
+						type="text"
+						class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+					/>
+				</label>
+			</div>
+			<div class="flex justify-center mt-8">
+				<MoeButton
+					v-tooltip="'Add Attribute'"
+					@click.native.prevent="addAttribute"
+					icon="fas fa-plus"
+					class="py-2 w-48"
+				/>
+			</div>
+		</div>
+		<div class="flex justify-center gap-8 max-h-[10%] min-h-[10%]">
+			<MoeButton
+				v-tooltip="'Save Character'"
+				icon="fas fa-save"
+				class="py-2 w-24 bg-green-600 hover:bg-green-700 text-color-unset"
+			/>
+			<MoeButton
+				@click="isNewCharacter ? discardCharacter() : deleteCharacter()"
+				v-tooltip="'Delete Character'"
+				icon="fas fa-trash"
+				class="py-2 w-24 bg-red-600 hover:bg-red-700 text-color-unset"
+			/>
+			<div v-if="copied">
+				<MoeButton
+					@click.prevent="copyCharacter"
+					v-tooltip="'Delete Character'"
+					icon="fas fa-trash"
+					class="py-2 w-24"
+				>Copied!</MoeButton>
+			</div>
+			<MoeButton
+				v-else
+				@click.prevent="copyCharacter"
+				v-tooltip="'Copy Character'"
+				icon="fas fa-copy"
+				class="py-2 w-24"
+			/>
+			<MoeButton
+				@click.prevent="exportCharacter"
+				v-tooltip="'Export Character'"
+				icon="fas fa-file-export"
+				class="py-2 w-24"
+			/>
+		</div>
+	</form>
+</template>
+
+
+<script setup lang="ts">
+import { Modal } from "~/models/enums/Modal";
+import { saveAs } from "file-saver";
+import { CharacterAttribute } from "~~/models/interfaces/Character";
+
+
+const mainStore = useMainStore()
+const listStore = useListStore()
+const characterStore = useCharacterStore()
+
+const copied = ref(false)
+const character = characterStore.character
+const characters = listStore.list.characters
+const isNewCharacter = computed(() => {
+	return !(characters.filter((listCharacter) => listCharacter.id === character.id).length > 0);
+})
+
+async function saveNewCharacter() {
+	listStore.addCharacter({ character, index: -1 });
+	await backToCharacterList()
+}
+
+async function saveChanges() {
+	await backToCharacterList();
+}
+
+async function discardCharacter() {
+	characterStore.resetCharacter();
+	await backToCharacterList();
+}
+
+function deleteCharacter() {
+	mainStore.modal = Modal.DELETECHARACTER;
+}
+
+function changeName(event: Event) {
+	const name = (event.target as HTMLInputElement).value;
+	characterStore.changeCharacterName(name);
+}
+
+function changeOrigin(event: Event) {
+	const origin = (event.target as HTMLInputElement).value;
+	characterStore.changeCharacterOrigin(origin);
+}
+
+function copyCharacter() {
+	copied.value = true;
+	window.setTimeout(() => {
+		copied.value = false;
+	}, 1000 * 2);
+	navigator.clipboard.writeText(JSON.stringify(character));
+}
+
+function exportCharacter() {
+	saveAs(new File([JSON.stringify(character)], character.name + ".json"));
+}
+
+function backToCharacterList() {
+	characterStore.resetCharacter();
+	mainStore.toList();
+}
+
+function addAttribute() {
+	characterStore.addAttribute();
+}
+
+function removeAttribute(attribute: CharacterAttribute) {
+	characterStore.removeAttribute(attribute);
+}
+</script>
