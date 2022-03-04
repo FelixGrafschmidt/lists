@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-
 const collectionStore = useCollectionStore()
 
 if (process.server) {

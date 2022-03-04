@@ -28,7 +28,6 @@
 <script setup lang="ts">
 import { Character } from "~~/models/interfaces/Character";
 
-
 const listStore = useListStore()
 const characterStore = useCharacterStore()
 const mainStore = useMainStore()

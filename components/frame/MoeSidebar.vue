@@ -1,10 +1,15 @@
 <template>
 	<aside class="bg-gray-700 py-4 px-4" @mouseenter="captureScroll" @mouseleave="releaseScroll">
-		<h3 v-if="list.id" class="text-lg max-w-[15rem] whitespace-nowrap truncate">
-			<span class="cursor-pointer" @click="navigateToList(list)">{{ list.name }}</span> |
-			<!-- <span class="cursor-pointer" @click="toGallery">Gallery</span> -->
+		<h3 class="text-lg max-w-[15rem] whitespace-nowrap truncate">
+			<template v-if="list.id">
+				<span class="cursor-pointer" @click="navigateToList(list)">{{ list.name }}</span> |
+				<!-- <span class="cursor-pointer" @click="toGallery">Gallery</span> -->
+			</template>
+			<template v-else>
+				<span>No list selected</span>
+			</template>
 		</h3>
-		<h3 v-else class="text-lg max-w-[15rem] whitespace-nowrap truncate">No list selected</h3>
+		<!-- <h3 v-else class="text-lg max-w-[15rem] whitespace-nowrap truncate">No list selected</h3> -->
 		<div
 			:class="{
 				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll':
@@ -43,6 +48,7 @@
 
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
 import { Character } from "~~/models/interfaces/Character";
 import { List } from "~~/models/interfaces/List";
 
@@ -54,7 +60,7 @@ const listStore = useListStore();
 const characterStore = useCharacterStore();
 
 const collection = collectionStore.collection;
-const list = listStore.list;
+const { list } = storeToRefs(listStore);
 const character = characterStore.character;
 
 

@@ -12,17 +12,20 @@ export const useMainStore = defineStore('main', {
 	actions: {
 		toCollection() {
 			const collectionId = useCollectionStore().collection.id
-			useRouter().push(`/collection/${collectionId}`);
+			useRouter().push(`/${collectionId}`);
 		},
 
 		toList() {
+			const collectionId = useCollectionStore().collection.id
 			const listId = useListStore().list.id
-			useRouter().push(`/list/${listId}`);
+			useRouter().push(`/${collectionId}/${listId}`);
 		},
 
 		toCharacter() {
+			const collectionId = useCollectionStore().collection.id
+			const listId = useListStore().list.id
 			const characterId = useCharacterStore().character.id
-			useRouter().push(`/character/${characterId}`);
+			useRouter().push(`/${collectionId}/${listId}/${characterId}`);
 		},
 
 		// toGallery() {

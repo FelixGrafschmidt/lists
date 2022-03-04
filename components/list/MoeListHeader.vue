@@ -1,5 +1,5 @@
 <template>
-	<div class="flex sticky top-0 bg-gray-600 rounded font-extrabold text-lg select-none">
+	<div class="flex top-0 bg-gray-600 rounded font-extrabold text-lg select-none">
 		<div
 			@click="listStore.sortListByName()"
 			class="w-[35%] border-gray-800 border-r-2 py-2 text-center cursor-pointer"
@@ -48,7 +48,6 @@
 </template>
 
 <script setup lang="ts">
-
 const listStore = useListStore()
 
 const sortcriterion = ref("")

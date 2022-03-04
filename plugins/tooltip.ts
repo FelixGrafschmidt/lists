@@ -3,7 +3,7 @@ import { DirectiveBinding, VNode } from "nuxt3/dist/app/compat/capi";
 
 export default defineNuxtPlugin((nuxtApp) => {
 	nuxtApp.vueApp.directive("tooltip", {
-		created(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
+		mounted(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
 			const tooltipElement = document.createElement("div")
 			const arrowElement = document.createElement("div")
 
@@ -25,6 +25,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 			tooltipElement.appendChild(arrowElement)
 			document.body.appendChild(tooltipElement)
+			// el.appendChild(tooltipElement)
 		}
 	})
 })

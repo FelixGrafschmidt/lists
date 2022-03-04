@@ -61,9 +61,9 @@ export default defineNuxtConfig({
 	],
 	vue: { config: { performance: true } },
 	buildModules: [
+		'@pinia/nuxt',
 		"nuxt-windicss",
 		// '@unocss/nuxt',
-		'@pinia/nuxt',
 		'@vueuse/nuxt'
 	],
 	alias: {

@@ -4,14 +4,14 @@
 			v-tooltip="'Add New Character'"
 			@click.native="addNewCharacter"
 			icon="fas fa-user-plus"
-			class="w-24"
+			class="w-24 bg-gray-500"
 		/>
 
 		<MoeButton
 			v-tooltip="'Add Attributes to all Characters'"
 			@click.native="addListAttribute"
 			icon="fas fa-folder-plus"
-			class="w-24"
+			class="w-24 bg-gray-500"
 		/>
 	</div>
 </template>
@@ -19,7 +19,6 @@
 <script setup lang="ts">
 import { Modal } from "~~/models/enums/Modal";
 import { newCharacter } from "~~/models/interfaces/Character";
-
 
 const mainStore = useMainStore()
 const characterStore = useCharacterStore()

@@ -1,6 +1,6 @@
 <template>
 	<nav
-		class="bg-gray-800 pl-2 min-w-full flex items-center h-16 gap-3"
+		class="bg-gray-800 pl-2 min-w-full flex items-cente gap-3"
 		role="navigation"
 		aria-label="main navigation"
 	>
