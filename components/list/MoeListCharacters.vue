@@ -35,6 +35,8 @@ const mainStore = useMainStore()
 const characters = computed(() => listStore.list.characters)
 
 function selectCharacter(character: Character) {
+	console.log(character);
+
 	characterStore.setCharacter(character);
 	mainStore.toCharacter();
 }

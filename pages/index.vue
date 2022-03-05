@@ -26,18 +26,27 @@ if (process.server) {
 		useCookie("collectionId").value = collectionId
 	}
 	await collectionStore.loadCollection()
-	if (listId && listId.match(/\w{21}/)) {
-		const lists = collectionStore.collection.lists.filter((list) => list.id === listId);
-		if (lists.length === 0) {
+	if (listId) {
+		if (!listId.match(/\w{21}/)) {
 			mainStore.toCollection();
-		}
-		listStore.setList(lists[0]);
-		if (characterId && characterId.match(/\w{21}/)) {
-			const characters = listStore.list.characters.filter((character) => character.id === characterId);
-			if (characters.length === 0) {
-				mainStore.toList();
+		} else {
+			const lists = collectionStore.collection.lists.filter((list) => list.id === listId);
+			if (lists.length === 0) {
+				mainStore.toCollection();
 			}
-			characterStore.setCharacter(characters[0]);
+			listStore.setList(lists[0]);
+			if (characterId) {
+				if (!characterId.match(/\w{21}/)) {
+					mainStore.toList();
+				} else {
+					const characters = listStore.list.characters.filter((character) => character.id === characterId);
+					if (characters.length === 0) {
+						mainStore.toList();
+					} else {
+						characterStore.setCharacter(characters[0]);
+					}
+				}
+			}
 		}
 	}
 }

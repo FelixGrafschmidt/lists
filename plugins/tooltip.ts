@@ -28,6 +28,12 @@ export default defineNuxtPlugin((nuxtApp) => {
 				update(el, tooltipElement, arrowElement)
 			})
 
+			document.body.addEventListener("click", () => {
+				tooltipElement.classList.remove("block")
+				tooltipElement.classList.add("hidden")
+				update(el, tooltipElement, arrowElement)
+			})
+
 			tooltipElement.appendChild(arrowElement)
 			document.body.appendChild(tooltipElement)
 			// el.appendChild(tooltipElement)

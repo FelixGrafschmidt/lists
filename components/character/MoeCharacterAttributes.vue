@@ -13,7 +13,7 @@
 						:value="character.name"
 						@input="changeName"
 						type="text"
-						class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+						class="block px-1 rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
 					/>
 				</label>
 			</div>
@@ -24,7 +24,7 @@
 						:value="character.origin"
 						@input="changeOrigin"
 						type="text"
-						class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+						class="block px-1 rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
 					/>
 				</label>
 			</div>
@@ -32,18 +32,18 @@
 				<span
 					@click="removeAttribute(attribute)"
 					v-tooltip="'Remove Attribute'"
-					class="items-center justify-center top-[1.4rem] right-0 flex bg-red-600 hover:bg-red-700 text-gray-900 h-8 w-8 rounded-lg cursor-pointer absolute fas fa-times"
+					class="items-center justify-center top-9 right-0 flex bg-red-600 hover:bg-red-700 text-gray-900 h-8 w-8 rounded-lg cursor-pointer absolute fas fa-times"
 				></span>
 				<label>
 					<input
 						v-model="attribute.name"
 						type="text"
-						class="h-4 block border border-teal-500 rounded text-gray-100 bg-gray-900 focus:outline-none w-32 mb-1 pl-0"
+						class="h-6 p-1 block border border-teal-500 rounded text-gray-100 bg-gray-900 focus:outline-none w-32 mb-1 pl-0"
 					/>
 					<input
 						v-model="attribute.value"
 						type="text"
-						class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+						class="block px-1 rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
 					/>
 				</label>
 			</div>
