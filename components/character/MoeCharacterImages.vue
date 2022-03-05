@@ -1,16 +1,16 @@
 <template>
-	<div class="flex flex-col items-center w-1/2 justify-between h-[80vh]">
-		<div class="h-[75%] min-h-[75%] justify-center flex cursor-pointer">
+	<div class="flex flex-col items-center w-1/2 justify-between h-[80vh] gap-3">
+		<div class="h-[95%] justify-center flex cursor-pointer">
 			<figure @click="openImage(image)" class="flex flex-col justify-center">
 				<img
 					:alt="character.name"
 					:src="image.src || ''"
-					@load="markValid(image)"
+					@load="image.src ? markValid(image) : null"
 					class="rounded max-h-full m-auto"
 				/>
 			</figure>
 		</div>
-		<div class="flex relative h-[15%]">
+		<!-- <div class="flex relative h-[15%]">
 			<button
 				v-show="thumbsScrolling"
 				@mouseenter="scrollThumbsLeft = true"
@@ -27,7 +27,7 @@
 					:class="{
 						'border-red-500 border-4': !img.valid,
 					}"
-					@click="image = img"
+					@click="selectImage(img)"
 					class="cursor-pointer max-h-full min-w-[4rem] max-w-[4rem]"
 				>
 					<img
@@ -49,7 +49,7 @@
 				@mouseleave="scrollThumbsRight = false"
 				class="focus:outline-none absolute right-[-2.5rem] top-[5%] h-full bg-teal-600 rounded-full px-2 fas fa-angle-right"
 			></button>
-		</div>
+		</div>-->
 		<div class="flex gap-4 items-center justify-self-end h-[5%]">
 			<MoeButton
 				class="bg-gray-500 w-10 h-10"
@@ -62,6 +62,12 @@
 				@click="deleteImage"
 				class="bg-red-600 w-10 h-10"
 				icon="fas fa-trash"
+			/>
+			<MoeButton
+				class="bg-red-600 w-10 h-10"
+				@click.stop="deleteAllImages"
+				icon="fas fa-trash"
+				v-tooltip="'Delete all Images'"
 			/>
 			<MoeButton
 				class="bg-gray-500 w-10 h-10"
@@ -99,30 +105,32 @@ let thumbsScrolling = ref(false);
 
 const thumbs = ref()
 
-let image: CharacterImage = { src: "", main: false, valid: true };
-
 const character = characterStore.character
+
+let image = ref(getMainImage());
 
 let interval: number
 
-onMounted(() => {
-	image = getMainImage();
-
-	interval = window.setInterval(() => {
-		const thumbsInternal = thumbs.value as Element;
-		if (scrollThumbsLeft) {
-			thumbsInternal.scrollLeft -= 10;
-		}
-		if (scrollThumbsRight) {
-			thumbsInternal.scrollLeft += 10;
-		}
-	}, 10);
-	calculateThumbsScrolling();
-})
+// onMounted(() => {
+// 	interval = window.setInterval(() => {
+// 		const thumbsInternal = thumbs.value as Element;
+// 		if (scrollThumbsLeft) {
+// 			thumbsInternal.scrollLeft -= 10;
+// 		}
+// 		if (scrollThumbsRight) {
+// 			thumbsInternal.scrollLeft += 10;
+// 		}
+// 	}, 10);
+// 	calculateThumbsScrolling();
+// })
 
 onUnmounted(() => {
 	window.clearInterval(interval)
 })
+
+function selectImage(newImage: CharacterImage) {
+	image.value = newImage
+}
 
 function getMainImage() {
 	return (
@@ -134,10 +142,10 @@ function getMainImage() {
 
 function addNewImage() {
 	mainStore.modal = Modal.NEWIMAGE;
-	if (character.images.length === 1) {
-		character.images[0].main = true
-	}
-	image = getMainImage();
+	// if (character.images.length === 1) {
+	// 	character.images[0].main = true
+	// }
+	// image.value = character.images[character.images.length - 1]
 }
 
 function addImageMulti() {
@@ -145,7 +153,7 @@ function addImageMulti() {
 }
 
 function designateMainImage() {
-	const index = character.images.indexOf(image);
+	const index = character.images.indexOf(image.value);
 	characterStore.designateMainImage(index);
 }
 
@@ -157,10 +165,15 @@ function markValid(image: CharacterImage) {
 	image.valid = true;
 }
 
+function deleteAllImages() {
+	character.images = []
+	image.value = newCharacterImage()
+}
+
 function deleteImage() {
-	const index = character.images.indexOf(image);
+	const index = character.images.indexOf(image.value);
 	characterStore.removeCharacterImage(index);
-	image = getMainImage();
+	image.value = getMainImage();
 }
 
 function calculateThumbsScrolling() {
@@ -186,12 +199,13 @@ function exportImages() {
 	saveAs(new File([imageSources], character.name + "_images.txt"));
 }
 
-		// @Watch("character.images.length", { deep: true })
-		// onLengthChanged(_val: Number, _oldVal: Number) {
-		// 	if (!this.image) {
-		// 		this.image = this.getMainImage();
-		// 	}
-		// 	this.calculateThumbsScrolling();
-		// }
+watch(character.images, () => {
+	console.log("watch");
+
+	if (character.images.length === 1) {
+		image.value = getMainImage();
+	}
+	// calculateThumbsScrolling();
+}, { deep: true })
 
 </script>
