@@ -1,15 +1,13 @@
 <template>
-	<div class="flex flex-col h-full">
-		<MoeHeader class="h-12 fixed border-b border-teal-700" />
-		<div class="flex flex-row mt-12 h-full">
-			<MoeSidebar class="w-1/6 h-full fixed mb-32 border-r border-teal-700" />
-			<div
-				class="scroll-padding h-full w-5/6 ml-auto px-6 pt-4 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-auto"
-			>
-				<NuxtNestedPage class />
-			</div>
+	<div class="grid wrapper">
+		<MoeHeader class="border-b border-teal-700 header" />
+		<MoeSidebar class="border-r border-teal-700 sidebar" />
+		<div
+			class="p-6 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-auto content"
+		>
+			<NuxtNestedPage />
 		</div>
-		<MoeFooter class="h-12 fixed bottom-0 w-full border-t border-teal-700" />
+		<MoeFooter class="w-full border-t border-teal-700 footer" />
 		<MoeModal />
 	</div>
 </template>
@@ -53,3 +51,25 @@ onMounted(() => {
 	}
 })
 </script>
+
+<style lang="postcss">
+.wrapper {
+	grid-template-columns: 1fr 5fr;
+	grid-template-rows: 3rem 14fr 3rem;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+}
+
+.header {
+	grid-area: 1 / 1 / 2 / 3;
+}
+.footer {
+	grid-area: 3 / 1 / 4 / 3;
+}
+.sidebar {
+	grid-area: 2 / 1 / 3 / 2;
+}
+.content {
+	grid-area: 2 / 2 / 3 / 3;
+}
+</style>

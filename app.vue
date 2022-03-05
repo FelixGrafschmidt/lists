@@ -12,8 +12,4 @@
 :root {
 	font-family: "Lato", sans-serif;
 }
-
-.content-height {
-	height: calc(100vh - theme("height.32"));
-}
 </style>

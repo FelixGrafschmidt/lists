@@ -1,6 +1,11 @@
 <template>
-	<div @click="quickImage" class="flex justify-between relative gap-4 mt-4">
-		<MoeButton v-tooltip="'Back to Character List'" @click="backToCharacterList" />
+	<div @click="quickImage" class="flex flex-row gap-4">
+		<MoeButton
+			class="h-8 w-8 -mt-6 -ml-6 rounded-none rounded-br-1 pr-8 pb-8 border border-teal-700"
+			icon="fas fa-arrow-left"
+			v-tooltip="'Back to Character List'"
+			@click="backToCharacterList"
+		/>
 
 		<MoeCharacterImages />
 		<MoeCharacterAttributes />
