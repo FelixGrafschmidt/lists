@@ -1,12 +1,12 @@
 <template>
-	<div class="flex flex-col">
+	<div class="flex flex-col h-full">
 		<MoeHeader class="h-12 fixed border-b border-teal-700" />
-		<div class="flex flex-row mt-12">
+		<div class="flex flex-row mt-12 h-full">
 			<MoeSidebar class="w-1/6 h-full fixed mb-32 border-r border-teal-700" />
 			<div
-				class="scroll-padding w-5/6 ml-auto px-6 pt-4 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll"
+				class="scroll-padding h-full w-5/6 ml-auto px-6 pt-4 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-auto"
 			>
-				<NuxtNestedPage />
+				<NuxtNestedPage class />
 			</div>
 		</div>
 		<MoeFooter class="h-12 fixed bottom-0 w-full border-t border-teal-700" />

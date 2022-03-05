@@ -32,19 +32,19 @@
 				<!-- <MoeButton :text="'Share'" class="w-16" color="bg-gray-600 m-1" /> -->
 				<MoeButton
 					v-tooltip="'Export'"
-					@click.stop.native="exportList(list)"
+					@click.stop="exportList(list)"
 					class="w-10 bg-gray-500"
 					icon="fas fa-file-export"
 				/>
 				<MoeButton
 					v-tooltip="'Delete'"
-					@click.stop.native="deleteList(list)"
+					@click.stop="deleteList(list)"
 					class="w-10 bg-red-600"
 					icon="fas fa-trash"
 				/>
 				<MoeButton
 					v-tooltip="'Copy'"
-					@click.stop.native="copyList(list)"
+					@click.stop="copyList(list)"
 					class="w-10 bg-gray-500"
 					icon="fas fa-copy"
 				/>

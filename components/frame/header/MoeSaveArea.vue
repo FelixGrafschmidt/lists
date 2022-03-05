@@ -6,8 +6,8 @@
 			<p v-else class="text-red-600">OFF</p>
 		</div>
 
-		<MoeButton v-if="autosave" class="h-10 bg-gray-500" @click="disableAutosave">Disable autosave</MoeButton>
-		<MoeButton v-else class="h-10 bg-gray-500" @click="enableAutosave">Enable autosave</MoeButton>
+		<MoeButton v-if="autosave" class="h-10 w-32 bg-gray-500" @click="disableAutosave">Disable autosave</MoeButton>
+		<MoeButton v-else class="h-10 w-32 bg-gray-500" @click="enableAutosave">Enable autosave</MoeButton>
 
 		<MoeButton
 			v-tooltip="'Save'"
@@ -15,9 +15,7 @@
 			class="h-10 w-10 bg-gray-500"
 			@click="saveChanges"
 		/>
-		<div v-if="changes" class="text-lg font-medium max-w-[2rem] 2xl:max-w-none bg-gray-500">
-			<div class="text-red-600">UNSAVED CHANGES</div>
-		</div>
+		<div v-if="changes" class="text-red-600 text-lg font-medium w-48">UNSAVED CHANGES</div>
 	</div>
 </template>
 
@@ -33,7 +31,7 @@ const collectionStore = useCollectionStore()
 const mainStore = useMainStore()
 
 const collection = collectionStore.collection
-const changes = collectionStore.originalHash !== getHash(collection)
+const changes = computed(() => collectionStore.originalHash !== getHash(collection))
 
 onMounted(() => {
 	performAutosave();

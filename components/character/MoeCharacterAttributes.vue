@@ -4,7 +4,7 @@
 		class="w-1/2 flex flex-col h-[80vh] justify-between"
 	>
 		<div
-			class="max-h-[85%] min-h-[85%] pr-8 scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll pl-1"
+			class="max-h-[85%] min-h-[85%] pr-8 scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-auto pl-1"
 		>
 			<div class="py-2">
 				<label>
@@ -50,9 +50,9 @@
 			<div class="flex justify-center mt-8">
 				<MoeButton
 					v-tooltip="'Add Attribute'"
-					@click.native.prevent="addAttribute"
+					@click.prevent="addAttribute"
 					icon="fas fa-plus"
-					class="py-2 w-48"
+					class="py-2 w-48 bg-gray-500 h-10"
 				/>
 			</div>
 		</div>
@@ -60,20 +60,20 @@
 			<MoeButton
 				v-tooltip="'Save Character'"
 				icon="fas fa-save"
-				class="py-2 w-24 bg-green-600 hover:bg-green-700 text-color-unset"
+				class="py-2 w-24 h-12 bg-green-600 text-color-unset"
 			/>
 			<MoeButton
 				@click="isNewCharacter ? discardCharacter() : deleteCharacter()"
 				v-tooltip="'Delete Character'"
 				icon="fas fa-trash"
-				class="py-2 w-24 bg-red-600 hover:bg-red-700 text-color-unset"
+				class="py-2 w-24 h-12 bg-red-600 text-color-unset"
 			/>
 			<div v-if="copied">
 				<MoeButton
 					@click.prevent="copyCharacter"
 					v-tooltip="'Delete Character'"
 					icon="fas fa-trash"
-					class="py-2 w-24"
+					class="py-2 w-24 h-12 bg-gray-500"
 				>Copied!</MoeButton>
 			</div>
 			<MoeButton
@@ -81,13 +81,13 @@
 				@click.prevent="copyCharacter"
 				v-tooltip="'Copy Character'"
 				icon="fas fa-copy"
-				class="py-2 w-24"
+				class="py-2 w-24 h-12 bg-gray-500"
 			/>
 			<MoeButton
 				@click.prevent="exportCharacter"
 				v-tooltip="'Export Character'"
 				icon="fas fa-file-export"
-				class="py-2 w-24"
+				class="py-2 w-24 h-12 bg-gray-500"
 			/>
 		</div>
 	</form>

@@ -1,16 +1,20 @@
 <template>
 	<nav
-		class="bg-gray-800 pl-2 min-w-full flex items-cente gap-3"
+		class="bg-gray-800 pl-2 w-screen flex items-center justify-between gap-3"
 		role="navigation"
 		aria-label="main navigation"
 	>
-		<div class="w-[50%] gap-3 flex items-center justify-start">
+		<div class="gap-3 flex items-center justify-start">
 			<NuxtLink v-slot="{ navigate }" custom to="/">
-				<h2 class="text-xl cursor-pointer title" role="link" @click="navigate">Character List Manager</h2>
+				<h2
+					class="text-xl w-72 cursor-pointer title"
+					role="link"
+					@click="navigate"
+				>Character List Manager</h2>
 			</NuxtLink>
 			<MoeSaveArea />
 		</div>
-		<MoeCollectionArea />
+		<MoeCollectionArea class="justify-self-end" />
 	</nav>
 </template>
 

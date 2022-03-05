@@ -7,7 +7,6 @@ export const useCollectionStore = defineStore('collection', {
 		collection: newCollection(""),
 		listToDelete: newList(""),
 		originalHash: "",
-		ready: false
 	}),
 	actions: {
 		async loadCollection() {
@@ -22,8 +21,6 @@ export const useCollectionStore = defineStore('collection', {
 
 				this.collection = collection;
 				this.originalHash = getHash(collection);
-			} finally {
-				this.ready = true;
 			}
 		},
 		async saveChanges() {

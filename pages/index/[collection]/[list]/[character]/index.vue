@@ -1,5 +1,5 @@
 <template>
-	<div @click="quickImage" class="flex relative gap-4 mt-4">
+	<div @click="quickImage" class="flex justify-between relative gap-4 mt-4">
 		<MoeButton v-tooltip="'Back to Character List'" @click="backToCharacterList" />
 
 		<MoeCharacterImages />

@@ -5,7 +5,7 @@
 			:ref="character.id"
 			:key="index"
 			:class="{
-				'bg-gray-300  dark:bg-gray-800': index % 2 === 0,
+				'bg-gray-800': index % 2 === 0,
 			}"
 			@click="selectCharacter(character)"
 			class="flex h-24 hover:bg-gray-700 items-center rounded cursor-pointer my-1"

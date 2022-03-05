@@ -2,14 +2,14 @@
 	<div class="flex my-6 justify-center gap-2">
 		<MoeButton
 			v-tooltip="'Add New Character'"
-			@click.native="addNewCharacter"
+			@click="addNewCharacter"
 			icon="fas fa-user-plus"
 			class="w-24 bg-gray-500"
 		/>
 
 		<MoeButton
 			v-tooltip="'Add Attributes to all Characters'"
-			@click.native="addListAttribute"
+			@click="addListAttribute"
 			icon="fas fa-folder-plus"
 			class="w-24 bg-gray-500"
 		/>

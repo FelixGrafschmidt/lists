@@ -51,23 +51,43 @@
 			></button>
 		</div>
 		<div class="flex gap-4 items-center justify-self-end h-[5%]">
-			<MoeButton @click="designateMainImage" icon="fas fa-star" v-tooltip="'Designate as Main Image'" />
+			<MoeButton
+				class="bg-gray-500 w-10 h-10"
+				@click="designateMainImage"
+				icon="fas fa-star"
+				v-tooltip="'Designate as Main Image'"
+			/>
 			<MoeButton
 				v-tooltip="'Remove this Image'"
-				@click.native="deleteImage"
-				class="bg-red-600 hover:!bg-red-700 text-color-unset"
+				@click="deleteImage"
+				class="bg-red-600 w-10 h-10"
 				icon="fas fa-trash"
 			/>
-			<MoeButton @click.stop.native="addNewImage" icon="fas fa-plus" v-tooltip="'Add Image'" />
-			<MoeButton @click.stop.native="addImageMulti" icon="fab fa-buffer" v-tooltip="'Add Images'" />
-			<MoeButton @click.stop.native="exportImages" icon="far fa-save" v-tooltip="'Export all Images'" />
+			<MoeButton
+				class="bg-gray-500 w-10 h-10"
+				@click.stop="addNewImage"
+				icon="fas fa-plus"
+				v-tooltip="'Add Image'"
+			/>
+			<MoeButton
+				class="bg-gray-500 w-10 h-10"
+				@click.stop="addImageMulti"
+				icon="fab fa-buffer"
+				v-tooltip="'Add Images'"
+			/>
+			<MoeButton
+				class="bg-gray-500 w-10 h-10"
+				@click.stop="exportImages"
+				icon="far fa-save"
+				v-tooltip="'Export all Images'"
+			/>
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import { Modal } from "~~/models/enums/Modal";
-import { CharacterImage } from "~~/models/interfaces/Character";
+import { CharacterImage, newCharacterImage } from "~~/models/interfaces/Character";
 import { saveAs } from "file-saver";
 
 const mainStore = useMainStore()
@@ -83,10 +103,12 @@ let image: CharacterImage = { src: "", main: false, valid: true };
 
 const character = characterStore.character
 
+let interval: number
+
 onMounted(() => {
 	image = getMainImage();
 
-	window.setInterval(() => {
+	interval = window.setInterval(() => {
 		const thumbsInternal = thumbs.value as Element;
 		if (scrollThumbsLeft) {
 			thumbsInternal.scrollLeft -= 10;
@@ -98,16 +120,23 @@ onMounted(() => {
 	calculateThumbsScrolling();
 })
 
+onUnmounted(() => {
+	window.clearInterval(interval)
+})
+
 function getMainImage() {
 	return (
-		character.images.filter((image) => {
+		character.images.find((image) => {
 			return image.main;
-		})[0] || ""
+		}) || newCharacterImage()
 	);
 }
 
 function addNewImage() {
 	mainStore.modal = Modal.NEWIMAGE;
+	if (character.images.length === 1) {
+		character.images[0].main = true
+	}
 	image = getMainImage();
 }
 
