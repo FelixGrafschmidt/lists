@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import { Modal } from "~~/models/enums/Modal";
+import { newList } from "~~/models/interfaces/List";
 
 const mainStore = useMainStore()
 const collectionStore = useCollectionStore()
@@ -28,6 +29,7 @@ if (process.server) {
 	await collectionStore.loadCollection()
 	if (listId) {
 		if (!listId.match(/\w{21}/)) {
+			collectionStore.addListToCollection(newList())
 			mainStore.toCollection();
 		} else {
 			const lists = collectionStore.collection.lists.filter((list) => list.id === listId);
