@@ -32,32 +32,28 @@
 	</div>
 </template>
 
-
-
 <script setup lang="ts">
-import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "~~/models/enums/Modal";
 
-const showThumbs = ref(false)
-const index = ref(0)
+	const showThumbs = ref(false);
+	const index = ref(0);
 
-const mainStore = useMainStore()
-const characterStore = useCharacterStore()
+	const mainStore = useMainStore();
+	const characterStore = useCharacterStore();
 
-const imagesRaw = characterStore.character.images.map((img) => img.src)
-const images = characterStore.character.images;
-const activeImage = characterStore.activeImage;
+	const imagesRaw = characterStore.character.images.map((img) => img.src);
+	const images = characterStore.character.images;
+	const activeImage = characterStore.activeImage;
 
-
-onMounted(() => {
-	index.value = characterStore.character.images.indexOf(activeImage);
-})
-
+	onMounted(() => {
+		index.value = characterStore.character.images.indexOf(activeImage);
+	});
 </script>
 
 <style lang="postcss" scoped>
-:deep .vel-toolbar {
-	position: absolute;
-	top: 0;
-	height: fit-content;
-}
+	:deep(.vel-toolbar) {
+		position: absolute;
+		top: 0;
+		height: fit-content;
+	}
 </style>

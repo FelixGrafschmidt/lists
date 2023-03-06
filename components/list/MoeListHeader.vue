@@ -1,9 +1,6 @@
 <template>
 	<div class="flex top-0 bg-gray-600 rounded font-extrabold text-lg select-none">
-		<div
-			@click="listStore.sortListByName()"
-			class="w-[35%] border-gray-800 border-r-2 py-2 text-center cursor-pointer"
-		>
+		<div class="w-[35%] border-gray-800 border-r-2 py-2 text-center cursor-pointer" @click="listStore.sortListByName()">
 			Name
 			<div
 				v-if="sortcriterion === 'NAME'"
@@ -14,10 +11,7 @@
 				class="fas"
 			></div>
 		</div>
-		<div
-			@click="listStore.sortListByOrigin()"
-			class="w-[35%] border-gray-800 border-r-2 border-l-2 py-2 text-center cursor-pointer"
-		>
+		<div class="w-[35%] border-gray-800 border-r-2 border-l-2 py-2 text-center cursor-pointer" @click="listStore.sortListByOrigin()">
 			Origin
 			<div
 				v-if="sortcriterion === 'ORIGIN'"
@@ -28,10 +22,7 @@
 				class="fas"
 			></div>
 		</div>
-		<div
-			@click="listStore.sortListByImages()"
-			class="w-[10%] border-gray-800 border-r-2 border-l-2 py-2 text-center cursor-pointer"
-		>
+		<div class="w-[10%] border-gray-800 border-r-2 border-l-2 py-2 text-center cursor-pointer" @click="listStore.sortListByImages()">
 			Images
 			<div
 				v-if="sortcriterion === 'IMAGES'"
@@ -48,9 +39,8 @@
 </template>
 
 <script setup lang="ts">
-const listStore = useListStore()
+	const listStore = useListStore();
 
-const sortcriterion = ref("")
-const sortorder = ref("")
-
+	const sortcriterion = ref("");
+	const sortorder = ref("");
 </script>

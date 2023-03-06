@@ -5,7 +5,7 @@ import { Sortorder } from "~~/models/enums/Sortorder";
 import { Character } from "~~/models/interfaces/Character";
 import { List, newList } from "~~/models/interfaces/List";
 
-export const useListStore = defineStore('list', {
+export const useListStore = defineStore("list", {
 	state: () => ({
 		list: newList(""),
 	}),
@@ -157,5 +157,5 @@ export const useListStore = defineStore('list', {
 				}
 			});
 		},
-	}
-})
+	},
+});

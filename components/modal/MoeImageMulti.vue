@@ -14,10 +14,7 @@
 			/>
 		</label>
 		<div class="h-[10%]">
-			<MoeButton
-				:class="{ 'cursor-not-allowed': src === '' }"
-				class="mt-4 mx-auto bg-gray-500"
-			>Add Images</MoeButton>
+			<MoeButton :class="{ 'cursor-not-allowed': src === '' }" class="mt-4 mx-auto bg-gray-500">Add Images</MoeButton>
 		</div>
 		<div
 			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
@@ -28,24 +25,21 @@
 	</form>
 </template>
 
-
 <script setup lang="ts">
-import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "~~/models/enums/Modal";
 
+	const src = ref("");
 
-const src = ref("")
+	const mainStore = useMainStore();
+	const characterStore = useCharacterStore();
 
-const mainStore = useMainStore()
-const characterStore = useCharacterStore()
-
-function addImages() {
-	src.value.split("\n").forEach((url) => {
-		if (characterStore.character.images.filter((img) => img.src === url).length > 0) {
-			return;
-		}
-		characterStore.addCharacterImage({ src: url, valid: true });
-	});
-	mainStore.modal = Modal.NONE
-}
-
+	function addImages() {
+		src.value.split("\n").forEach((url) => {
+			if (characterStore.character.images.filter((img) => img.src === url).length > 0) {
+				return;
+			}
+			characterStore.addCharacterImage({ src: url, valid: true });
+		});
+		mainStore.modal = Modal.NONE;
+	}
 </script>

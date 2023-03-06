@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid"
+import { nanoid } from "nanoid";
 import hash from "object-hash";
 import { List } from "./List";
 

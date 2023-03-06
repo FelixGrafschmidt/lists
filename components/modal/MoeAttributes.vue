@@ -1,8 +1,5 @@
 <template>
-	<div
-		class="flex flex-col rounded-2xl bg-gray-800 text-gray-100 relative m-auto pb-10 pt-5 max-h-[80vh] w-[60vw]"
-		@click.stop
-	>
+	<div class="flex flex-col rounded-2xl bg-gray-800 text-gray-100 relative m-auto pb-10 pt-5 max-h-[80vh] w-[60vw]" @click.stop>
 		<div class="flex justify-evenly max-h-[85%] min-h-[85%]">
 			<div>
 				<span>Select all Characters to apply these attributes to</span>
@@ -16,11 +13,7 @@
 						:key="character.id"
 						class="flex flex-row items-center py-1"
 					>
-						<input
-							type="checkbox"
-							checked
-							class="rounded text-teal-500 focus:outline-none shadow-none ring-offset-0 ring-0"
-						/>
+						<input type="checkbox" checked class="rounded text-teal-500 focus:outline-none shadow-none ring-offset-0 ring-0" />
 						<span class="ml-1 select-none">{{ character.name }}</span>
 					</label>
 				</div>
@@ -60,7 +53,8 @@
 			:class="{ 'cursor-not-allowed': attributes.length === 0 }"
 			class="m-auto bg-gray-500"
 			@click.prevent="attributes.length !== 0 ? addAttributes() : undefined"
-		>Add all Attributes</MoeButton>
+			>Add all Attributes</MoeButton
+		>
 		<div
 			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
 			@click="mainStore.modal = Modal.NONE"
@@ -71,32 +65,31 @@
 </template>
 
 <script setup lang="ts">
-import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "~~/models/enums/Modal";
 
-// eslint-disable-next-line no-array-constructor
-const attributes = ref(new Array<string>())
-// eslint-disable-next-line no-array-constructor
-const selectedCharacters = ref(new Array<string>())
-const characterLabels = ref()
+	const attributes = ref(new Array<string>());
 
-const mainStore = useMainStore()
-const listStore = useListStore()
+	const selectedCharacters = ref(new Array<string>());
+	const characterLabels = ref();
 
-const characters = listStore.list.characters
+	const mainStore = useMainStore();
+	const listStore = useListStore();
 
-function addAttributes() {
-	const elements = characterLabels.value as Element[];
-	elements.forEach((element) => {
-		if ((element.firstElementChild as HTMLInputElement).checked) {
-			selectedCharacters.value.push(element.id);
-		}
-	});
+	const characters = listStore.list.characters;
 
-	listStore.addAttributesToCharacters({ attributes: attributes.value, characters: selectedCharacters.value });
-	mainStore.modal = Modal.NONE
-}
+	function addAttributes() {
+		const elements = characterLabels.value as Element[];
+		elements.forEach((element) => {
+			if ((element.firstElementChild as HTMLInputElement).checked) {
+				selectedCharacters.value.push(element.id);
+			}
+		});
 
-function removeAttribute(index: number) {
-	attributes.value.splice(index, 1);
-}
+		listStore.addAttributesToCharacters({ attributes: attributes.value, characters: selectedCharacters.value });
+		mainStore.modal = Modal.NONE;
+	}
+
+	function removeAttribute(index: number) {
+		attributes.value.splice(index, 1);
+	}
 </script>

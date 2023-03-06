@@ -6,11 +6,7 @@
 	>
 		<label class="mx-12">
 			<span>Type a name for your new list.</span>
-			<input
-				v-model="name"
-				type="text"
-				class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80"
-			/>
+			<input v-model="name" type="text" class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80" />
 		</label>
 		<MoeButton :class="{ 'cursor-not-allowed': name === '' }" class="m-auto bg-gray-500">Add List</MoeButton>
 		<div
@@ -23,27 +19,26 @@
 </template>
 
 <script setup lang="ts">
-import { List, newList } from "~~/models/interfaces/List";
-import { Modal } from "~~/models/enums/Modal";
+	import { List, newList } from "~~/models/interfaces/List";
+	import { Modal } from "~~/models/enums/Modal";
 
-const name = ref("")
+	const name = ref("");
 
-const mainStore = useMainStore()
-const collectionStore = useCollectionStore()
-const listStore = useListStore()
+	const mainStore = useMainStore();
+	const collectionStore = useCollectionStore();
+	const listStore = useListStore();
 
-function openList(list: List) {
-	listStore.setList(list);
-	mainStore.toList();
-}
-
-function addList() {
-	collectionStore.addListToCollection(newList(undefined, name.value));
-	if (collectionStore.collection.lists.length === 1) {
-		openList(collectionStore.collection.lists[0]);
-	} else {
-		mainStore.modal = Modal.NONE
+	function openList(list: List) {
+		listStore.setList(list);
+		mainStore.toList();
 	}
-}
 
+	function addList() {
+		collectionStore.addListToCollection(newList(undefined, name.value));
+		if (collectionStore.collection.lists.length === 1) {
+			openList(collectionStore.collection.lists[0]);
+		} else {
+			mainStore.modal = Modal.NONE;
+		}
+	}
 </script>

@@ -7,13 +7,12 @@
 </template>
 
 <script setup lang="ts">
-import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "~~/models/enums/Modal";
 
-const mainStore = useMainStore()
-const collectionStore = useCollectionStore()
+	const mainStore = useMainStore();
+	const collectionStore = useCollectionStore();
 
-if (collectionStore.collection.lists.length === 0) {
-	mainStore.modal = Modal.NEWLIST;
-}
-
+	if (collectionStore.collection.lists.length === 0) {
+		mainStore.modal = Modal.NEWLIST;
+	}
 </script>

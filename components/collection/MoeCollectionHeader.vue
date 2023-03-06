@@ -8,5 +8,5 @@
 </template>
 
 <script lang="ts">
-defineNuxtComponent({})
+	defineNuxtComponent({});
 </script>

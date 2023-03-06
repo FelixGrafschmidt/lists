@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { Modal } from "~~/models/enums/Modal";
 
-export const useMainStore = defineStore('main', {
+export const useMainStore = defineStore("main", {
 	state: () => ({
 		loading: false,
 		modal: Modal.NONE,
@@ -11,32 +11,21 @@ export const useMainStore = defineStore('main', {
 	}),
 	actions: {
 		toCollection() {
-			const collectionId = useCollectionStore().collection.id
+			const collectionId = useCollectionStore().collection.id;
 			useRouter().push(`/${collectionId}`);
 		},
 
 		toList() {
-			const collectionId = useCollectionStore().collection.id
-			const listId = useListStore().list.id
+			const collectionId = useCollectionStore().collection.id;
+			const listId = useListStore().list.id;
 			useRouter().push(`/${collectionId}/${listId}`);
 		},
 
 		toCharacter() {
-			const collectionId = useCollectionStore().collection.id
-			const listId = useListStore().list.id
-			const characterId = useCharacterStore().character.id
+			const collectionId = useCollectionStore().collection.id;
+			const listId = useListStore().list.id;
+			const characterId = useCharacterStore().character.id;
 			useRouter().push(`/${collectionId}/${listId}/${characterId}`);
 		},
-
-		// toGallery() {
-		// 	const listId = useListStore().list.id
-		// 	useRouter().push(`/${listId}/gallery`);
-		// },
-
-		// toGalleryCharacter() {
-		// 	const listId = useListStore().list.id
-		// 	const characterId = useCharacterStore().character.id
-		// 	useRouter().push(`/${listId}/gallery/${characterId}`);
-		// },
-	}
-})
+	},
+});

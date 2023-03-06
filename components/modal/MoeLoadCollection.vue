@@ -23,19 +23,17 @@
 	</form>
 </template>
 
-
 <script setup lang="ts">
-import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "~~/models/enums/Modal";
 
-const id = ref("")
+	const id = ref("");
 
-const mainStore = useMainStore()
-const collectionStore = useCollectionStore()
+	const mainStore = useMainStore();
+	const collectionStore = useCollectionStore();
 
-function loadCollection() {
-	useCookie("collectionId").value = id.value
-	collectionStore.loadCollection();
-	mainStore.modal = Modal.NONE
-}
-
+	function loadCollection() {
+		useCookie("collectionId").value = id.value;
+		collectionStore.loadCollection();
+		mainStore.modal = Modal.NONE;
+	}
 </script>

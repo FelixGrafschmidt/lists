@@ -2,10 +2,10 @@ import { nanoid } from "nanoid";
 import { defineStore } from "pinia";
 import { Character, CharacterAttribute, CharacterImage, newCharacter, newCharacterImage } from "~~/models/interfaces/Character";
 
-export const useCharacterStore = defineStore('character', {
+export const useCharacterStore = defineStore("character", {
 	state: () => ({
 		character: newCharacter(""),
-		activeImage: newCharacterImage(undefined)
+		activeImage: newCharacterImage(undefined),
 	}),
 	actions: {
 		setCharacter(character: Character) {
@@ -76,6 +76,6 @@ export const useCharacterStore = defineStore('character', {
 			} else {
 				this.activeImage = this.character.images[this.character.images.length - 1];
 			}
-		}
-	}
-})
+		},
+	},
+});

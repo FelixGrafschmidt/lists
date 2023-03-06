@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-	icon: { type: String, default: "" }
-})
+	defineProps({
+		icon: { type: String, default: "" },
+	});
 </script>

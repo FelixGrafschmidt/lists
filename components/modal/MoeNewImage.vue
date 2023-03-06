@@ -5,13 +5,7 @@
 		@submit.prevent="src !== '' ? addImage() : undefined"
 	>
 		<figure v-if="src" class="h-[80%] max-h-[80%]">
-			<img
-				:src="src"
-				alt="Invalid image url"
-				class="max-h-full"
-				@load="valid = true"
-				@error="valid = false"
-			/>
+			<img :src="src" alt="Invalid image url" class="max-h-full" @load="valid = true" @error="valid = false" />
 		</figure>
 		<label class="h-[10%]">
 			<span>Image URL</span>
@@ -24,10 +18,7 @@
 		</label>
 		<p v-if="!valid" class="text-red-600">Invalid image url</p>
 		<div class="h-[10%]">
-			<MoeButton
-				:class="{ 'cursor-not-allowed': src === '' }"
-				class="mt-4 mx-auto bg-gray-500"
-			>Add Image</MoeButton>
+			<MoeButton :class="{ 'cursor-not-allowed': src === '' }" class="mt-4 mx-auto bg-gray-500">Add Image</MoeButton>
 		</div>
 		<div
 			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
@@ -38,32 +29,28 @@
 	</form>
 </template>
 
-
 <script setup lang="ts">
-import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "~~/models/enums/Modal";
 
+	const src = ref("");
+	const valid = ref(true);
 
-const src = ref("")
-const valid = ref(true)
+	const mainStore = useMainStore();
+	const characterStore = useCharacterStore();
 
-const mainStore = useMainStore()
-const characterStore = useCharacterStore()
-
-function updateUrl(event: Event) {
-	const value = (event.target as HTMLInputElement).value;
-	if (value.startsWith("data:")) {
-		valid.value = false;
-		src.value = "";
-		// $forceUpdate();
-	} else {
-		src.value = value;
-		valid.value = false;
+	function updateUrl(event: Event) {
+		const value = (event.target as HTMLInputElement).value;
+		if (value.startsWith("data:")) {
+			valid.value = false;
+			src.value = "";
+		} else {
+			src.value = value;
+			valid.value = false;
+		}
 	}
-}
 
-function addImage() {
-	characterStore.addCharacterImage({ src: src.value, valid: valid.value });
-	mainStore.modal = Modal.NONE
-}
-
+	function addImage() {
+		characterStore.addCharacterImage({ src: src.value, valid: valid.value });
+		mainStore.modal = Modal.NONE;
+	}
 </script>

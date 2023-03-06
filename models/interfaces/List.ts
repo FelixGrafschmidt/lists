@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid"
+import { nanoid } from "nanoid";
 import { Sortcriterion } from "../enums/Sortcriterion";
 import { Sortorder } from "../enums/Sortorder";
 import { Character } from "../interfaces/Character";
@@ -11,6 +11,12 @@ export interface List {
 	sortorder: Sortorder;
 }
 
-export function newList(id = nanoid(), name = "", characters = [], sortcriterion = Sortcriterion.CREATED, sortorder = Sortorder.DEFAULT): List {
+export function newList(
+	id = nanoid(),
+	name = "",
+	characters = [],
+	sortcriterion = Sortcriterion.CREATED,
+	sortorder = Sortorder.DEFAULT
+): List {
 	return { id, name, characters, sortcriterion, sortorder };
 }

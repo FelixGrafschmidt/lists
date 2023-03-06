@@ -9,66 +9,61 @@
 		<MoeButton v-if="autosave" class="h-10 w-32 bg-gray-500" @click="disableAutosave">Disable autosave</MoeButton>
 		<MoeButton v-else class="h-10 w-32 bg-gray-500" @click="enableAutosave">Enable autosave</MoeButton>
 
-		<MoeButton
-			v-tooltip="'Save'"
-			icon="fas fa-save"
-			class="h-10 w-10 bg-gray-500"
-			@click="saveChanges"
-		/>
+		<MoeButton v-tooltip="'Save'" icon="fas fa-save" class="h-10 w-10 bg-gray-500" @click="saveChanges" />
 		<div v-if="changes" class="text-red-600 text-lg font-medium w-48">UNSAVED CHANGES</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { getHash } from "~/models/interfaces/Collection";
-import { Modal } from "~~/models/enums/Modal";
+	import { getHash } from "~/models/interfaces/Collection";
+	import { Modal } from "~~/models/enums/Modal";
 
-const autosave = ref(false);
-const autosaveId = ref(0);
-const countdown = ref(60);
+	const autosave = ref(false);
+	const autosaveId = ref(0);
+	const countdown = ref(60);
 
-const collectionStore = useCollectionStore()
-const mainStore = useMainStore()
+	const collectionStore = useCollectionStore();
+	const mainStore = useMainStore();
 
-const collection = collectionStore.collection
-const changes = computed(() => collectionStore.originalHash !== getHash(collection))
+	const collection = collectionStore.collection;
+	const changes = computed(() => collectionStore.originalHash !== getHash(collection));
 
-onMounted(() => {
-	performAutosave();
-})
+	onMounted(() => {
+		performAutosave();
+	});
 
-onBeforeUnmount(() => {
-	window.clearInterval(autosaveId.value);
-})
+	onBeforeUnmount(() => {
+		window.clearInterval(autosaveId.value);
+	});
 
-function performAutosave() {
-	autosaveId.value = window.setInterval(() => {
-		countdown.value--;
-		if (autosave.value && countdown.value === 0) {
-			collectionStore.saveChanges();
-			countdown.value = 60;
-		}
-	}, 1000 * 1);
-}
-function enableAutosave() {
-	autosave.value = true;
-	countdown.value = 60;
-}
-
-function disableAutosave() {
-	autosave.value = false;
-	countdown.value = 60;
-}
-
-async function saveChanges(): Promise<void> {
-	mainStore.loading = true
-	try {
-		await collectionStore.saveChanges()
-		mainStore.modal = Modal.NONE
-	} catch (error) {
-		mainStore.modal = Modal.SAVEERROR
-	} finally {
-		mainStore.loading = false
+	function performAutosave() {
+		autosaveId.value = window.setInterval(() => {
+			countdown.value--;
+			if (autosave.value && countdown.value === 0) {
+				collectionStore.saveChanges();
+				countdown.value = 60;
+			}
+		}, 1000 * 1);
 	}
-}
+	function enableAutosave() {
+		autosave.value = true;
+		countdown.value = 60;
+	}
+
+	function disableAutosave() {
+		autosave.value = false;
+		countdown.value = 60;
+	}
+
+	async function saveChanges(): Promise<void> {
+		mainStore.loading = true;
+		try {
+			await collectionStore.saveChanges();
+			mainStore.modal = Modal.NONE;
+		} catch (error) {
+			mainStore.modal = Modal.SAVEERROR;
+		} finally {
+			mainStore.loading = false;
+		}
+	}
 </script>

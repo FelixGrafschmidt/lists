@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-const collectionStore = useCollectionStore()
+	const collectionStore = useCollectionStore();
 
-if (process.server) {
-	await collectionStore.loadCollection()
-}
+	if (process.server) {
+		await collectionStore.loadCollection();
+	}
 </script>

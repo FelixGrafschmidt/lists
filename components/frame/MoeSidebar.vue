@@ -3,13 +3,11 @@
 		<h3 class="text-lg max-w-[15rem] whitespace-nowrap truncate">
 			<template v-if="list.id">
 				<span class="cursor-pointer" @click="navigateToList(list)">{{ list.name }}</span> |
-				<!-- <span class="cursor-pointer" @click="toGallery">Gallery</span> -->
 			</template>
 			<template v-else>
 				<span>No list selected</span>
 			</template>
 		</h3>
-		<!-- <h3 v-else class="text-lg max-w-[15rem] whitespace-nowrap truncate">No list selected</h3> -->
 		<div
 			:class="{
 				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll':
@@ -24,7 +22,9 @@
 				class="hover:bg-gray-800 rounded pl-6 py-1 cursor-pointer"
 				role="link"
 				@click="navigateToCharacter(characteritem)"
-			>{{ characteritem.name }}</div>
+			>
+				{{ characteritem.name }}
+			</div>
 		</div>
 		<h3 class="text-lg caps-small cursor-pointer pt-2" @click="toCollection">Lists</h3>
 		<div
@@ -41,53 +41,48 @@
 				class="hover:bg-gray-800 rounded pl-6 py-1 cursor-pointer"
 				role="link"
 				@click="navigateToList(listitem)"
-			>{{ listitem.name }}</div>
+			>
+				{{ listitem.name }}
+			</div>
 		</div>
 	</aside>
 </template>
 
-
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
-import { Character } from "~~/models/interfaces/Character";
-import { List } from "~~/models/interfaces/List";
+	import { storeToRefs } from "pinia";
+	import { Character } from "~~/models/interfaces/Character";
+	import { List } from "~~/models/interfaces/List";
 
-const showScrollbars = ref(false);
+	const showScrollbars = ref(false);
 
-const mainStore = useMainStore()
-const collectionStore = useCollectionStore();
-const listStore = useListStore();
-const characterStore = useCharacterStore();
+	const mainStore = useMainStore();
+	const collectionStore = useCollectionStore();
+	const listStore = useListStore();
+	const characterStore = useCharacterStore();
 
-const collection = collectionStore.collection;
-const { list } = storeToRefs(listStore);
-const character = characterStore.character;
+	const collection = collectionStore.collection;
+	const { list } = storeToRefs(listStore);
+	const character = characterStore.character;
 
+	function navigateToList(list: List) {
+		listStore.setList(list);
+		mainStore.toList();
+	}
 
-function navigateToList(list: List) {
-	listStore.setList(list);
-	mainStore.toList()
-}
+	function navigateToCharacter(character: Character) {
+		characterStore.setCharacter(character);
+		mainStore.toCharacter();
+	}
 
-function navigateToCharacter(character: Character) {
-	characterStore.setCharacter(character);
-	mainStore.toCharacter();
-}
+	function toCollection() {
+		mainStore.toCollection();
+	}
 
-// function toGallery() {
-// 	mainStore.toGallery();
-// }
+	function captureScroll() {
+		showScrollbars.value = true;
+	}
 
-function toCollection() {
-	mainStore.toCollection();
-}
-
-function captureScroll() {
-	showScrollbars.value = true;
-}
-
-function releaseScroll() {
-	showScrollbars.value = false;
-}
-
+	function releaseScroll() {
+		showScrollbars.value = false;
+	}
 </script>

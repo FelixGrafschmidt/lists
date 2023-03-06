@@ -1,15 +1,14 @@
 <template>
-	<NuxtPage class="bg-gray-900 text-gray-100 h-screen" />
+	<NuxtPage class="bg-gray-800 text-gray-300 h-screen" />
 </template>
 
-<script setup lang="ts">
-// import '@unocss/reset/tailwind.css'
-</script>
+<script setup lang="ts"></script>
 
-<style lang="postcss">
-@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato&display=swap");
+<style>
+	@import "@unocss/reset/tailwind.css";
+	@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato&display=swap");
 
-:root {
-	font-family: "Lato", sans-serif;
-}
+	:root {
+		font-family: "Lato", sans-serif;
+	}
 </style>
