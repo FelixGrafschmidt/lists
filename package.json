@@ -12,7 +12,7 @@
 		"file-saver": "^2.0.5",
 		"floating-vue": "^2.0.0-beta.20",
 		"nanoid": "^4.0.1",
-		"nuxt-icon": "^0.3.2",
+		"nuxt-icon": "^0.4.0",
 		"object-hash": "^3.0.0",
 		"pinia": "^2.0.33",
 		"redis": "^4.6.5",
