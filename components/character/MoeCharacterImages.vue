@@ -11,11 +11,11 @@
 			</figure>
 		</div>
 		<div class="flex gap-4 items-center justify-self-end h-[5%]">
-			<MoeButton v-tooltip="'Remove this Image'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click="deleteImage" />
-			<MoeButton v-tooltip="'Delete all Images'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click.stop="deleteAllImages" />
-			<MoeButton v-tooltip="'Add Image'" class="bg-gray-500 w-10 h-10" icon="fas fa-plus" @click.stop="addNewImage" />
-			<MoeButton v-tooltip="'Add Images'" class="bg-gray-500 w-10 h-10" icon="fab fa-buffer" @click.stop="addImageMulti" />
-			<MoeButton v-tooltip="'Export all Images'" class="bg-gray-500 w-10 h-10" icon="far fa-save" @click.stop="exportImages" />
+			<MoeButton class="bg-gray-500 w-auto h-10" icon="fas fa-plus" @click="addNewImage"> Add Image </MoeButton>
+			<MoeButton class="bg-gray-500 w-auto h-10" icon="fab fa-buffer" @click="addImageMulti"> Add Images </MoeButton>
+			<MoeButton class="bg-red-600 w-auto h-10" icon="fas fa-trash" @click="deleteImage"> Delete this Image </MoeButton>
+			<MoeButton class="bg-red-600 w-auto h-10" icon="fas fa-trash" @click="deleteAllImages"> Delete all Images </MoeButton>
+			<MoeButton class="bg-gray-500 w-auto h-10" icon="far fa-save" @click="exportImages"> Export all Images </MoeButton>
 		</div>
 		<div>
 			<MoeButton @click="toGallery">Show all</MoeButton>
