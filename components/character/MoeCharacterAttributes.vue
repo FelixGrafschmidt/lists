@@ -76,6 +76,10 @@
 	const listStore = useListStore();
 	const characterStore = useCharacterStore();
 
+	const emit = defineEmits<{
+		(e: "discard"): void;
+	}>();
+
 	const copied = ref(false);
 	const character = characterStore.character;
 	const characters = listStore.list.characters;
@@ -92,9 +96,8 @@
 		await backToCharacterList();
 	}
 
-	async function discardCharacter() {
-		characterStore.resetCharacter();
-		await backToCharacterList();
+	function discardCharacter() {
+		emit("discard");
 	}
 
 	function deleteCharacter() {

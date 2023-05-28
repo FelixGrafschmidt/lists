@@ -13,7 +13,7 @@
 				'scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll':
 					showScrollbars,
 			}"
-			class="rounded h-96 overflow-hidden"
+			class="rounded min-h-[35vh] max-h-[35vh] overflow-hidden"
 		>
 			<div
 				v-for="characteritem of list.characters"
@@ -26,13 +26,16 @@
 				{{ characteritem.name }}
 			</div>
 		</div>
-		<h3 class="text-lg caps-small cursor-pointer pt-2" @click="toCollection">Lists</h3>
+		<h3 class="text-lg flex flex-row gap-2 items-baseline pt-4">
+			<span class="cursor-pointer" @click="toCollection">Lists</span>
+			<MoeButton icon="fas fa-plus" @click="addList">Add</MoeButton>
+		</h3>
 		<div
 			:class="{
 				'scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll':
 					showScrollbars,
 			}"
-			class="rounded h-96 overflow-hidden"
+			class="rounded min-h-[35vh] max-h-[35vh] overflow-hidden"
 		>
 			<div
 				v-for="listitem of collection.lists"
@@ -50,6 +53,7 @@
 
 <script setup lang="ts">
 	import { storeToRefs } from "pinia";
+	import { Modal } from "~/models/enums/Modal";
 	import { Character } from "~~/models/interfaces/Character";
 	import { List } from "~~/models/interfaces/List";
 
@@ -84,5 +88,9 @@
 
 	function releaseScroll() {
 		showScrollbars.value = false;
+	}
+
+	function addList() {
+		mainStore.modal = Modal.NEWLIST;
 	}
 </script>

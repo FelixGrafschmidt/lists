@@ -17,6 +17,7 @@
 			<MoeAttributes v-else-if="component === 'MoeAttributes'" />
 			<MoeImageMulti v-else-if="component === 'MoeImageMulti'" />
 			<MoeUnloadCollection v-else-if="component === 'MoeUnloadCollection'" />
+			<MoeUnsavedChanges v-else-if="component === 'MoeUnsavedChanges'" />
 		</div>
 	</div>
 </template>
@@ -55,6 +56,8 @@
 				return "MoeImageMulti";
 			case Modal.UNLOADCOLLECTION:
 				return "MoeUnloadCollection";
+			case Modal.UNSAVED_CHANGES:
+				return "MoeUnsavedChanges";
 			default:
 				return "";
 		}

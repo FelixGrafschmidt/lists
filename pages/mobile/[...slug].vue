@@ -59,26 +59,6 @@
 
 	const id = ref("");
 
-	const [, , collectionId, listId, characterId] = useRoute().fullPath.split("/");
-	if (collectionId && collectionId.match(/[\w-]{21}/)) {
-		useCookie("collectionId").value = collectionId;
-	}
-	await collectionStore.loadCollection();
-	if (listId && listId.match(/[\w-]{21}/)) {
-		const lists = collectionStore.collection.lists.filter((list) => list.id === listId);
-		if (lists.length > 0) {
-			selectList(lists[0]);
-		}
-		if (characterId) {
-			if (characterId.match(/[\w-]{21}/)) {
-				const characters = listStore.list.characters.filter((character) => character.id === characterId);
-				if (characters.length > 0) {
-					selectCharacter(characters[0]);
-				}
-			}
-		}
-	}
-
 	const mode = computed(() => {
 		return mainStore.mobileMode;
 	});
@@ -92,6 +72,10 @@
 		return characterStore.character;
 	});
 
+	if (process.server) {
+		await collectionStore.loadCollection();
+	}
+
 	function selectList(list: List) {
 		listStore.setList(list);
 		mainStore.mobileMode = "list";
@@ -100,7 +84,6 @@
 		characterStore.setCharacter(character);
 		mainStore.mobileMode = "character";
 	}
-
 	function loadCollection() {
 		useCookie("collectionId").value = id.value;
 		collectionStore.loadCollection();

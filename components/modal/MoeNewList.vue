@@ -35,8 +35,8 @@
 
 	function addList() {
 		collectionStore.addListToCollection(newList(undefined, name.value));
-		if (collectionStore.collection.lists.length === 1) {
-			openList(collectionStore.collection.lists[0]);
+		if (collectionStore.collection.lists.length >= 1) {
+			openList(collectionStore.collection.lists.at(-1)!);
 		}
 		mainStore.modal = Modal.NONE;
 	}

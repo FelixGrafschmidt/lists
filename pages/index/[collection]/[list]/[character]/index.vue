@@ -8,15 +8,36 @@
 		/>
 
 		<MoeCharacterImages />
-		<MoeCharacterAttributes />
+		<MoeCharacterAttributes @discard="discardCharacter" />
 	</div>
 </template>
 
 <script setup lang="ts">
+	import { Modal } from "~/models/enums/Modal";
 	const mainStore = useMainStore();
+	const listStore = useListStore();
 	const characterStore = useCharacterStore();
+	const character = characterStore.character;
+
+	const discarded = ref(false);
 
 	const quickImages = ref(false);
+
+	onBeforeRouteUpdate(() => {
+		const characters = listStore.list.characters;
+		if (!discarded && !characters.find((listCharacter) => listCharacter.id === character.id)) {
+			mainStore.modal = Modal.UNSAVED_CHANGES;
+			return false;
+		}
+	});
+
+	onBeforeRouteLeave(() => {
+		const characters = listStore.list.characters;
+		if (!discarded && !characters.find((listCharacter) => listCharacter.id === character.id)) {
+			mainStore.modal = Modal.UNSAVED_CHANGES;
+			return false;
+		}
+	});
 
 	async function quickImage(event: MouseEvent) {
 		if (event.ctrlKey) {
@@ -31,5 +52,11 @@
 	async function backToCharacterList() {
 		characterStore.resetCharacter();
 		await mainStore.toList();
+	}
+
+	async function discardCharacter() {
+		characterStore.resetCharacter();
+		discarded.value = true;
+		await backToCharacterList();
 	}
 </script>

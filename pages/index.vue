@@ -22,7 +22,7 @@
 	const characterStore = useCharacterStore();
 
 	if (useDevice().isMobile) {
-		await navigateTo("/mobile");
+		await navigateTo("/mobile" + useRoute().path);
 	}
 
 	if (process.server) {
@@ -67,7 +67,7 @@
 	});
 </script>
 
-<style lang="postcss">
+<style>
 	.wrapper {
 		grid-template-columns: 1fr 5fr;
 		grid-template-rows: 3rem 14fr 3rem;
