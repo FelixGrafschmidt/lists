@@ -75,9 +75,9 @@
 		window.localStorage.setItem("tutorial", mainStore.tutorial.toString());
 	}
 
-	function newList() {
+	async function newList() {
 		mainStore.modal = Modal.NONE;
-		mainStore.toCollection();
+		await mainStore.toCollection();
 		mainStore.modal = Modal.NEWLIST;
 	}
 </script>

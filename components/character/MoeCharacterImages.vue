@@ -11,12 +11,14 @@
 			</figure>
 		</div>
 		<div class="flex gap-4 items-center justify-self-end h-[5%]">
-			<MoeButton v-tooltip="'Designate as Main Image'" class="bg-gray-500 w-10 h-10" icon="fas fa-star" @click="designateMainImage" />
 			<MoeButton v-tooltip="'Remove this Image'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click="deleteImage" />
 			<MoeButton v-tooltip="'Delete all Images'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click.stop="deleteAllImages" />
 			<MoeButton v-tooltip="'Add Image'" class="bg-gray-500 w-10 h-10" icon="fas fa-plus" @click.stop="addNewImage" />
 			<MoeButton v-tooltip="'Add Images'" class="bg-gray-500 w-10 h-10" icon="fab fa-buffer" @click.stop="addImageMulti" />
 			<MoeButton v-tooltip="'Export all Images'" class="bg-gray-500 w-10 h-10" icon="far fa-save" @click.stop="exportImages" />
+		</div>
+		<div>
+			<MoeButton @click="toGallery">Show all</MoeButton>
 		</div>
 	</div>
 </template>
@@ -56,11 +58,6 @@
 		mainStore.modal = Modal.IMAGEMULTI;
 	}
 
-	function designateMainImage() {
-		const index = character.images.indexOf(image.value);
-		characterStore.designateMainImage(index);
-	}
-
 	function markValid(image: CharacterImage) {
 		image.valid = true;
 	}
@@ -88,6 +85,10 @@
 			imageSources += image.src + "\n";
 		});
 		saveAs(new File([imageSources], character.name + "_images.txt"));
+	}
+
+	async function toGallery() {
+		await mainStore.toCharacterGallery();
 	}
 
 	watch(

@@ -1,19 +1,20 @@
 <template>
-	<div class="rounded">
+	<div class="">
 		<div
 			v-for="(character, index) in characters"
 			:ref="character.id"
 			:key="index"
 			:class="{
 				'bg-gray-800': index % 2 === 0,
+				'bg-gray-900': index % 2 !== 0,
 			}"
 			class="flex h-24 hover:bg-gray-700 items-center rounded cursor-pointer my-1"
 			@click="selectCharacter(character)"
 		>
 			<div class="w-[35%] text-center">{{ character.name }}</div>
-			<form class="w-[35%] text-center relative">{{ character.origin }}</form>
-			<form class="w-[10%] text-center relative">{{ character.images.length }}</form>
-			<form class="w-[10%] text-center relative">{{ character.attributeArray.length }}</form>
+			<div class="w-[35%] text-center">{{ character.origin }}</div>
+			<div class="w-[10%] text-center">{{ character.images.length }}</div>
+			<div class="w-[10%] text-center">{{ character.attributeArray.length }}</div>
 			<div class="w-[10%] text-center">
 				<img :src="getMainImage(character).src" :alt="character.name" class="max-h-24 max-w-24 rounded m-auto" />
 			</div>
@@ -30,11 +31,9 @@
 
 	const characters = computed(() => listStore.list.characters);
 
-	function selectCharacter(character: Character) {
-		console.log(character);
-
+	async function selectCharacter(character: Character) {
 		characterStore.setCharacter(character);
-		mainStore.toCharacter();
+		await mainStore.toCharacter();
 	}
 
 	function getMainImage(character: Character) {

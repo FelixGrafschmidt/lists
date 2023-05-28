@@ -1,5 +1,5 @@
 <template>
-	<div class="flex top-0 bg-gray-600 rounded font-extrabold text-lg select-none">
+	<div class="flex sticky w-full top-0 bg-gray-600 rounded font-extrabold text-lg select-none">
 		<div class="w-[35%] border-gray-800 border-r-2 py-2 text-center cursor-pointer" @click="listStore.sortListByName()">
 			Name
 			<div

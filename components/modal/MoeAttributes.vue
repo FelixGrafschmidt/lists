@@ -4,7 +4,7 @@
 			<div>
 				<span>Select all Characters to apply these attributes to</span>
 				<div
-					class="flex flex-col scrollbar-thin scrollbar-track-gray-700 scrollbar-thumb-gray-500 scrollbar-track-rounded scrollbar-thumb-rounded overflow-y-scroll max-h-[90%] min-h-[90%] px-4 mt-4"
+					class="flex flex-col scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll max-h-[90%] min-h-[90%] px-4 mt-4"
 				>
 					<label
 						v-for="character in characters"
@@ -20,7 +20,7 @@
 			</div>
 			<form class="flex flex-col" @submit.prevent>
 				<div
-					class="scrollbar-thin scrollbar-track-gray-700 scrollbar-thumb-gray-500 scrollbar-track-rounded scrollbar-thumb-rounded overflow-y-scroll px-2"
+					class="scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll px-2"
 				>
 					<div v-for="(attribute, i) in attributes" :key="i">
 						<span

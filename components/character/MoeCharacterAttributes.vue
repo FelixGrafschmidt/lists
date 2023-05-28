@@ -1,7 +1,7 @@
 <template>
 	<form class="w-1/2 flex flex-col h-[80vh] justify-between" @submit.prevent="isNewCharacter ? saveNewCharacter() : saveChanges()">
 		<div
-			class="max-h-[85%] min-h-[85%] pr-8 scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-auto pl-1"
+			class="max-h-[85%] min-h-[85%] pr-8 scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-auto pl-1"
 		>
 			<div class="py-2">
 				<label>
@@ -144,9 +144,9 @@
 		saveAs(new File([JSON.stringify(character)], character.name + ".json"));
 	}
 
-	function backToCharacterList() {
+	async function backToCharacterList() {
 		characterStore.resetCharacter();
-		mainStore.toList();
+		await mainStore.toList();
 	}
 
 	function addAttribute() {

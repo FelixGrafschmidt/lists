@@ -2,7 +2,9 @@
 	<div class="grid wrapper">
 		<MoeHeader class="border-b border-teal-700 header" />
 		<MoeSidebar class="border-r border-teal-700 sidebar" />
-		<div class="p-6 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-auto content">
+		<div
+			class="scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-auto content"
+		>
 			<NuxtPage />
 		</div>
 		<MoeFooter class="w-full border-t border-teal-700 footer" />
@@ -19,29 +21,33 @@
 	const listStore = useListStore();
 	const characterStore = useCharacterStore();
 
+	if (useDevice().isMobile) {
+		await navigateTo("/mobile");
+	}
+
 	if (process.server) {
 		const [, collectionId, listId, characterId] = useRoute().fullPath.split("/");
-		if (collectionId && collectionId.match(/\w{21}/)) {
+		if (collectionId && collectionId.match(/[\w-]{21}/)) {
 			useCookie("collectionId").value = collectionId;
 		}
 		await collectionStore.loadCollection();
 		if (listId) {
-			if (!listId.match(/\w{21}/)) {
+			if (!listId.match(/[\w-]{21}/)) {
 				collectionStore.addListToCollection(newList());
-				mainStore.toCollection();
+				await mainStore.toCollection();
 			} else {
 				const lists = collectionStore.collection.lists.filter((list) => list.id === listId);
 				if (lists.length === 0) {
-					mainStore.toCollection();
+					await mainStore.toCollection();
 				}
 				listStore.setList(lists[0]);
 				if (characterId) {
-					if (!characterId.match(/\w{21}/)) {
-						mainStore.toList();
+					if (!characterId.match(/[\w-]{21}/)) {
+						await mainStore.toList();
 					} else {
 						const characters = listStore.list.characters.filter((character) => character.id === characterId);
 						if (characters.length === 0) {
-							mainStore.toList();
+							await mainStore.toList();
 						} else {
 							characterStore.setCharacter(characters[0]);
 						}

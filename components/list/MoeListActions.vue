@@ -18,9 +18,9 @@
 	const mainStore = useMainStore();
 	const characterStore = useCharacterStore();
 
-	function addNewCharacter() {
+	async function addNewCharacter() {
 		characterStore.setCharacter(newCharacter());
-		mainStore.toCharacter();
+		await mainStore.toCharacter();
 	}
 
 	function addListAttribute() {

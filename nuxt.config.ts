@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 			title: "Character List Manager",
 		},
 	},
-	modules: ["@pinia/nuxt", "@unocss/nuxt", "nuxt-icon", "@vueuse/nuxt"],
+	modules: ["@pinia/nuxt", "@unocss/nuxt", "nuxt-icon", "@vueuse/nuxt", "@nuxtjs/device"],
 	typescript: { strict: true },
 
 	components: [

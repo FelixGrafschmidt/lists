@@ -10,22 +10,33 @@ export const useMainStore = defineStore("main", {
 		tutorial: 1,
 	}),
 	actions: {
-		toCollection() {
+		async toCollection() {
 			const collectionId = useCollectionStore().collection.id;
-			useRouter().push(`/${collectionId}`);
+			await navigateTo(`/${collectionId}`);
 		},
 
-		toList() {
+		async toList() {
 			const collectionId = useCollectionStore().collection.id;
 			const listId = useListStore().list.id;
-			useRouter().push(`/${collectionId}/${listId}`);
+			await navigateTo(`/${collectionId}/${listId}`);
 		},
 
-		toCharacter() {
+		async toCharacter() {
 			const collectionId = useCollectionStore().collection.id;
 			const listId = useListStore().list.id;
 			const characterId = useCharacterStore().character.id;
-			useRouter().push(`/${collectionId}/${listId}/${characterId}`);
+			await navigateTo(`/${collectionId}/${listId}/${characterId}`);
+		},
+
+		async toCharacterGallery() {
+			const collectionId = useCollectionStore().collection.id;
+			const listId = useListStore().list.id;
+			const characterId = useCharacterStore().character.id;
+			await navigateTo(`/${collectionId}/${listId}/${characterId}/gallery`);
+		},
+
+		setMobileMode(mode: "collection" | "list" | "character") {
+			this.mobileMode = mode;
 		},
 	},
 });

@@ -28,17 +28,16 @@
 	const collectionStore = useCollectionStore();
 	const listStore = useListStore();
 
-	function openList(list: List) {
+	async function openList(list: List) {
 		listStore.setList(list);
-		mainStore.toList();
+		await mainStore.toList();
 	}
 
 	function addList() {
 		collectionStore.addListToCollection(newList(undefined, name.value));
 		if (collectionStore.collection.lists.length === 1) {
 			openList(collectionStore.collection.lists[0]);
-		} else {
-			mainStore.modal = Modal.NONE;
 		}
+		mainStore.modal = Modal.NONE;
 	}
 </script>

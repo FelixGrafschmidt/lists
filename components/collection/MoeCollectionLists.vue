@@ -57,9 +57,9 @@
 		saveAs(new File([JSON.stringify(list)], list.name + ".json"));
 	}
 
-	function openList(list: List) {
+	async function openList(list: List) {
 		listStore.setList(list);
-		mainStore.toList();
+		await mainStore.toList();
 	}
 
 	function updateListname(id: string, event: Event) {

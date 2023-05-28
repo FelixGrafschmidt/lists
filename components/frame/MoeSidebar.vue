@@ -10,15 +10,15 @@
 		</h3>
 		<div
 			:class="{
-				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll':
+				'scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll':
 					showScrollbars,
 			}"
-			class="rounded max-h-[40%] min-h-[40%] overflow-hidden"
+			class="rounded h-96 overflow-hidden"
 		>
 			<div
 				v-for="characteritem of list.characters"
 				:key="characteritem.id"
-				:class="{ 'hover:bg-teal-400 hover:bg-teal-400': character.id && characteritem.id === character.id }"
+				:class="{ 'bg-teal-500 hover:bg-teal-400': character.id && characteritem.id === character.id }"
 				class="hover:bg-gray-800 rounded pl-6 py-1 cursor-pointer"
 				role="link"
 				@click="navigateToCharacter(characteritem)"
@@ -29,10 +29,10 @@
 		<h3 class="text-lg caps-small cursor-pointer pt-2" @click="toCollection">Lists</h3>
 		<div
 			:class="{
-				'scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded  scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll':
+				'scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll':
 					showScrollbars,
 			}"
-			class="rounded max-h-[40%] min-h-[40%] overflow-hidden"
+			class="rounded h-96 overflow-hidden"
 		>
 			<div
 				v-for="listitem of collection.lists"
@@ -62,20 +62,20 @@
 
 	const collection = collectionStore.collection;
 	const { list } = storeToRefs(listStore);
-	const character = characterStore.character;
+	const character = computed(() => characterStore.character);
 
-	function navigateToList(list: List) {
+	async function navigateToList(list: List) {
 		listStore.setList(list);
-		mainStore.toList();
+		await mainStore.toList();
 	}
 
-	function navigateToCharacter(character: Character) {
+	async function navigateToCharacter(character: Character) {
 		characterStore.setCharacter(character);
-		mainStore.toCharacter();
+		await mainStore.toCharacter();
 	}
 
-	function toCollection() {
-		mainStore.toCollection();
+	async function toCollection() {
+		await mainStore.toCollection();
 	}
 
 	function captureScroll() {

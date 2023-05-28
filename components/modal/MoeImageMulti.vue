@@ -6,11 +6,11 @@
 	>
 		<label>
 			<span>Insert urls seperated by linebreaks</span>
-			<textarea-autosize
+			<textarea
 				v-model="src"
 				max-height="500"
 				type="text"
-				class="resize-none block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80 scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-track-gray-800 scrollbar-thumb-gray-500 overflow-y-scroll'"
+				class="resize-none block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80 scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll'"
 			/>
 		</label>
 		<div class="h-[10%]">

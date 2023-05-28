@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-row gap-4" @click="quickImage">
+	<div class="flex flex-row gap-4 p-6" @click="quickImage">
 		<MoeButton
 			v-tooltip="'Back to Character List'"
 			class="h-8 w-8 -mt-6 -ml-6 rounded-none rounded-br-1 !p-0 border border-teal-700"
@@ -28,8 +28,8 @@
 		}
 	}
 
-	function backToCharacterList() {
+	async function backToCharacterList() {
 		characterStore.resetCharacter();
-		mainStore.toList();
+		await mainStore.toList();
 	}
 </script>

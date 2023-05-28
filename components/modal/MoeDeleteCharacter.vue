@@ -23,9 +23,9 @@
 
 	const character = characterStore.character;
 
-	function deleteCharacter() {
+	async function deleteCharacter() {
 		listStore.deleteCharacter(character);
 		mainStore.modal = Modal.NONE;
-		mainStore.toList();
+		await mainStore.toList();
 	}
 </script>

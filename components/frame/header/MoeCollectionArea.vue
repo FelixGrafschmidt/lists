@@ -27,7 +27,7 @@
 		mainStore.modal = Modal.LOADCOLLECTION;
 	}
 	function copyID() {
-		useClipboard({ source: JSON.stringify(collection.id) }).copy();
+		useClipboard({ source: collection.id }).copy();
 	}
 
 	function exportCollection() {
