@@ -7,6 +7,6 @@
 	</div>
 </template>
 
-<script lang="ts">
-	defineNuxtComponent({});
+<script setup lang="ts">
+	// defineNuxtComponent({});
 </script>
