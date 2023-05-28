@@ -16,8 +16,9 @@
 </template>
 
 <script setup lang="ts">
-	import { saveAs } from "file-saver";
+	import pkg from "file-saver";
 	import { Modal } from "~~/models/enums/Modal";
+	const { saveAs } = pkg;
 
 	const mainStore = useMainStore();
 	const collectionStore = useCollectionStore();

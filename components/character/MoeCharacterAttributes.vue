@@ -88,9 +88,10 @@
 </template>
 
 <script setup lang="ts">
-	import { saveAs } from "file-saver";
+	import pkg from "file-saver";
 	import { Modal } from "~/models/enums/Modal";
 	import { CharacterAttribute } from "~~/models/interfaces/Character";
+	const { saveAs } = pkg;
 
 	const mainStore = useMainStore();
 	const listStore = useListStore();

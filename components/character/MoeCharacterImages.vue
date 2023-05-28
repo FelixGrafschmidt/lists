@@ -22,9 +22,10 @@
 </template>
 
 <script lang="ts" setup>
-	import { saveAs } from "file-saver";
+	import pkg from "file-saver";
 	import { Modal } from "~~/models/enums/Modal";
 	import { CharacterImage, newCharacterImage } from "~~/models/interfaces/Character";
+	const { saveAs } = pkg;
 
 	const mainStore = useMainStore();
 	const characterStore = useCharacterStore();
