@@ -2,7 +2,7 @@
 	<div class="flex flex-row gap-4" @click="quickImage">
 		<MoeButton
 			v-tooltip="'Back to Character List'"
-			class="h-8 w-8 -mt-6 -ml-6 rounded-none rounded-br-1 pr-8 pb-8 border border-teal-700"
+			class="h-8 w-8 -mt-6 -ml-6 rounded-none rounded-br-1 !p-0 border border-teal-700"
 			icon="fas fa-arrow-left"
 			@click="backToCharacterList"
 		/>

@@ -15,7 +15,6 @@
 		"nuxt-icon": "^0.3.2",
 		"object-hash": "^3.0.0",
 		"pinia": "^2.0.33",
-		"redis": "^4.6.5",
 		"tslib": "^2.5.0",
 		"unocss-preset-scrollbar": "^0.2.1"
 	},
@@ -29,6 +28,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.54.0",
 		"@typescript-eslint/parser": "^5.54.0",
 		"@unocss/nuxt": "^0.50.4",
+		"@vercel/kv": "^0.2.1",
 		"@vueuse/nuxt": "^9.13.0",
 		"babel-preset-vue": "^2.0.2",
 		"eslint": "^8.35.0",

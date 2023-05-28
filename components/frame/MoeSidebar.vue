@@ -2,7 +2,7 @@
 	<aside class="bg-gray-700 py-4 px-4" @mouseenter="captureScroll" @mouseleave="releaseScroll">
 		<h3 class="text-lg max-w-[15rem] whitespace-nowrap truncate">
 			<template v-if="list.id">
-				<span class="cursor-pointer" @click="navigateToList(list)">{{ list.name }}</span> |
+				<span class="cursor-pointer" @click="navigateToList(list)">{{ list.name }}</span>
 			</template>
 			<template v-else>
 				<span>No list selected</span>

@@ -6,7 +6,7 @@
 	>
 		<label class="mx-12">
 			<span>Type a name for your new list.</span>
-			<input v-model="name" type="text" class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80" />
+			<input v-model="name" type="text" class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80 px-2" />
 		</label>
 		<MoeButton :class="{ 'cursor-not-allowed': name === '' }" class="m-auto bg-gray-500">Add List</MoeButton>
 		<div

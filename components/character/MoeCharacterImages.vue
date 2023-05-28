@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col items-center w-1/2 justify-between h-[80vh] gap-3">
-		<div class="h-[95%] justify-center flex cursor-pointer">
-			<figure class="flex flex-col justify-center" @click="openImage(image)">
+		<div class="h-[95%] justify-center flex">
+			<figure class="flex flex-col justify-center">
 				<img
 					:alt="character.name"
 					:src="image.src || ''"
@@ -75,11 +75,11 @@
 		image.value = getMainImage();
 	}
 
-	function openImage(image: CharacterImage) {
-		window.scroll(0, 0);
-		characterStore.setActiveImage(image);
-		mainStore.modal = Modal.FULLSCREENIMG;
-	}
+	// function openImage(image: CharacterImage) {
+	// 	window.scroll(0, 0);
+	// 	characterStore.setActiveImage(image);
+	// 	mainStore.modal = Modal.FULLSCREENIMG;
+	// }
 
 	function exportImages() {
 		let imageSources = "";

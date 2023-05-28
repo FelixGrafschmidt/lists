@@ -1,9 +1,5 @@
-import { createClient } from "redis";
+import { kv } from "@vercel/kv";
 import { Collection } from "~~/models/interfaces/Collection";
-
-const port = parseInt(process.env.REDIS_PORT || "6378");
-const client = createClient({ url: `redis://127.0.0.1:${port}`, database: 0 });
-client.connect();
 
 export default defineEventHandler(async (event) => {
 	const body = await readBody(event);
@@ -14,7 +10,7 @@ export default defineEventHandler(async (event) => {
 
 	if (id) {
 		try {
-			await client.set(id, JSON.stringify(body));
+			await kv.set(id, body);
 			event.node.res.statusCode = 204;
 			return true;
 		} catch (error) {
