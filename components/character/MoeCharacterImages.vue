@@ -5,7 +5,7 @@
 				<img
 					:alt="character.name"
 					:src="image.src || ''"
-					class="rounded h-full m-auto"
+					class="rounded max-h-full m-auto"
 					@load="image.src ? markValid(image) : null"
 					@click="character.images.length > 0 ? openImage(image) : undefined"
 				/>
