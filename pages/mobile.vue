@@ -36,7 +36,7 @@
 						loading="lazy"
 						:src="c.images.find((image) => image.main)!.src"
 						:alt="character.name"
-						class="h-128 mx-auto rounded"
+						class="max-h-128 h-auto mx-auto rounded"
 					/>
 				</div>
 			</section>
@@ -47,7 +47,7 @@
 					loading="lazy"
 					:src="image.src"
 					:alt="character.name"
-					class="h-128 mx-auto rounded"
+					class="max-h-128 h-auto mx-auto rounded"
 				/>
 			</section>
 		</main>

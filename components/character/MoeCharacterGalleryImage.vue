@@ -9,7 +9,6 @@
 			<MoeButton v-tooltip="'Designate as Main Image'" class="bg-gray-500 w-10 h-10" icon="fas fa-star" @click="designateMainImage" />
 			<MoeButton v-tooltip="'Remove this Image'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click="deleteImage" />
 			<MoeButton v-tooltip="'Delete all Images'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click="deleteAllImages" />
-			<MoeButton v-tooltip="'Delete Duplicates'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click="deleteDuplicates" />
 			<MoeButton v-tooltip="'Add Image'" class="bg-gray-500 w-10 h-10" icon="fas fa-plus" @click="addNewImage" />
 			<MoeButton v-tooltip="'Add Images'" class="bg-gray-500 w-10 h-10" icon="fab fa-buffer" @click="addImageMulti" />
 			<MoeButton v-tooltip="'Export all Images'" class="bg-gray-500 w-10 h-10" icon="far fa-save" @click="exportImages" />
@@ -52,16 +51,6 @@
 
 	function deleteImage() {
 		emit("delete", [props.image!]);
-	}
-
-	function deleteDuplicates() {
-		const duplicates = props.character.images.reduce((acc: CharacterImage[], value, index, self) => {
-			if (self.indexOf(value) !== index && !acc.includes(value)) {
-				acc.push(value);
-			}
-			return acc;
-		}, []);
-		emit("delete", duplicates);
 	}
 
 	function exportImages() {
