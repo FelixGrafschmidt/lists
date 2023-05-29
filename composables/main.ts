@@ -34,6 +34,11 @@ export const useMainStore = defineStore("main", {
 			const characterId = useCharacterStore().character.id;
 			await navigateTo(`/${collectionId}/${listId}/${characterId}/gallery`);
 		},
+		async toListGallery() {
+			const collectionId = useCollectionStore().collection.id;
+			const listId = useListStore().list.id;
+			await navigateTo(`/${collectionId}/${listId}/gallery`);
+		},
 
 		setMobileMode(mode: "collection" | "list" | "character") {
 			this.mobileMode = mode;

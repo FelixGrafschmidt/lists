@@ -1,5 +1,6 @@
 <template>
-	<div class="flex my-6 justify-center gap-2">
+	<div class="flex justify-center gap-2">
+		<MoeButton v-tooltip="'Open Gallery'" icon="fas fa-images" class="w-24 bg-gray-500" @click="mainStore.toListGallery" />
 		<MoeButton v-tooltip="'Add New Character'" icon="fas fa-user-plus" class="w-24 bg-gray-500" @click="addNewCharacter" />
 
 		<MoeButton
