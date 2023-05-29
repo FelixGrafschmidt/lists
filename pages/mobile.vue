@@ -32,16 +32,22 @@
 					@click="selectCharacter(c)"
 				>
 					<span class="mx-auto text-xl">{{ c.name }}</span>
-					<img :src="c.images.find((image) => image.main)!.src" :alt="character.name" class="max-h-128 mx-auto rounded" />
+					<img
+						loading="lazy"
+						:src="c.images.find((image) => image.main)!.src"
+						:alt="character.name"
+						class="h-128 mx-auto rounded"
+					/>
 				</div>
 			</section>
 			<section v-else class="flex flex-col gap-4">
 				<img
 					v-for="(image, i) in character.images"
 					:key="i"
+					loading="lazy"
 					:src="image.src"
 					:alt="character.name"
-					class="max-h-128 mx-auto rounded"
+					class="h-128 mx-auto rounded"
 				/>
 			</section>
 		</main>

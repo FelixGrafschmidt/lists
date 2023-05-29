@@ -12,7 +12,7 @@
 				<div v-for="(character, i) in list.characters" :key="i">
 					<span class="text-xl">{{ character.name }}</span>
 					<div class="flex flex-row flex-wrap gap-4 mt-2">
-						<img v-for="(image, j) in character.images" :key="j" loading="lazy" class="max-h-72 rounded" :src="image.src" />
+						<img v-for="(image, j) in character.images" :key="j" loading="lazy" class="h-72 rounded" :src="image.src" />
 					</div>
 				</div>
 			</div>

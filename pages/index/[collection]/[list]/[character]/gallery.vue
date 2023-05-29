@@ -13,8 +13,9 @@
 				<img
 					v-for="(image, i) in character.images"
 					:key="i"
+					loading="lazy"
 					:class="{ 'outline-teal outline-solid': image.main }"
-					class="max-h-72 rounded cursor-pointer"
+					class="h-72 rounded cursor-pointer"
 					:src="image.src"
 					@click="activeImage = image"
 				/>
