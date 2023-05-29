@@ -26,11 +26,19 @@
 	}
 
 	if (process.server) {
-		const [, collectionId, listId, characterId] = useRoute().fullPath.split("/");
-		if (collectionId && collectionId.match(/[\w-]{21}/)) {
-			useCookie("collectionId").value = collectionId;
-		}
-		await collectionStore.loadCollection();
+		const params = useRoute().params;
+		let { collection: collectionId, list: listId, character: characterId } = params;
+
+		collectionId = (collectionId || useCookie("collectionId").value) as string;
+		listId = listId as string;
+		characterId = characterId as string;
+
+		// if (collectionId && collectionId.match(/[\w-]{21}/)) {
+		// 	const cookie = useCookie("collectionId");
+		// 	cookie.value = collectionId;
+		// 	console.log("index.vue", cookie.value);
+		// }
+		await collectionStore.loadCollection(collectionId);
 		if (listId) {
 			if (!listId.match(/[\w-]{21}/)) {
 				collectionStore.addListToCollection(newList());

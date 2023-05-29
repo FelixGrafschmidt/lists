@@ -9,11 +9,12 @@ export const useCollectionStore = defineStore("collection", {
 		originalHash: "",
 	}),
 	actions: {
-		async loadCollection() {
+		async loadCollection(id: string) {
 			const collection = newCollection();
 			try {
 				this.collection = await $fetch("/api/load_collection", {
-					headers: { Cookie: useRequestHeaders().cookie || "" },
+					headers: { Cookie: useCookie("collectionId").value || "" },
+					query: { id },
 				});
 
 				this.originalHash = getHash(this.collection);

@@ -32,8 +32,7 @@
 	const collectionStore = useCollectionStore();
 
 	function loadCollection() {
-		useCookie("collectionId").value = id.value;
-		collectionStore.loadCollection();
+		collectionStore.loadCollection(id.value);
 		mainStore.modal = Modal.NONE;
 	}
 </script>

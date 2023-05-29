@@ -1,11 +1,11 @@
 <template>
 	<div v-if="image" class="flex flex-col items-center w-1/2 justify-between h-[80vh] gap-3">
-		<div class="h-[95%] justify-center flex">
-			<figure class="flex flex-col justify-center h-2xl">
+		<div class="h-90% justify-center flex">
+			<figure class="flex flex-col justify-center h-full">
 				<img :alt="character.name" :src="image.src || ''" class="rounded max-h-full m-auto" />
 			</figure>
 		</div>
-		<div class="flex gap-4 items-center justify-self-end h-[5%]">
+		<div class="flex gap-4 items-center justify-self-end h-10%">
 			<MoeButton v-tooltip="'Designate as Main Image'" class="bg-gray-500 w-10 h-10" icon="fas fa-star" @click="designateMainImage" />
 			<MoeButton v-tooltip="'Remove this Image'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click="deleteImage" />
 			<MoeButton v-tooltip="'Delete all Images'" class="bg-red-600 w-10 h-10" icon="fas fa-trash" @click="deleteAllImages" />

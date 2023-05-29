@@ -8,9 +8,7 @@ export default defineEventHandler(async (event) => {
 	setHeader(event, "Content-Type", "application/json");
 	event.node.res.statusCode = 404;
 
-	const cookies = parseCookies(event);
-
-	const id = cookies.collectionId;
+	const id = getQuery(event).id as string;
 
 	if (id) {
 		collection = { id, lists: [] };
@@ -19,6 +17,13 @@ export default defineEventHandler(async (event) => {
 				collection = (await kv.get(id))!;
 			}
 			event.node.res.statusCode = 200;
+			setCookie(event, "collectionId", collection.id, {
+				path: "/",
+				secure: true,
+				httpOnly: true,
+				sameSite: true,
+				maxAge: 365 * 24 * 60 * 60,
+			});
 			return collection;
 		} catch (error) {
 			console.error(error);

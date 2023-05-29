@@ -13,14 +13,11 @@
 
 <script setup lang="ts">
 	import { Modal } from "~~/models/enums/Modal";
-	import { newCharacter } from "~~/models/interfaces/Character";
 
 	const mainStore = useMainStore();
-	const characterStore = useCharacterStore();
 
-	async function addNewCharacter() {
-		characterStore.setCharacter(newCharacter());
-		await mainStore.toCharacter();
+	function addNewCharacter() {
+		mainStore.modal = Modal.NEW_CHARACTER;
 	}
 
 	function addListAttribute() {

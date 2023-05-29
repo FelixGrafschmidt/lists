@@ -64,7 +64,7 @@
 	const listStore = useListStore();
 	const characterStore = useCharacterStore();
 
-	const collection = collectionStore.collection;
+	const collection = computed(() => collectionStore.collection);
 	const { list } = storeToRefs(listStore);
 	const character = computed(() => characterStore.character);
 

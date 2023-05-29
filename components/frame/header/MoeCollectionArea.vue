@@ -21,17 +21,17 @@
 	const collectionStore = useCollectionStore();
 	const mainStore = useMainStore();
 
-	const collection = collectionStore.collection;
+	const collection = computed(() => collectionStore.collection);
 
 	function loadCollection() {
 		mainStore.modal = Modal.LOADCOLLECTION;
 	}
 	function copyID() {
-		useClipboard({ source: collection.id }).copy();
+		useClipboard({ source: collection.value.id }).copy();
 	}
 
 	function exportCollection() {
-		saveAs(new File([JSON.stringify(collection)], collection.id + ".json"));
+		saveAs(new File([JSON.stringify(collection)], collection.value.id + ".json"));
 	}
 
 	function unloadCollection() {

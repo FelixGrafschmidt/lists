@@ -5,6 +5,7 @@ import { Character, CharacterAttribute, CharacterImage, newCharacter, newCharact
 export const useCharacterStore = defineStore("character", {
 	state: () => ({
 		character: newCharacter(""),
+		unsavedCharacter: newCharacter(""),
 		activeImage: newCharacterImage(undefined),
 	}),
 	actions: {

@@ -1,7 +1,7 @@
 <template>
 	<div class="h-screen max-h-screen relative w-screen" @click.stop>
 		<client-only>
-			<vue-easy-lightbox
+			<VueEasyLightbox
 				:loop="true"
 				:visible="true"
 				:imgs="imagesRaw"
