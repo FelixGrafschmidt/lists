@@ -73,7 +73,7 @@
 	});
 
 	if (process.server) {
-		await collectionStore.loadCollection();
+		await collectionStore.loadCollection("");
 	}
 
 	function selectList(list: List) {
@@ -85,7 +85,6 @@
 		mainStore.mobileMode = "character";
 	}
 	function loadCollection() {
-		useCookie("collectionId").value = id.value;
-		collectionStore.loadCollection();
+		collectionStore.loadCollection(id.value);
 	}
 </script>

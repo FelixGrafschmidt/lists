@@ -59,11 +59,19 @@
 
 	const id = ref("");
 
-	const [, , collectionId, listId, characterId] = useRoute().fullPath.split("/");
-	if (collectionId && collectionId.match(/[\w-]{21}/)) {
-		useCookie("collectionId").value = collectionId;
+	const params = useRoute().params;
+
+	let collectionId = useCookie("collectionId").value as string;
+	let listId = "";
+	let characterId = "";
+
+	if (params.slug?.length) {
+		collectionId = (params.slug as string[]).shift()!;
+		[listId, characterId] = params.slug;
 	}
-	await collectionStore.loadCollection();
+
+	await collectionStore.loadCollection(collectionId || "");
+
 	if (listId && listId.match(/[\w-]{21}/)) {
 		const lists = collectionStore.collection.lists.filter((list) => list.id === listId);
 		if (lists.length > 0) {
@@ -102,7 +110,6 @@
 	}
 
 	function loadCollection() {
-		useCookie("collectionId").value = id.value;
-		collectionStore.loadCollection();
+		collectionStore.loadCollection(id.value);
 	}
 </script>

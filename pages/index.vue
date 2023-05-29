@@ -33,11 +33,6 @@
 		listId = listId as string;
 		characterId = characterId as string;
 
-		// if (collectionId && collectionId.match(/[\w-]{21}/)) {
-		// 	const cookie = useCookie("collectionId");
-		// 	cookie.value = collectionId;
-		// 	console.log("index.vue", cookie.value);
-		// }
 		await collectionStore.loadCollection(collectionId);
 		if (listId) {
 			if (!listId.match(/[\w-]{21}/)) {
