@@ -15,10 +15,10 @@
 </template>
 
 <script setup lang="ts">
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
-	const listStore = useListStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
+	const listStore = useList();
+	const characterStore = useCharacter();
 
 	const collection = computed(() => {
 		return collectionStore.collection;

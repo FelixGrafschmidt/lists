@@ -1,47 +1,57 @@
 import { defineStore } from "pinia";
-import { Modal } from "~~/models/enums/Modal";
+import { Modal } from "@/models/enums/Modal";
 
-export const useMainStore = defineStore("main", {
-	state: () => ({
-		loading: false,
-		modal: Modal.NONE,
-		mobileMode: "collection",
-		scrollID: "",
-		tutorial: 1,
-	}),
-	actions: {
-		async toCollection() {
-			const collectionId = useCollectionStore().collection.id;
-			await navigateTo(`/${collectionId}`);
-		},
+export const useStore = defineStore("main", () => {
+	const loading = ref(false);
+	const modal = ref(Modal.NONE);
+	const mobileMode = ref("collection");
+	const scrollID = ref("");
+	const tutorial = ref(1);
+	async function toCollection() {
+		const collectionId = useCollection().collection.id;
+		await navigateTo(`/${collectionId}`);
+	}
 
-		async toList() {
-			const collectionId = useCollectionStore().collection.id;
-			const listId = useListStore().list.id;
-			await navigateTo(`/${collectionId}/${listId}`);
-		},
+	async function toList() {
+		const collectionId = useCollection().collection.id;
+		const listId = useList().list.id;
+		await navigateTo(`/${collectionId}/${listId}`);
+	}
 
-		async toCharacter() {
-			const collectionId = useCollectionStore().collection.id;
-			const listId = useListStore().list.id;
-			const characterId = useCharacterStore().character.id;
-			await navigateTo(`/${collectionId}/${listId}/${characterId}`);
-		},
+	async function toCharacter() {
+		const collectionId = useCollection().collection.id;
+		const listId = useList().list.id;
+		const characterId = useCharacter().character.id;
+		await navigateTo(`/${collectionId}/${listId}/${characterId}`);
+	}
 
-		async toCharacterGallery() {
-			const collectionId = useCollectionStore().collection.id;
-			const listId = useListStore().list.id;
-			const characterId = useCharacterStore().character.id;
-			await navigateTo(`/${collectionId}/${listId}/${characterId}/gallery`);
-		},
-		async toListGallery() {
-			const collectionId = useCollectionStore().collection.id;
-			const listId = useListStore().list.id;
-			await navigateTo(`/${collectionId}/${listId}/gallery`);
-		},
+	async function toCharacterGallery() {
+		const collectionId = useCollection().collection.id;
+		const listId = useList().list.id;
+		const characterId = useCharacter().character.id;
+		await navigateTo(`/${collectionId}/${listId}/${characterId}/gallery`);
+	}
+	async function toListGallery() {
+		const collectionId = useCollection().collection.id;
+		const listId = useList().list.id;
+		await navigateTo(`/${collectionId}/${listId}/gallery`);
+	}
 
-		setMobileMode(mode: "collection" | "list" | "character") {
-			this.mobileMode = mode;
-		},
-	},
+	function setMobileMode(mode: "collection" | "list" | "character") {
+		mobileMode.value = mode;
+	}
+
+	return {
+		loading,
+		modal,
+		mobileMode,
+		scrollID,
+		tutorial,
+		toCollection,
+		toList,
+		toCharacter,
+		toCharacterGallery,
+		toListGallery,
+		setMobileMode,
+	};
 });

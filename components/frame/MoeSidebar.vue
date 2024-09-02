@@ -13,7 +13,7 @@
 				'scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll':
 					showScrollbars,
 			}"
-			class="max-h-[35vh] min-h-[35vh] overflow-hidden rounded"
+			class="max-h-[35vh] min-h-[35vh] overflow-hidden rounded pr-2"
 		>
 			<div
 				v-for="characteritem of list.characters"
@@ -35,7 +35,7 @@
 				'scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll':
 					showScrollbars,
 			}"
-			class="max-h-[35vh] min-h-[35vh] overflow-hidden rounded"
+			class="max-h-[35vh] min-h-[35vh] overflow-hidden rounded pr-2"
 		>
 			<div
 				v-for="listitem of collection.lists"
@@ -54,15 +54,15 @@
 <script setup lang="ts">
 	import { storeToRefs } from "pinia";
 	import { Modal } from "~/models/enums/Modal";
-	import type { Character } from "~~/models/interfaces/Character";
-	import type { List } from "~~/models/interfaces/List";
+	import type { Character } from "@/models/interfaces/Character";
+	import type { List } from "@/models/interfaces/List";
 
 	const showScrollbars = ref(false);
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
-	const listStore = useListStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
+	const listStore = useList();
+	const characterStore = useCharacter();
 
 	const collection = computed(() => collectionStore.collection);
 	const { list } = storeToRefs(listStore);

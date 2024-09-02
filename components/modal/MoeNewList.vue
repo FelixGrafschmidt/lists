@@ -19,15 +19,15 @@
 </template>
 
 <script setup lang="ts">
-	import type { List } from "~~/models/interfaces/List";
-	import { newList } from "~~/models/interfaces/List";
-	import { Modal } from "~~/models/enums/Modal";
+	import type { List } from "@/models/interfaces/List";
+	import { newList } from "@/models/interfaces/List";
+	import { Modal } from "@/models/enums/Modal";
 
 	const name = ref("");
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
-	const listStore = useListStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
+	const listStore = useList();
 
 	async function openList(list: List) {
 		listStore.setList(list);

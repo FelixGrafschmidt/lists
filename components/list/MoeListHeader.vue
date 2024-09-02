@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-	const listStore = useListStore();
+	const listStore = useList();
 
 	const sortcriterion = ref("");
 	const sortorder = ref("");

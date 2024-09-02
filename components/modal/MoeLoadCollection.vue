@@ -24,12 +24,12 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
 	const id = ref("");
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
 
 	function loadCollection() {
 		collectionStore.loadCollection(id.value);

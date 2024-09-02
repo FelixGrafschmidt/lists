@@ -65,15 +65,15 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
 	const attributes = ref(new Array<string>());
 
 	const selectedCharacters = ref(new Array<string>());
 	const characterLabels = ref();
 
-	const mainStore = useMainStore();
-	const listStore = useListStore();
+	const mainStore = useStore();
+	const listStore = useList();
 
 	const characters = listStore.list.characters;
 

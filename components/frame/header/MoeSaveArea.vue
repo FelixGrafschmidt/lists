@@ -16,14 +16,14 @@
 
 <script setup lang="ts">
 	import { getHash } from "~/models/interfaces/Collection";
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
 	const autosave = ref(false);
 	const autosaveId = ref(0);
 	const countdown = ref(60);
 
-	const collectionStore = useCollectionStore();
-	const mainStore = useMainStore();
+	const collectionStore = useCollection();
+	const mainStore = useStore();
 
 	const collection = collectionStore.collection;
 	const changes = computed(() => collectionStore.originalHash !== getHash(collection));

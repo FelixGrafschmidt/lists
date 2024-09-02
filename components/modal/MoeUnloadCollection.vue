@@ -20,11 +20,11 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
-	import { newCollection } from "~~/models/interfaces/Collection";
+	import { Modal } from "@/models/enums/Modal";
+	import { newCollection } from "@/models/interfaces/Collection";
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
 
 	function deleteCharacter() {
 		collectionStore.setCollection(newCollection());

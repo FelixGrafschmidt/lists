@@ -23,11 +23,11 @@
 </template>
 
 <script setup lang="ts">
-	import type { Character } from "~~/models/interfaces/Character";
+	import type { Character } from "@/models/interfaces/Character";
 
-	const listStore = useListStore();
-	const characterStore = useCharacterStore();
-	const mainStore = useMainStore();
+	const listStore = useList();
+	const characterStore = useCharacter();
+	const mainStore = useStore();
 
 	const characters = computed(() => listStore.list.characters);
 

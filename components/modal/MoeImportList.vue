@@ -26,15 +26,15 @@
 <script setup lang="ts">
 	import { nanoid } from "nanoid";
 	import { newList } from "~/models/interfaces/List";
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
 	const json = ref("");
 	const valid: Ref<undefined | boolean> = ref(undefined);
 
 	let list = newList();
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
 
 	function importList() {
 		list.characters.forEach((character) => {

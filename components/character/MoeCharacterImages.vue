@@ -34,13 +34,13 @@
 
 <script lang="ts" setup>
 	import pkg from "file-saver";
-	import { Modal } from "~~/models/enums/Modal";
-	import type { CharacterImage } from "~~/models/interfaces/Character";
-	import { newCharacterImage } from "~~/models/interfaces/Character";
+	import { Modal } from "@/models/enums/Modal";
+	import type { CharacterImage } from "@/models/interfaces/Character";
+	import { newCharacterImage } from "@/models/interfaces/Character";
 	const { saveAs } = pkg;
 
-	const mainStore = useMainStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const characterStore = useCharacter();
 
 	const character = characterStore.character;
 

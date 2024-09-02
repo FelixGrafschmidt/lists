@@ -1,5 +1,5 @@
 import { kv } from "@vercel/kv";
-import type { Collection } from "~~/models/interfaces/Collection";
+import type { Collection } from "@/models/interfaces/Collection";
 
 export default defineEventHandler(async (event) => {
 	const body = await readBody(event);

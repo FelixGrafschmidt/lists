@@ -42,9 +42,9 @@
 	import type { List } from "~/models/interfaces/List";
 	const { saveAs } = pkg;
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
-	const listStore = useListStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
+	const listStore = useList();
 
 	const collection = computed(() => collectionStore.collection);
 

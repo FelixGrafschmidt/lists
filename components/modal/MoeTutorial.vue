@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
 	const step = computed(() => {
 		switch (mainStore.tutorial) {
@@ -61,7 +61,7 @@
 		}
 	});
 
-	const mainStore = useMainStore();
+	const mainStore = useStore();
 
 	onMounted(() => {
 		window.localStorage.setItem("tutorial", mainStore.tutorial.toString());

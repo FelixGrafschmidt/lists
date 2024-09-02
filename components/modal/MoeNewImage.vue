@@ -30,13 +30,13 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
 	const src = ref("");
 	const valid = ref(true);
 
-	const mainStore = useMainStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const characterStore = useCharacter();
 
 	function updateUrl(event: Event) {
 		const value = (event.target as HTMLInputElement).value;

@@ -1,83 +1,98 @@
 import { nanoid } from "nanoid";
 import { defineStore } from "pinia";
-import type { Character, CharacterAttribute, CharacterImage } from "~~/models/interfaces/Character";
-import { newCharacter, newCharacterImage } from "~~/models/interfaces/Character";
+import type { Character, CharacterAttribute, CharacterImage } from "@/models/interfaces/Character";
+import { newCharacter, newCharacterImage } from "@/models/interfaces/Character";
 
-export const useCharacterStore = defineStore("character", {
-	state: () => ({
-		character: newCharacter(""),
-		unsavedCharacter: newCharacter(""),
-		activeImage: newCharacterImage(undefined),
-	}),
-	actions: {
-		setCharacter(character: Character) {
-			character.images.forEach((image) => {
-				if (image.valid === undefined) {
-					image.valid = true;
-				}
-			});
-			character.attributeArray.forEach((attribute) => {
-				if (!attribute.id) {
-					attribute.id = nanoid();
-				}
-			});
-			this.character = character;
-		},
-		resetCharacter() {
-			this.character = newCharacter(undefined);
-		},
-		changeCharacterName(name: string) {
-			this.character.name = name;
-		},
-		changeCharacterOrigin(origin: string) {
-			this.character.origin = origin;
-		},
-		addCharacterImage({ src, valid }: { src: string; valid: boolean }) {
-			if (this.character.images.filter((img) => img.src === src).length > 0) {
-				return;
+export const useCharacter = defineStore("character", () => {
+	const character = ref(newCharacter(""));
+	const unsavedCharacter = ref(newCharacter(""));
+	const activeImage = ref(newCharacterImage(undefined));
+	function setCharacter(c: Character) {
+		c.images.forEach((image) => {
+			if (image.valid === undefined) {
+				image.valid = true;
 			}
-			this.character.images.push(newCharacterImage(src, this.character.images.filter((image) => image.main).length === 0, valid));
-		},
-		designateImageAsInvalid(img: CharacterImage) {
-			this.character.images.filter((image) => image === img)[0].valid = false;
-		},
-		addAttribute() {
-			this.character.attributeArray.push({ name: "", value: "", id: nanoid() });
-		},
-		removeAttribute(attribute: CharacterAttribute) {
-			this.character.attributeArray = this.character.attributeArray.filter((attr) => attr.id !== attribute.id);
-		},
-		removeCharacterImage(index: number) {
-			if (this.character.images.length > 1 && this.character.images[index].main) {
-				this.character.images.splice(index, 1);
-				this.character.images[0].main = true;
-			} else {
-				this.character.images.splice(index, 1);
+		});
+		c.attributeArray.forEach((attribute) => {
+			if (!attribute.id) {
+				attribute.id = nanoid();
 			}
-		},
-		designateMainImage(index: number) {
-			this.character.images.forEach((image, i) => {
-				image.main = i === index;
-			});
-		},
-		setActiveImage(image: CharacterImage) {
-			this.activeImage = image;
-		},
-		nextImage() {
-			const currentIndex = this.character.images.indexOf(this.activeImage);
-			if (this.character.images.length - 1 > currentIndex) {
-				this.activeImage = this.character.images[currentIndex + 1];
-			} else {
-				this.activeImage = this.character.images[0];
-			}
-		},
-		previousImage() {
-			const currentIndex = this.character.images.indexOf(this.activeImage);
-			if (currentIndex > 0) {
-				this.activeImage = this.character.images[currentIndex - 1];
-			} else {
-				this.activeImage = this.character.images[this.character.images.length - 1];
-			}
-		},
-	},
+		});
+		character.value = c;
+	}
+	function resetCharacter() {
+		character.value = newCharacter(undefined);
+	}
+	function changeCharacterName(name: string) {
+		character.value.name = name;
+	}
+	function changeCharacterOrigin(origin: string) {
+		character.value.origin = origin;
+	}
+	function addCharacterImage({ src, valid }: { src: string; valid: boolean }) {
+		if (character.value.images.filter((img) => img.src === src).length > 0) {
+			return;
+		}
+		character.value.images.push(newCharacterImage(src, character.value.images.filter((image) => image.main).length === 0, valid));
+	}
+	function designateImageAsInvalid(img: CharacterImage) {
+		character.value.images.filter((image) => image === img)[0].valid = false;
+	}
+	function addAttribute() {
+		character.value.attributeArray.push({ name: "", value: "", id: nanoid() });
+	}
+	function removeAttribute(attribute: CharacterAttribute) {
+		character.value.attributeArray = character.value.attributeArray.filter((attr) => attr.id !== attribute.id);
+	}
+	function removeCharacterImage(index: number) {
+		if (character.value.images.length > 1 && character.value.images[index].main) {
+			character.value.images.splice(index, 1);
+			character.value.images[0].main = true;
+		} else {
+			character.value.images.splice(index, 1);
+		}
+	}
+	function designateMainImage(index: number) {
+		character.value.images.forEach((image, i) => {
+			image.main = i === index;
+		});
+	}
+	function setActiveImage(image: CharacterImage) {
+		activeImage.value = image;
+	}
+	function nextImage() {
+		const currentIndex = character.value.images.indexOf(activeImage.value);
+		if (character.value.images.length - 1 > currentIndex) {
+			activeImage.value = character.value.images[currentIndex + 1];
+		} else {
+			activeImage.value = character.value.images[0];
+		}
+	}
+	function previousImage() {
+		const currentIndex = character.value.images.indexOf(activeImage.value);
+		if (currentIndex > 0) {
+			activeImage.value = character.value.images[currentIndex - 1];
+		} else {
+			activeImage.value = character.value.images[character.value.images.length - 1];
+		}
+	}
+
+	return {
+		character,
+		unsavedCharacter,
+		activeImage,
+		setCharacter,
+		resetCharacter,
+		changeCharacterName,
+		changeCharacterOrigin,
+		addCharacterImage,
+		designateImageAsInvalid,
+		addAttribute,
+		removeAttribute,
+		removeCharacterImage,
+		designateMainImage,
+		setActiveImage,
+		nextImage,
+		previousImage,
+	};
 });

@@ -26,12 +26,12 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
 	const src = ref("");
 
-	const mainStore = useMainStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const characterStore = useCharacter();
 
 	function addImages() {
 		src.value.split("\n").forEach((url) => {

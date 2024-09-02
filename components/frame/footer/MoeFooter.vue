@@ -1,5 +1,5 @@
 <template>
-	<footer class="flex items-center justify-between bg-gray-800">
+	<footer class="h-16 flex items-center justify-between bg-gray-800">
 		<div></div>
 
 		<span>© Felix Grafschmidt {{ new Date().getFullYear() }}</span>
@@ -13,7 +13,7 @@
 				<span :class="showInfomenu ? 'fas fa-angle-down' : 'fas fa-angle-up'"></span>
 				<span>Info</span>
 			</div>
-			<MoeInfobox v-show="showInfomenu" class="absolute bottom-[2.98rem]" />
+			<MoeInfobox v-show="showInfomenu" class="absolute bottom-16" />
 		</div>
 	</footer>
 </template>

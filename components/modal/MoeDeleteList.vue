@@ -17,10 +17,10 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
 
 	const list = collectionStore.listToDelete;
 

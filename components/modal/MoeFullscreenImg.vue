@@ -33,13 +33,13 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
 	const showThumbs = ref(false);
 	const index = ref(0);
 
-	const mainStore = useMainStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const characterStore = useCharacter();
 
 	const imagesRaw = characterStore.character.images.map((img) => img.src);
 	const images = characterStore.character.images;

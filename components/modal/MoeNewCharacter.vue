@@ -38,20 +38,21 @@
 </template>
 
 <script setup lang="ts">
-	import { newCharacter } from "~~/models/interfaces/Character";
-	import { Modal } from "~~/models/enums/Modal";
+	import { newCharacter } from "@/models/interfaces/Character";
+	import { Modal } from "@/models/enums/Modal";
 
 	const name = ref("");
 	const origin = ref("");
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
-	const listStore = useListStore();
+	const mainStore = useStore();
+	const characterStore = useCharacter();
+	const collectionStore = useCollection();
+	const listStore = useList();
 
 	async function saveCharacter() {
 		const character = newCharacter(undefined, name.value, origin.value);
 		listStore.addCharacter({ character, index: -1 });
-		useCharacterStore().setCharacter(character);
+		characterStore.setCharacter(character);
 		mainStore.loading = true;
 		try {
 			await collectionStore.saveChanges();

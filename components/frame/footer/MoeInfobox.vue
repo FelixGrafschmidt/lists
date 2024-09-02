@@ -10,9 +10,9 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
-	const mainStore = useMainStore();
+	const mainStore = useStore();
 
 	function openTutorial() {
 		mainStore.tutorial = 1;

@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-	const mainStore = useMainStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const characterStore = useCharacter();
 
 	const quickImages = ref(false);
 

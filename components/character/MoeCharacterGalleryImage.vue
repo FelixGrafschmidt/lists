@@ -20,8 +20,8 @@
 	import pkg from "file-saver";
 	import { Modal } from "~/models/enums/Modal";
 	import type { Character, CharacterImage } from "~/models/interfaces/Character";
-	const mainStore = useMainStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const characterStore = useCharacter();
 	const { saveAs } = pkg;
 
 	const props = defineProps<{

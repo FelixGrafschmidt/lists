@@ -15,11 +15,11 @@
 </template>
 
 <script setup lang="ts">
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 
-	const mainStore = useMainStore();
-	const listStore = useListStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const listStore = useList();
+	const characterStore = useCharacter();
 
 	const character = characterStore.character;
 

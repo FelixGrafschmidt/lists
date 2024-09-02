@@ -27,7 +27,7 @@
 <script setup lang="ts">
 	import type { CharacterImage } from "~/models/interfaces/Character";
 
-	const characterStore = useCharacterStore();
+	const characterStore = useCharacter();
 
 	const character = characterStore.character;
 
@@ -41,6 +41,6 @@
 	}
 
 	async function toCharacter() {
-		await useMainStore().toCharacter();
+		await useStore().toCharacter();
 	}
 </script>

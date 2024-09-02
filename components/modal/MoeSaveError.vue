@@ -17,11 +17,11 @@
 
 <script setup lang="ts">
 	import pkg from "file-saver";
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 	const { saveAs } = pkg;
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
 
 	function contactUs() {
 		mainStore.modal = Modal.CONTACTUS;

@@ -58,10 +58,10 @@
 	import type { Character } from "~/models/interfaces/Character";
 	import type { List } from "~/models/interfaces/List";
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
-	const listStore = useListStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
+	const listStore = useList();
+	const characterStore = useCharacter();
 
 	const id = ref("");
 

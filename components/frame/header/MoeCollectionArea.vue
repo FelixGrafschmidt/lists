@@ -15,11 +15,11 @@
 
 <script setup lang="ts">
 	import pkg from "file-saver";
-	import { Modal } from "~~/models/enums/Modal";
+	import { Modal } from "@/models/enums/Modal";
 	const { saveAs } = pkg;
 
-	const collectionStore = useCollectionStore();
-	const mainStore = useMainStore();
+	const collectionStore = useCollection();
+	const mainStore = useStore();
 
 	const collection = computed(() => collectionStore.collection);
 

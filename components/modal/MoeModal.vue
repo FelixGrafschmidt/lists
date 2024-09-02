@@ -26,7 +26,7 @@
 <script setup lang="ts">
 	import { Modal } from "~/models/enums/Modal";
 
-	const mainStore = useMainStore();
+	const mainStore = useStore();
 
 	const show = computed(() => mainStore.modal !== Modal.NONE);
 	const component = computed(() => {

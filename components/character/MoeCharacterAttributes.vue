@@ -69,12 +69,12 @@
 <script setup lang="ts">
 	import pkg from "file-saver";
 	import { Modal } from "~/models/enums/Modal";
-	import type { CharacterAttribute } from "~~/models/interfaces/Character";
+	import type { CharacterAttribute } from "@/models/interfaces/Character";
 	const { saveAs } = pkg;
 
-	const mainStore = useMainStore();
-	const collectionStore = useCollectionStore();
-	const characterStore = useCharacterStore();
+	const mainStore = useStore();
+	const collectionStore = useCollection();
+	const characterStore = useCharacter();
 
 	const copied = ref(false);
 	const character = characterStore.character;

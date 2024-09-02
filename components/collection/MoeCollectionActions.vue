@@ -8,7 +8,7 @@
 <script setup lang="ts">
 	import { Modal } from "~/models/enums/Modal";
 
-	const mainStore = useMainStore();
+	const mainStore = useStore();
 
 	function importFromFile(): void {
 		mainStore.modal = Modal.IMPORTLIST;
