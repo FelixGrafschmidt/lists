@@ -16,7 +16,13 @@
 			<div class="w-[10%] text-center">{{ character.images.length }}</div>
 			<div class="w-[10%] text-center">{{ character.attributeArray.length }}</div>
 			<div class="w-[10%] text-center">
-				<img loading="lazy" :src="getMainImage(character).src" :alt="character.name" class="m-auto h-24 max-w-24 rounded" />
+				<img
+					loading="lazy"
+					crossorigin="anonymous"
+					:src="getMainImage(character).src"
+					:alt="character.name"
+					class="m-auto h-24 max-w-24 rounded"
+				/>
 			</div>
 		</div>
 	</div>

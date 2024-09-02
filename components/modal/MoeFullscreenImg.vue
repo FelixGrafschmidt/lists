@@ -25,7 +25,7 @@
 					class="h-full max-w-[4rem] min-w-[4rem] flex flex-col cursor-pointer justify-center"
 					@click="index = i"
 				>
-					<img :src="image.src" :alt="i.toString()" class="max-h-[6rem] object-contain" />
+					<img :src="image.src" :alt="i.toString()" crossorigin="anonymous" class="max-h-[6rem] object-contain" />
 				</figure>
 			</div>
 		</div>

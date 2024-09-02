@@ -5,7 +5,14 @@
 		@submit.prevent="src !== '' ? addImage() : undefined"
 	>
 		<figure v-if="src" class="h-[80%] max-h-[80%]">
-			<img :src="src" alt="Invalid image url" class="max-h-full" @load="valid = true" @error="valid = false" />
+			<img
+				:src="src"
+				crossorigin="anonymous"
+				alt="Invalid image url"
+				class="max-h-full"
+				@load="valid = true"
+				@error="valid = false"
+			/>
 		</figure>
 		<label class="h-[10%]">
 			<span>Image URL</span>

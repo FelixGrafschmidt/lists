@@ -2,7 +2,7 @@
 	<div v-if="image" class="h-[80vh] w-1/2 flex flex-col items-center justify-between gap-3">
 		<div class="h-90% flex justify-center">
 			<figure class="h-full flex flex-col justify-center">
-				<img :alt="character.name" :src="image.src || ''" class="m-auto max-h-full rounded" />
+				<img :alt="character.name" :src="image.src || ''" crossorigin="anonymous" class="m-auto max-h-full rounded" />
 			</figure>
 		</div>
 		<div class="h-10% flex items-center justify-self-end gap-4">
