@@ -1,13 +1,13 @@
 <template>
-	<div class="grid wrapper">
-		<MoeHeader class="border-b border-teal-700 header" />
-		<MoeSidebar class="border-r border-teal-700 sidebar" />
+	<div class="wrapper grid">
+		<MoeHeader class="header border-b border-teal-700" />
+		<MoeSidebar class="sidebar border-r border-teal-700" />
 		<div
-			class="scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-auto content"
+			class="content overflow-auto scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 scrollbar scrollbar-rounded"
 		>
 			<NuxtPage />
 		</div>
-		<MoeFooter class="w-full border-t border-teal-700 footer" />
+		<MoeFooter class="footer w-full border-t border-teal-700" />
 		<MoeModal />
 	</div>
 </template>
@@ -25,7 +25,7 @@
 		await navigateTo("/mobile" + useRoute().path);
 	}
 
-	if (process.server) {
+	if (import.meta.server) {
 		const params = useRoute().params;
 		let { collection: collectionId, list: listId, character: characterId } = params;
 

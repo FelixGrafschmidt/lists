@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import hash from "object-hash";
-import { List } from "./List";
+import type { List } from "./List";
 
 export interface Collection {
 	id: string;

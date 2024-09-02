@@ -1,6 +1,6 @@
 <template>
 	<form
-		class="justify-end rounded-2xl bg-gray-800 text-gray-100 flex flex-col relative m-auto py-10 w-[40vw] items-center"
+		class="relative m-auto w-[40vw] flex flex-col items-center justify-end rounded-2xl bg-gray-800 py-10 text-gray-100"
 		@click.stop
 		@submit.prevent="src !== '' ? addImages() : undefined"
 	>
@@ -10,14 +10,14 @@
 				v-model="src"
 				max-height="500"
 				type="text"
-				class="resize-none block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80 scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll'"
+				class="overflow-y-scroll' mb-8 block w-80 resize-none border rounded-lg bg-gray-300 text-gray-900 scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 focus:outline-none scrollbar scrollbar-rounded"
 			/>
 		</label>
 		<div class="h-[10%]">
-			<MoeButton :class="{ 'cursor-not-allowed': src === '' }" class="mt-4 mx-auto bg-gray-500">Add Images</MoeButton>
+			<MoeButton :class="{ 'cursor-not-allowed': src === '' }" class="mx-auto mt-4 bg-gray-500">Add Images</MoeButton>
 		</div>
 		<div
-			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
+			class="absolute right-1 top-1 h-6 w-6 flex cursor-pointer items-center justify-center rounded-2xl bg-red-600 text-gray-900 hover:bg-red-700"
 			@click="mainStore.modal = Modal.NONE"
 		>
 			<div class="fas fa-times"></div>

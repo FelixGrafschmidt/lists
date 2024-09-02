@@ -1,6 +1,6 @@
 <template>
 	<form
-		class="rounded-2xl bg-gray-800 text-gray-100 0 flex flex-col relative m-auto pb-10 sm:pt-5 items-center sm:max-h-[80vh] sm:w-[40vw]"
+		class="0 relative m-auto flex flex-col items-center rounded-2xl bg-gray-800 pb-10 text-gray-100 sm:max-h-[80vh] sm:w-[40vw] sm:pt-5"
 		@submit.prevent="id !== '' ? loadCollection() : undefined"
 		@click.stop
 	>
@@ -9,13 +9,13 @@
 			<input
 				v-model="id"
 				type="text"
-				class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 mb-8 mt-2 mx-2 sm:w-80"
+				class="mx-2 mb-8 mt-2 block h-8 border rounded-lg bg-gray-300 text-gray-900 sm:w-80 focus:outline-none"
 			/>
 		</label>
 
 		<MoeButton :class="{ 'cursor-not-allowed': id === '' }" class="m-auto bg-gray-500">Load Collection</MoeButton>
 		<div
-			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900h-6 w-6 rounded-2xl cursor-pointer absolute"
+			class="text-gray-900h-6 absolute right-1 top-1 w-6 flex cursor-pointer items-center justify-center rounded-2xl bg-red-600 hover:bg-red-700"
 			@click="mainStore.modal = Modal.NONE"
 		>
 			<div class="fas fa-times"></div>

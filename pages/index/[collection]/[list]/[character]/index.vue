@@ -1,8 +1,8 @@
 <template>
-	<div class="flex relative flex-row justify-center gap-4 p-6 gap-2" @click="quickImage">
+	<div class="relative flex flex-row justify-center gap-2 gap-4 p-6" @click="quickImage">
 		<MoeButton
 			v-tooltip="'Back to Character List'"
-			class="absolute top-6 left-6 h-8 w-8 -mt-6 -ml-6 rounded-none rounded-br-1 !p-0 border border-teal-700"
+			class="absolute left-6 top-6 h-8 w-8 border border-teal-700 rounded-none rounded-br-1 -ml-6 -mt-6 !p-0"
 			icon="fas fa-arrow-left"
 			@click="backToCharacterList"
 		/>

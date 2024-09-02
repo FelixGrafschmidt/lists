@@ -1,17 +1,17 @@
 <template>
-	<div class="flex flex-row relative px-6">
+	<div class="relative flex flex-row px-6">
 		<MoeButton
 			v-tooltip="'Back to List'"
-			class="!p-0 h-8 w-8 top-0 -ml-6 left-0 sticky rounded-none rounded-br-1 border border-teal-700"
+			class="sticky left-0 top-0 h-8 w-8 border border-teal-700 rounded-none rounded-br-1 -ml-6 !p-0"
 			icon="fas fa-arrow-left"
 			@click="useMainStore().toList()"
 		/>
 
-		<section class="w-2/3 py-6 px-2">
+		<section class="w-2/3 px-2 py-6">
 			<div class="flex flex-row flex-wrap gap-4">
 				<div v-for="(character, i) in list.characters" :key="i">
 					<span class="text-xl">{{ character.name }}</span>
-					<div class="flex flex-row flex-wrap gap-4 mt-2">
+					<div class="mt-2 flex flex-row flex-wrap gap-4">
 						<img v-for="(image, j) in character.images" :key="j" loading="lazy" class="h-72 rounded" :src="image.src" />
 					</div>
 				</div>

@@ -2,8 +2,9 @@ import { nanoid } from "nanoid";
 import { defineStore } from "pinia";
 import { Sortcriterion } from "~~/models/enums/Sortcriterion";
 import { Sortorder } from "~~/models/enums/Sortorder";
-import { Character } from "~~/models/interfaces/Character";
-import { List, newList } from "~~/models/interfaces/List";
+import type { Character } from "~~/models/interfaces/Character";
+import type { List } from "~~/models/interfaces/List";
+import { newList } from "~~/models/interfaces/List";
 
 export const useListStore = defineStore("list", {
 	state: () => ({

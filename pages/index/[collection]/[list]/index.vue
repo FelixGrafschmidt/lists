@@ -1,8 +1,8 @@
 <template>
-	<div class="flex flex-col relative">
+	<div class="relative flex flex-col">
 		<MoeListHeader />
 		<MoeListCharacters />
-		<MoeListActions class="sticky bottom-0 py-4 bg-gray-900 border-t border-gray-600" />
+		<MoeListActions class="sticky bottom-0 border-t border-gray-600 bg-gray-900 py-4" />
 	</div>
 </template>
 

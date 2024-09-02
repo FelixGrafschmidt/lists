@@ -1,13 +1,13 @@
 <template>
-	<div class="flex flex-row relative px-6">
+	<div class="relative flex flex-row px-6">
 		<MoeButton
 			v-tooltip="'Back to Character'"
-			class="!p-0 h-8 w-8 top-0 -ml-6 left-0 sticky rounded-none rounded-br-1 border border-teal-700"
+			class="sticky left-0 top-0 h-8 w-8 border border-teal-700 rounded-none rounded-br-1 -ml-6 !p-0"
 			icon="fas fa-arrow-left"
 			@click="toCharacter"
 		/>
 
-		<MoeCharacterGalleryImage :character="character" :image="activeImage" class="sticky top-0 px-6 w-1/3 pt-6" @delete="deleteImages" />
+		<MoeCharacterGalleryImage :character="character" :image="activeImage" class="sticky top-0 w-1/3 px-6 pt-6" @delete="deleteImages" />
 		<section class="w-2/3 py-6">
 			<div class="flex flex-row flex-wrap gap-4">
 				<img
@@ -15,7 +15,7 @@
 					:key="i"
 					loading="lazy"
 					:class="{ 'outline-teal outline-solid': image.main }"
-					class="h-72 rounded cursor-pointer"
+					class="h-72 cursor-pointer rounded"
 					:src="image.src"
 					@click="activeImage = image"
 				/>
@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-	import { CharacterImage } from "~/models/interfaces/Character";
+	import type { CharacterImage } from "~/models/interfaces/Character";
 
 	const characterStore = useCharacterStore();
 

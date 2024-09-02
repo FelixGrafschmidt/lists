@@ -1,65 +1,65 @@
 <template>
-	<form class="w-1/2 flex flex-col h-80vh justify-between" @submit.prevent="saveChanges">
+	<form class="h-80vh w-1/2 flex flex-col justify-between" @submit.prevent="saveChanges">
 		<div
-			class="h-85% flex flex-col items-center scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-auto px-8"
+			class="h-85% flex flex-col items-center overflow-auto px-8 scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 scrollbar scrollbar-rounded"
 		>
-			<div class="pb-2 w-full">
+			<div class="w-full pb-2">
 				<label>
 					Name
 					<input
 						:value="character.name"
 						type="text"
-						class="block px-1 rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+						class="block h-8 w-full border rounded-lg bg-gray-300 px-1 text-gray-900 focus:outline-none"
 						@input="changeName"
 					/>
 				</label>
 			</div>
-			<div class="py-2 w-full">
+			<div class="w-full py-2">
 				<label>
 					Origin
 					<input
 						:value="character.origin"
 						type="text"
-						class="block px-1 rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+						class="block h-8 w-full border rounded-lg bg-gray-300 px-1 text-gray-900 focus:outline-none"
 						@input="changeOrigin"
 					/>
 				</label>
 			</div>
-			<div v-for="(attribute, i) in character.attributeArray" :key="i" class="py-2 w-full relative">
+			<div v-for="(attribute, i) in character.attributeArray" :key="i" class="relative w-full py-2">
 				<span
 					v-tooltip="'Remove Attribute'"
-					class="items-center justify-center top-9 right-0 flex bg-red-600 hover:bg-red-700 text-gray-900 h-8 w-8 rounded-lg cursor-pointer absolute fas fa-times"
+					class="fas fa-times absolute right-0 top-9 h-8 w-8 flex cursor-pointer items-center justify-center rounded-lg bg-red-600 text-gray-900 hover:bg-red-700"
 					@click.prevent="removeAttribute(attribute)"
-				></span>
+				/>
 				<label>
 					<input
 						v-model="attribute.name"
 						type="text"
-						class="h-6 p-1 block border border-teal-500 rounded text-gray-100 bg-gray-900 focus:outline-none w-32 mb-1 pl-0"
+						class="mb-1 block h-6 w-32 border border-teal-500 rounded bg-gray-900 p-1 pl-0 text-gray-100 focus:outline-none"
 					/>
 					<input
 						v-model="attribute.value"
 						type="text"
-						class="block px-1 rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+						class="block h-8 w-full border rounded-lg bg-gray-300 px-1 text-gray-900 focus:outline-none"
 					/>
 				</label>
 			</div>
-			<div class="flex justify-center mt-8">
-				<MoeButton icon="fas fa-plus" class="py-2 w-48 bg-gray-500 h-10" @click.prevent="addAttribute">Add Attribute</MoeButton>
+			<div class="mt-8 flex justify-center">
+				<MoeButton icon="fas fa-plus" class="h-10 w-48 bg-gray-500 py-2" @click.prevent="addAttribute">Add Attribute</MoeButton>
 			</div>
 		</div>
-		<div class="flex gap-2 justify-center h-7% items-center">
-			<MoeButton icon="fas fa-save" class="py-2 h-10 w-auto bg-green-600 text-color-unset"> Save Character </MoeButton>
-			<MoeButton icon="fas fa-trash" class="py-2 h-10 w-auto bg-red-600 text-color-unset" @click.prevent="deleteCharacter">
+		<div class="h-7% flex items-center justify-center gap-2">
+			<MoeButton icon="fas fa-save" class="text-color-unset h-10 w-auto bg-green-600 py-2"> Save Character </MoeButton>
+			<MoeButton icon="fas fa-trash" class="text-color-unset h-10 w-auto bg-red-600 py-2" @click.prevent="deleteCharacter">
 				Delete character
 			</MoeButton>
 			<div v-if="copied">
-				<MoeButton icon="fas fa-trash" class="py-2 h-10 w-auto bg-gray-500" @click.prevent="copyCharacter"> Copied! </MoeButton>
+				<MoeButton icon="fas fa-trash" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="copyCharacter"> Copied! </MoeButton>
 			</div>
-			<MoeButton v-else icon="fas fa-copy" class="py-2 h-10 w-auto bg-gray-500" @click.prevent="copyCharacter"
+			<MoeButton v-else icon="fas fa-copy" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="copyCharacter"
 				>Copy Character</MoeButton
 			>
-			<MoeButton icon="fas fa-file-export" class="py-2 h-10 w-auto bg-gray-500" @click.prevent="exportCharacter"
+			<MoeButton icon="fas fa-file-export" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="exportCharacter"
 				>Export Character</MoeButton
 			>
 		</div>
@@ -69,7 +69,7 @@
 <script setup lang="ts">
 	import pkg from "file-saver";
 	import { Modal } from "~/models/enums/Modal";
-	import { CharacterAttribute } from "~~/models/interfaces/Character";
+	import type { CharacterAttribute } from "~~/models/interfaces/Character";
 	const { saveAs } = pkg;
 
 	const mainStore = useMainStore();
@@ -85,6 +85,8 @@
 			await collectionStore.saveChanges();
 			mainStore.modal = Modal.NONE;
 		} catch (error) {
+			console.error(error);
+
 			mainStore.modal = Modal.SAVEERROR;
 		} finally {
 			mainStore.loading = false;

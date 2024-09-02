@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { defineStore } from "pinia";
-import { Character, CharacterAttribute, CharacterImage, newCharacter, newCharacterImage } from "~~/models/interfaces/Character";
+import type { Character, CharacterAttribute, CharacterImage } from "~~/models/interfaces/Character";
+import { newCharacter, newCharacterImage } from "~~/models/interfaces/Character";
 
 export const useCharacterStore = defineStore("character", {
 	state: () => ({

@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
-import { Collection, getHash, newCollection } from "~~/models/interfaces/Collection";
-import { List, newList } from "~~/models/interfaces/List";
+import type { Collection } from "~~/models/interfaces/Collection";
+import { getHash, newCollection } from "~~/models/interfaces/Collection";
+import type { List } from "~~/models/interfaces/List";
+import { newList } from "~~/models/interfaces/List";
 
 export const useCollectionStore = defineStore("collection", {
 	state: () => ({
@@ -27,7 +29,7 @@ export const useCollectionStore = defineStore("collection", {
 		},
 		async saveChanges() {
 			try {
-				await $fetch<void>("/api/save_collection", {
+				await $fetch("/api/save_collection", {
 					method: "POST",
 					body: this.collection,
 					headers: { "Content-Type": "application/json" },

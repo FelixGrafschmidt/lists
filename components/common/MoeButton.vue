@@ -1,6 +1,6 @@
 <template>
 	<button
-		class="p-2 rounded-md flex flex-row gap-1 justify-center items-center text-sm font-medium hover:text-teal-400"
+		class="flex flex-row items-center justify-center gap-1 rounded-md p-2 text-sm font-medium hover:text-teal-400"
 		@click="$emit('click', $event)"
 	>
 		<i v-if="icon !== ''" :class="icon"></i>
@@ -13,6 +13,6 @@
 		icon: { type: String, default: "" },
 	});
 	defineEmits<{
-		(e: "click"): void;
+		(e: "click", event: MouseEvent): void;
 	}>();
 </script>

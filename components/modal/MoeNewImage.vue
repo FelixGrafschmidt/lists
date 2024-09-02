@@ -1,6 +1,6 @@
 <template>
 	<form
-		class="justify-end rounded-2xl bg-gray-800 text-gray-100 flex flex-col relative m-auto py-10 h-[80vh] w-[40vw] items-center"
+		class="relative m-auto h-[80vh] w-[40vw] flex flex-col items-center justify-end rounded-2xl bg-gray-800 py-10 text-gray-100"
 		@click.stop
 		@submit.prevent="src !== '' ? addImage() : undefined"
 	>
@@ -12,16 +12,16 @@
 			<input
 				:value="src"
 				type="text"
-				class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 mb-8 w-80"
+				class="mb-8 block h-8 w-80 border rounded-lg bg-gray-300 text-gray-900 focus:outline-none"
 				@blur="updateUrl"
 			/>
 		</label>
 		<p v-if="!valid" class="text-red-600">Invalid image url</p>
 		<div class="h-[10%]">
-			<MoeButton :class="{ 'cursor-not-allowed': src === '' }" class="mt-4 mx-auto bg-gray-500">Add Image</MoeButton>
+			<MoeButton :class="{ 'cursor-not-allowed': src === '' }" class="mx-auto mt-4 bg-gray-500">Add Image</MoeButton>
 		</div>
 		<div
-			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
+			class="absolute right-1 top-1 h-6 w-6 flex cursor-pointer items-center justify-center rounded-2xl bg-red-600 text-gray-900 hover:bg-red-700"
 			@click="mainStore.modal = Modal.NONE"
 		>
 			<div class="fas fa-times"></div>

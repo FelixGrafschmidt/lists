@@ -36,13 +36,20 @@ export default defineNuxtConfig({
 			title: "Character List Manager",
 		},
 	},
-	modules: ["@pinia/nuxt", "@unocss/nuxt", "nuxt-icon", "@vueuse/nuxt", "@nuxtjs/device"],
+	modules: ["@pinia/nuxt", "@unocss/nuxt", "nuxt-icon", "@vueuse/nuxt", "@nuxt/eslint", "nuxt-security", "@nuxtjs/device"],
+
 	typescript: { strict: true },
 
-	components: [
-		{
-			path: "~/components",
-			pathPrefix: false,
+	security: {
+		headers: {
+			crossOriginEmbedderPolicy: process.env.NODE_ENV === "development" ? "unsafe-none" : "require-corp",
 		},
-	],
+	},
+
+	// components: [
+	// 	{
+	// 		path: "~/components",
+	// 		pathPrefix: false,
+	// 	},
+	// ],
 });

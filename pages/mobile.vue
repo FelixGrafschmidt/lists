@@ -1,5 +1,5 @@
 <template>
-	<div class="pb-4 flex flex-col gap-4 min-h-screen relative !h-full">
+	<div class="relative min-h-screen flex flex-col gap-4 pb-4 !h-full">
 		<MoeMobileHeader class="sticky top-0" />
 		<main class="mx-auto">
 			<section v-if="mode === 'collection'">
@@ -8,7 +8,7 @@
 				</template>
 				<form
 					v-else
-					class="rounded-2xl bg-gray-800 text-gray-100 flex flex-col relative m-auto pb-10 sm:pt-5 items-center"
+					class="relative m-auto flex flex-col items-center rounded-2xl bg-gray-800 pb-10 text-gray-100 sm:pt-5"
 					@submit.prevent="id !== '' ? loadCollection() : undefined"
 					@click.stop
 				>
@@ -17,7 +17,7 @@
 						<input
 							v-model="id"
 							type="text"
-							class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 mb-8 mt-2 mx-2"
+							class="mx-2 mb-8 mt-2 block h-8 border rounded-lg bg-gray-300 text-gray-900 focus:outline-none"
 						/>
 					</label>
 
@@ -28,7 +28,7 @@
 				<div
 					v-for="(c, i) in list.characters"
 					:key="i"
-					class="flex flex-col justify-center gap-2 cursor-pointer"
+					class="flex flex-col cursor-pointer justify-center gap-2"
 					@click="selectCharacter(c)"
 				>
 					<span class="mx-auto text-xl">{{ c.name }}</span>
@@ -36,7 +36,7 @@
 						loading="lazy"
 						:src="c.images.find((image) => image.main)!.src"
 						:alt="character.name"
-						class="max-h-128 h-auto mx-auto rounded"
+						class="mx-auto h-auto max-h-128 rounded"
 					/>
 				</div>
 			</section>
@@ -47,7 +47,7 @@
 					loading="lazy"
 					:src="image.src"
 					:alt="character.name"
-					class="max-h-128 h-auto mx-auto rounded"
+					class="mx-auto h-auto max-h-128 rounded"
 				/>
 			</section>
 		</main>
@@ -55,8 +55,8 @@
 </template>
 
 <script setup lang="ts">
-	import { Character } from "~/models/interfaces/Character";
-	import { List } from "~/models/interfaces/List";
+	import type { Character } from "~/models/interfaces/Character";
+	import type { List } from "~/models/interfaces/List";
 
 	const mainStore = useMainStore();
 	const collectionStore = useCollectionStore();

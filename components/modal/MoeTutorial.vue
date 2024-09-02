@@ -1,8 +1,8 @@
 <template>
-	<div class="w-[80vw] rounded-2xl bg-gray-800 text-gray-100 grid relative m-auto pb-10 max-w-4xl px-10" @click.stop>
-		<div class="text-3xl pt-8 pb-10 self-center text-center h-12">Tutorial</div>
-		<div class="flex justify-center w-full">
-			<div class="w-36 bg-gray-600 h-2 rounded flex">
+	<div class="relative grid m-auto max-w-4xl w-[80vw] rounded-2xl bg-gray-800 px-10 pb-10 text-gray-100" @click.stop>
+		<div class="h-12 self-center pb-10 pt-8 text-center text-3xl">Tutorial</div>
+		<div class="w-full flex justify-center">
+			<div class="h-2 w-36 flex rounded bg-gray-600">
 				<div
 					v-for="index in mainStore.tutorial"
 					:key="index"
@@ -14,7 +14,7 @@
 				></div>
 			</div>
 		</div>
-		<div class="flex justify-betwee">
+		<div class="justify-betwee flex">
 			<MoeButton
 				:class="{
 					'pointer-events-none cursor-not-allowed bg-gray-500': mainStore.tutorial === 1,
@@ -26,9 +26,9 @@
 			/>
 			<!-- TODO: Why does this not work anymore??? -->
 			<!-- <component :is="step" class="h-72 pt-8 px-8 w-full" /> -->
-			<MoeTutorial1 v-if="step === 'MoeTutorial1'" class="h-72 px-8 pt-8 w-full" />
-			<MoeTutorial2 v-else-if="step === 'MoeTutorial2'" class="h-72 pt-8 px-8 w-full" />
-			<MoeTutorial3 v-else-if="step === 'MoeTutorial3'" class="h-72 pt-8 px-8 w-full" />
+			<MoeTutorial1 v-if="step === 'MoeTutorial1'" class="h-72 w-full px-8 pt-8" />
+			<MoeTutorial2 v-else-if="step === 'MoeTutorial2'" class="h-72 w-full px-8 pt-8" />
+			<MoeTutorial3 v-else-if="step === 'MoeTutorial3'" class="h-72 w-full px-8 pt-8" />
 			<MoeButton
 				:class="{
 					'pointer-events-none cursor-not-allowed bg-gray-500': mainStore.tutorial === 3,
@@ -39,7 +39,7 @@
 				@click="next"
 			/>
 		</div>
-		<div class="flex justify-center h-8">
+		<div class="h-8 flex justify-center">
 			<MoeButton v-show="mainStore.tutorial === 3" class="bg-gray-700" @click="newList">Create New List</MoeButton>
 		</div>
 	</div>
@@ -56,6 +56,8 @@
 				return "MoeTutorial2";
 			case 3:
 				return "MoeTutorial3";
+			default:
+				return "MoeTutorial1";
 		}
 	});
 

@@ -1,6 +1,6 @@
 <template>
-	<div class="flex sticky w-full top-0 bg-gray-600 rounded font-extrabold text-lg select-none">
-		<div class="w-[35%] border-gray-800 border-r-2 py-2 text-center cursor-pointer" @click="listStore.sortListByName()">
+	<div class="sticky top-0 w-full flex select-none rounded bg-gray-600 text-lg font-extrabold">
+		<div class="w-[35%] cursor-pointer border-r-2 border-gray-800 py-2 text-center" @click="listStore.sortListByName()">
 			Name
 			<div
 				v-if="sortcriterion === 'NAME'"
@@ -11,7 +11,7 @@
 				class="fas"
 			></div>
 		</div>
-		<div class="w-[35%] border-gray-800 border-r-2 border-l-2 py-2 text-center cursor-pointer" @click="listStore.sortListByOrigin()">
+		<div class="w-[35%] cursor-pointer border-l-2 border-r-2 border-gray-800 py-2 text-center" @click="listStore.sortListByOrigin()">
 			Origin
 			<div
 				v-if="sortcriterion === 'ORIGIN'"
@@ -22,7 +22,7 @@
 				class="fas"
 			></div>
 		</div>
-		<div class="w-[10%] border-gray-800 border-r-2 border-l-2 py-2 text-center cursor-pointer" @click="listStore.sortListByImages()">
+		<div class="w-[10%] cursor-pointer border-l-2 border-r-2 border-gray-800 py-2 text-center" @click="listStore.sortListByImages()">
 			Images
 			<div
 				v-if="sortcriterion === 'IMAGES'"
@@ -33,8 +33,8 @@
 				class="fas"
 			></div>
 		</div>
-		<div class="w-[10%] border-gray-800 border-r-2 border-l-2 py-2 text-center">Attributes</div>
-		<div class="w-[10%] border-gray-800 border-l-2 py-2 text-center">Main Image</div>
+		<div class="w-[10%] border-l-2 border-r-2 border-gray-800 py-2 text-center">Attributes</div>
+		<div class="w-[10%] border-l-2 border-gray-800 py-2 text-center">Main Image</div>
 	</div>
 </template>
 

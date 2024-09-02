@@ -1,1 +1,1 @@
-declare module '@windicss/plugin-scrollbar'
+declare module "@windicss/plugin-scrollbar";

@@ -1,6 +1,6 @@
 <template>
-	<aside class="bg-gray-700 py-4 px-4" @mouseenter="captureScroll" @mouseleave="releaseScroll">
-		<h3 class="text-lg max-w-[15rem] whitespace-nowrap truncate">
+	<aside class="bg-gray-700 px-4 py-4" @mouseenter="captureScroll" @mouseleave="releaseScroll">
+		<h3 class="max-w-[15rem] truncate whitespace-nowrap text-lg">
 			<template v-if="list.id">
 				<span class="cursor-pointer" @click="navigateToList(list)">{{ list.name }}</span>
 			</template>
@@ -13,20 +13,20 @@
 				'scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll':
 					showScrollbars,
 			}"
-			class="rounded min-h-[35vh] max-h-[35vh] overflow-hidden"
+			class="max-h-[35vh] min-h-[35vh] overflow-hidden rounded"
 		>
 			<div
 				v-for="characteritem of list.characters"
 				:key="characteritem.id"
 				:class="{ 'bg-teal-500 hover:bg-teal-400': character.id && characteritem.id === character.id }"
-				class="hover:bg-gray-800 rounded pl-6 py-1 cursor-pointer"
+				class="cursor-pointer rounded py-1 pl-6 hover:bg-gray-800"
 				role="link"
 				@click="navigateToCharacter(characteritem)"
 			>
 				{{ characteritem.name }}
 			</div>
 		</div>
-		<h3 class="text-lg flex flex-row gap-2 items-baseline pt-4">
+		<h3 class="flex flex-row items-baseline gap-2 pt-4 text-lg">
 			<span class="cursor-pointer" @click="toCollection">Lists</span>
 			<MoeButton icon="fas fa-plus" @click="addList">Add</MoeButton>
 		</h3>
@@ -35,13 +35,13 @@
 				'scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll':
 					showScrollbars,
 			}"
-			class="rounded min-h-[35vh] max-h-[35vh] overflow-hidden"
+			class="max-h-[35vh] min-h-[35vh] overflow-hidden rounded"
 		>
 			<div
 				v-for="listitem of collection.lists"
 				:key="listitem.id"
 				:class="{ 'bg-teal-500 hover:bg-teal-400': listitem.id === list.id }"
-				class="hover:bg-gray-800 rounded pl-6 py-1 cursor-pointer"
+				class="cursor-pointer rounded py-1 pl-6 hover:bg-gray-800"
 				role="link"
 				@click="navigateToList(listitem)"
 			>
@@ -54,8 +54,8 @@
 <script setup lang="ts">
 	import { storeToRefs } from "pinia";
 	import { Modal } from "~/models/enums/Modal";
-	import { Character } from "~~/models/interfaces/Character";
-	import { List } from "~~/models/interfaces/List";
+	import type { Character } from "~~/models/interfaces/Character";
+	import type { List } from "~~/models/interfaces/List";
 
 	const showScrollbars = ref(false);
 

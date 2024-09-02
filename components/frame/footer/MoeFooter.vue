@@ -1,15 +1,15 @@
 <template>
-	<footer class="flex bg-gray-800 justify-between items-center">
+	<footer class="flex items-center justify-between bg-gray-800">
 		<div></div>
 
 		<span>© Felix Grafschmidt {{ new Date().getFullYear() }}</span>
 
 		<div
-			class="w-[8rem] cursor-pointer relative h-full items-center flex"
+			class="relative h-full w-[8rem] flex cursor-pointer items-center"
 			@mouseenter="showInfomenu = true"
 			@mouseleave="showInfomenu = false"
 		>
-			<div class="flex gap-2 items-center mx-auto justify-center">
+			<div class="mx-auto flex items-center justify-center gap-2">
 				<span :class="showInfomenu ? 'fas fa-angle-down' : 'fas fa-angle-up'"></span>
 				<span>Info</span>
 			</div>

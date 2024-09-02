@@ -1,7 +1,7 @@
 <template>
-	<nav class="bg-gray-800 pl-2 w-screen flex items-center justify-between gap-3" role="navigation" aria-label="main navigation">
-		<div class="gap-3 flex items-center justify-start">
-			<NuxtLink class="text-xl w-72 cursor-pointer title" role="link" to="/"> Character List Manager </NuxtLink>
+	<nav class="w-screen flex items-center justify-between gap-3 bg-gray-800 pl-2" role="navigation" aria-label="main navigation">
+		<div class="flex items-center justify-start gap-3">
+			<NuxtLink class="title w-72 cursor-pointer text-xl" role="link" to="/"> Character List Manager </NuxtLink>
 			<MoeSaveArea />
 		</div>
 		<MoeCollectionArea class="justify-self-end" />

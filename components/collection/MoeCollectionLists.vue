@@ -10,15 +10,15 @@
 				'bg-gray-700': index % 2 === 0,
 				'bg-teal-500  hover:bg-teal-400': list.id === listStore.list.id,
 			}"
-			class="flex h-24 items-center rounded cursor-pointer my-1"
+			class="my-1 h-24 flex cursor-pointer items-center rounded"
 			@click="openList(list)"
 		>
 			<div class="w-2/5 text-center">{{ list.id }}</div>
-			<form class="w-2/5 text-center relative">
+			<form class="relative w-2/5 text-center">
 				<input
 					:value="list.name"
 					type="text"
-					class="rounded-lg border text-gray-900 bg-gray-300 focus:outline-none w-full p-2"
+					class="w-full border rounded-lg bg-gray-300 p-2 text-gray-900 focus:outline-none"
 					@click.stop
 					@input="updateListname(list.id, $event)"
 				/>
@@ -26,7 +26,7 @@
 			<div class="w-1/6 text-center">
 				{{ list.characters.length !== 1 ? `${list.characters.length} entries` : "one Entry" }}
 			</div>
-			<div class="w-1/6 text-center flex gap-2 justify-center">
+			<div class="w-1/6 flex justify-center gap-2 text-center">
 				<!-- <MoeButton :text="'Share'" class="w-16" color="bg-gray-600 m-1" /> -->
 				<MoeButton v-tooltip="'Export'" class="w-10 bg-gray-500" icon="fas fa-file-export" @click.stop="exportList(list)" />
 				<MoeButton v-tooltip="'Delete'" class="w-10 bg-red-600" icon="fas fa-trash" @click.stop="deleteList(list)" />
@@ -39,7 +39,7 @@
 <script setup lang="ts">
 	import pkg from "file-saver";
 	import { Modal } from "~/models/enums/Modal";
-	import { List } from "~/models/interfaces/List";
+	import type { List } from "~/models/interfaces/List";
 	const { saveAs } = pkg;
 
 	const mainStore = useMainStore();

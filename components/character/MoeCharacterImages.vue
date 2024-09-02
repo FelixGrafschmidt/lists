@@ -1,31 +1,31 @@
 <template>
-	<div class="flex flex-col items-center w-1/2 justify-between h-80vh">
-		<div class="h-85% justify-center flex">
-			<figure class="flex flex-col justify-center h-full" :class="{ 'cursor-pointer': character.images.length > 0 }">
+	<div class="h-80vh w-1/2 flex flex-col items-center justify-between">
+		<div class="h-85% flex justify-center">
+			<figure class="h-full flex flex-col justify-center" :class="{ 'cursor-pointer': character.images.length > 0 }">
 				<img
 					:alt="character.name"
 					:src="image.src || ''"
-					class="rounded max-h-full m-auto"
+					class="m-auto max-h-full rounded"
 					@load="image.src ? markValid(image) : null"
 					@click="character.images.length > 0 ? openImage(image) : undefined"
 				/>
 			</figure>
 		</div>
 		<div class="h-3%">
-			<div v-if="character.images.length > 0" class="hover:text-teal cursor-pointer text-sm" @click="toGallery">
+			<div v-if="character.images.length > 0" class="cursor-pointer text-sm hover:text-teal" @click="toGallery">
 				Show all ({{ character.images.length }})
 			</div>
 		</div>
-		<div class="flex flex-row gap-2 justify-center items-center h-7%">
-			<MoeButton class="bg-gray-500 w-auto h-10" icon="fas fa-plus" @click="addNewImage"> Add Image </MoeButton>
-			<MoeButton class="bg-gray-500 w-auto h-10" icon="fab fa-buffer" @click="addImageMulti"> Add Images </MoeButton>
-			<MoeButton v-if="character.images.length > 0" class="bg-red-600 w-auto h-10" icon="fas fa-trash" @click="deleteImage">
+		<div class="h-7% flex flex-row items-center justify-center gap-2">
+			<MoeButton class="h-10 w-auto bg-gray-500" icon="fas fa-plus" @click="addNewImage"> Add Image </MoeButton>
+			<MoeButton class="h-10 w-auto bg-gray-500" icon="fab fa-buffer" @click="addImageMulti"> Add Images </MoeButton>
+			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-red-600" icon="fas fa-trash" @click="deleteImage">
 				Delete this Image
 			</MoeButton>
-			<MoeButton v-if="character.images.length > 0" class="bg-red-600 w-auto h-10" icon="fas fa-trash" @click="deleteAllImages">
+			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-red-600" icon="fas fa-trash" @click="deleteAllImages">
 				Delete all Images
 			</MoeButton>
-			<MoeButton v-if="character.images.length > 0" class="bg-gray-500 w-auto h-10" icon="far fa-save" @click="exportImages">
+			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-gray-500" icon="far fa-save" @click="exportImages">
 				Export all Images
 			</MoeButton>
 		</div>
@@ -35,7 +35,8 @@
 <script lang="ts" setup>
 	import pkg from "file-saver";
 	import { Modal } from "~~/models/enums/Modal";
-	import { CharacterImage, newCharacterImage } from "~~/models/interfaces/Character";
+	import type { CharacterImage } from "~~/models/interfaces/Character";
+	import { newCharacterImage } from "~~/models/interfaces/Character";
 	const { saveAs } = pkg;
 
 	const mainStore = useMainStore();

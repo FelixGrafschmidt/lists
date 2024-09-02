@@ -1,5 +1,5 @@
 <template>
-	<div class="flex mt-7 justify-center mb-20 gap-2">
+	<div class="mb-20 mt-7 flex justify-center gap-2">
 		<MoeButton v-tooltip="'Create New List'" icon="fas fa-plus" class="w-24 bg-gray-500" @click="addNewList" />
 		<MoeButton v-tooltip="'Import List'" icon="fas fa-file-import" class="w-24 bg-gray-500" @click="importFromFile" />
 	</div>

@@ -8,7 +8,7 @@
 				'bg-gray-800': index % 2 === 0,
 				'bg-gray-900': index % 2 !== 0,
 			}"
-			class="flex h-24 hover:bg-gray-700 items-center rounded cursor-pointer my-1"
+			class="my-1 h-24 flex cursor-pointer items-center rounded hover:bg-gray-700"
 			@click="selectCharacter(character)"
 		>
 			<div class="w-[35%] text-center">{{ character.name }}</div>
@@ -16,14 +16,14 @@
 			<div class="w-[10%] text-center">{{ character.images.length }}</div>
 			<div class="w-[10%] text-center">{{ character.attributeArray.length }}</div>
 			<div class="w-[10%] text-center">
-				<img loading="lazy" :src="getMainImage(character).src" :alt="character.name" class="h-24 max-w-24 rounded m-auto" />
+				<img loading="lazy" :src="getMainImage(character).src" :alt="character.name" class="m-auto h-24 max-w-24 rounded" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-	import { Character } from "~~/models/interfaces/Character";
+	import type { Character } from "~~/models/interfaces/Character";
 
 	const listStore = useListStore();
 	const characterStore = useCharacterStore();

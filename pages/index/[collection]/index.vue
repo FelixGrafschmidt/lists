@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col relative">
+	<div class="relative flex flex-col">
 		<MoeCollectionHeader />
 		<MoeCollectionLists />
 		<MoeCollectionActions />

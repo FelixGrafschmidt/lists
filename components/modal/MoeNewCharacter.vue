@@ -1,6 +1,6 @@
 <template>
 	<form
-		class="rounded-2xl bg-gray-800 text-gray-100 flex flex-col relative m-auto pb-10 pt-5 max-h-[80vh] w-[40vw] items-center"
+		class="relative m-auto max-h-[80vh] w-[40vw] flex flex-col items-center rounded-2xl bg-gray-800 pb-10 pt-5 text-gray-100"
 		@click.stop
 		@submit.prevent="name !== '' ? saveCharacter() : undefined"
 	>
@@ -10,7 +10,7 @@
 				<input
 					v-model="name"
 					type="text"
-					class="block px-1 rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+					class="block h-8 w-full border rounded-lg bg-gray-300 px-1 text-gray-900 focus:outline-none"
 				/>
 			</label>
 		</div>
@@ -20,16 +20,16 @@
 				<input
 					v-model="origin"
 					type="text"
-					class="block px-1 rounded-lg border text-gray-900 bg-gray-300 focus:outline-none h-8 w-full"
+					class="block h-8 w-full border rounded-lg bg-gray-300 px-1 text-gray-900 focus:outline-none"
 				/>
 			</label>
 		</div>
-		<div class="flex m-auto pt-4 gap-2">
-			<MoeButton :class="{ 'cursor-not-allowed': name === '' }" class="m-auto bg-green-600 bg-gray-500">Save Character</MoeButton>
-			<MoeButton class="m-auto bg-red-600 bg-gray-500" @click.prevent="mainStore.modal = Modal.NONE">Discard Character</MoeButton>
+		<div class="m-auto flex gap-2 pt-4">
+			<MoeButton :class="{ 'cursor-not-allowed': name === '' }" class="m-auto bg-gray-500 bg-green-600">Save Character</MoeButton>
+			<MoeButton class="m-auto bg-gray-500 bg-red-600" @click.prevent="mainStore.modal = Modal.NONE">Discard Character</MoeButton>
 		</div>
 		<div
-			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
+			class="absolute right-1 top-1 h-6 w-6 flex cursor-pointer items-center justify-center rounded-2xl bg-red-600 text-gray-900 hover:bg-red-700"
 			@click="mainStore.modal = Modal.NONE"
 		>
 			<div class="fas fa-times"></div>
@@ -57,6 +57,7 @@
 			await collectionStore.saveChanges();
 			mainStore.modal = Modal.NONE;
 		} catch (error) {
+			console.error(error);
 			mainStore.modal = Modal.SAVEERROR;
 		} finally {
 			mainStore.loading = false;

@@ -1,7 +1,7 @@
 <template>
 	<div v-if="show">
-		<div class="bg-gray-900 absolute z-20 h-screen w-[100vw] grid opacity-90 inset-0" aria-role="dialog" aria-modal></div>
-		<div class="absolute inset-0 flex justify-center items-center z-30" @click="mainStore.modal = Modal.NONE">
+		<div class="absolute inset-0 z-20 grid h-screen w-[100vw] bg-gray-900 opacity-90" aria-role="dialog" aria-modal></div>
+		<div class="absolute inset-0 z-30 flex items-center justify-center" @click="mainStore.modal = Modal.NONE">
 			<!-- TODO: Why does this not work anymore??? -->
 			<!-- <component :is="component" /> -->
 			<MoeSaveError v-if="component === 'MoeSaveError'" />

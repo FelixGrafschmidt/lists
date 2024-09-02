@@ -1,5 +1,5 @@
 <template>
-	<div class="h-screen max-h-screen relative w-screen" @click.stop>
+	<div class="relative h-screen max-h-screen w-screen" @click.stop>
 		<client-only>
 			<VueEasyLightbox
 				:loop="true"
@@ -11,21 +11,21 @@
 			/>
 		</client-only>
 		<div
-			class="w-screen absolute bottom-0 h-1/3 flex flex-col-reverse"
+			class="absolute bottom-0 h-1/3 w-screen flex flex-col-reverse"
 			@mouseenter="showThumbs = true"
 			@mouseleave="showThumbs = false"
 		>
 			<div
 				v-show="showThumbs"
-				class="flex overflow-x-scroll px-8 gap-1 h-1/2 max-h-[6rem] min-h-[6rem] scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 bg-gray-700 bg-opacity-50"
+				class="h-1/2 max-h-[6rem] min-h-[6rem] flex gap-1 overflow-x-scroll bg-gray-700 bg-opacity-50 px-8 scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 scrollbar scrollbar-rounded"
 			>
 				<figure
 					v-for="(image, i) in images"
 					:key="image.src"
-					class="min-w-[4rem] max-w-[4rem] h-full cursor-pointer flex flex-col justify-center"
+					class="h-full max-w-[4rem] min-w-[4rem] flex flex-col cursor-pointer justify-center"
 					@click="index = i"
 				>
-					<img :src="image.src" :alt="i.toString()" class="object-contain max-h-[6rem]" />
+					<img :src="image.src" :alt="i.toString()" class="max-h-[6rem] object-contain" />
 				</figure>
 			</div>
 		</div>

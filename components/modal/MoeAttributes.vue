@@ -1,10 +1,10 @@
 <template>
-	<div class="flex flex-col rounded-2xl bg-gray-800 text-gray-100 relative m-auto pb-10 pt-5 max-h-[80vh] w-[60vw]" @click.stop>
-		<div class="flex justify-evenly max-h-[85%] min-h-[85%]">
+	<div class="relative m-auto max-h-[80vh] w-[60vw] flex flex-col rounded-2xl bg-gray-800 pb-10 pt-5 text-gray-100" @click.stop>
+		<div class="max-h-[85%] min-h-[85%] flex justify-evenly">
 			<div>
 				<span>Select all Characters to apply these attributes to</span>
 				<div
-					class="flex flex-col scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll max-h-[90%] min-h-[90%] px-4 mt-4"
+					class="mt-4 max-h-[90%] min-h-[90%] flex flex-col overflow-y-scroll px-4 scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 scrollbar scrollbar-rounded"
 				>
 					<label
 						v-for="character in characters"
@@ -13,19 +13,19 @@
 						:key="character.id"
 						class="flex flex-row items-center py-1"
 					>
-						<input type="checkbox" checked class="rounded text-teal-500 focus:outline-none shadow-none ring-offset-0 ring-0" />
+						<input type="checkbox" checked class="rounded text-teal-500 shadow-none ring-0 ring-offset-0 focus:outline-none" />
 						<span class="ml-1 select-none">{{ character.name }}</span>
 					</label>
 				</div>
 			</div>
 			<form class="flex flex-col" @submit.prevent>
 				<div
-					class="scrollbar scrollbar-rounded scrollbar-w-2 scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4 scrollbar-track-color-gray-500 scrollbar-thumb-color-gray-9 overflow-y-scroll px-2"
+					class="overflow-y-scroll px-2 scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 scrollbar scrollbar-rounded"
 				>
 					<div v-for="(attribute, i) in attributes" :key="i">
 						<span
 							v-tooltip="'Remove Attribute'"
-							class="items-center justify-center top-6 right-0 flex bg-red-600 hover:bg-red-700 text-gray-900 h-8 w-8 rounded-lg cursor-pointer absolute fas fa-times"
+							class="fas fa-times absolute right-0 top-6 h-8 w-8 flex cursor-pointer items-center justify-center rounded-lg bg-red-600 text-gray-900 hover:bg-red-700"
 							@click="removeAttribute(i)"
 						></span>
 						<label>
@@ -33,7 +33,7 @@
 							<input
 								v-model="attributes[i]"
 								type="text"
-								class="block rounded-lg border text-gray-900 bg-gray-300 focus:outline-none mb-8 w-80 h-8"
+								class="mb-8 block h-8 w-80 border rounded-lg bg-gray-300 text-gray-900 focus:outline-none"
 							/>
 						</label>
 					</div>
@@ -41,7 +41,7 @@
 						<MoeButton
 							v-tooltip="'New Attribute'"
 							icon="fas fa-plus"
-							class="py-2 w-48 bg-gray-500"
+							class="w-48 bg-gray-500 py-2"
 							@click.prevent="attributes.push('')"
 						/>
 					</div>
@@ -56,7 +56,7 @@
 			>Add all Attributes</MoeButton
 		>
 		<div
-			class="items-center justify-center top-1 right-1 flex bg-red-600 hover:bg-red-700 text-gray-900 h-6 w-6 rounded-2xl cursor-pointer absolute"
+			class="absolute right-1 top-1 h-6 w-6 flex cursor-pointer items-center justify-center rounded-2xl bg-red-600 text-gray-900 hover:bg-red-700"
 			@click="mainStore.modal = Modal.NONE"
 		>
 			<div class="fas fa-times"></div>

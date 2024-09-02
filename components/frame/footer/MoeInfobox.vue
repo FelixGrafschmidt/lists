@@ -1,11 +1,11 @@
 <template>
-	<div class="border-teal-700 border-l border-r flex items-center flex-col mr-px justify-around w-[8rem] bg-gray-800">
-		<NuxtLink class="border-t border-teal-700 cursor-pointer w-full text-center py-2" role="link" to="/imprint"> Imprint </NuxtLink>
-		<NuxtLink to="/faq" class="cursor-pointer w-full border-t border-teal-700 text-center py-2" role="link"> FAQ </NuxtLink>
-		<div class="cursor-pointer border-t border-teal-700 w-full text-center py-2" role="link" @click="mainStore.modal = Modal.CONTACTUS">
+	<div class="mr-px w-[8rem] flex flex-col items-center justify-around border-l border-r border-teal-700 bg-gray-800">
+		<NuxtLink class="w-full cursor-pointer border-t border-teal-700 py-2 text-center" role="link" to="/imprint"> Imprint </NuxtLink>
+		<NuxtLink to="/faq" class="w-full cursor-pointer border-t border-teal-700 py-2 text-center" role="link"> FAQ </NuxtLink>
+		<div class="w-full cursor-pointer border-t border-teal-700 py-2 text-center" role="link" @click="mainStore.modal = Modal.CONTACTUS">
 			Contact us
 		</div>
-		<div class="cursor-pointer border-t border-teal-700 w-full text-center py-2" role="link" @click="openTutorial">Tutorial</div>
+		<div class="w-full cursor-pointer border-t border-teal-700 py-2 text-center" role="link" @click="openTutorial">Tutorial</div>
 	</div>
 </template>
 

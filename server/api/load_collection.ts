@@ -1,6 +1,6 @@
 import { kv } from "@vercel/kv";
 import { nanoid } from "nanoid";
-import { List } from "~~/models/interfaces/List";
+import type { List } from "~~/models/interfaces/List";
 
 export default defineEventHandler(async (event) => {
 	let collection = { id: nanoid(), lists: new Array<List>() };

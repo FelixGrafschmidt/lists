@@ -1,8 +1,8 @@
 <template>
-	<div class="flex rounded-2xl bg-gray-800 text-gray-100 relative m-auto pb-10" @click.stop>
+	<div class="relative m-auto flex rounded-2xl bg-gray-800 pb-10 text-gray-100" @click.stop>
 		<MoeSVG :name="'error'" alt="error" class="ml-10 mt-10 h-16 w-16" />
 		<div class="mx-12">
-			<div class="mt-16 text-xl flex flex-col">
+			<div class="mt-16 flex flex-col text-xl">
 				<span>An error has occurred while saving your changes.</span>
 				<span>Your changes have NOT been saved!</span>
 			</div>
