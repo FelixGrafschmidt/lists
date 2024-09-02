@@ -13,6 +13,7 @@
 				<img
 					v-for="(image, i) in character.images"
 					:key="i"
+					crossorigin="anonymous"
 					loading="lazy"
 					:class="{ 'outline-teal outline-solid': image.main }"
 					class="h-72 cursor-pointer rounded"

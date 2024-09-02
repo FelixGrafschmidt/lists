@@ -3,6 +3,7 @@
 		<div class="h-85% flex justify-center">
 			<figure class="h-full flex flex-col justify-center" :class="{ 'cursor-pointer': character.images.length > 0 }">
 				<img
+					crossorigin="anonymous"
 					:alt="character.name"
 					:src="image.src || ''"
 					class="m-auto max-h-full rounded"

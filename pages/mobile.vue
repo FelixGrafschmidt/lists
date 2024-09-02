@@ -34,6 +34,7 @@
 					<span class="mx-auto text-xl">{{ c.name }}</span>
 					<img
 						loading="lazy"
+						crossorigin="anonymous"
 						:src="c.images.find((image) => image.main)!.src"
 						:alt="character.name"
 						class="mx-auto h-auto max-h-128 rounded"
@@ -44,6 +45,7 @@
 				<img
 					v-for="(image, i) in character.images"
 					:key="i"
+					crossorigin="anonymous"
 					loading="lazy"
 					:src="image.src"
 					:alt="character.name"
