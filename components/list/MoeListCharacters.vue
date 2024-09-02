@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div class="overflow-y-auto">
 		<div
 			v-for="(character, index) in characters"
 			:ref="character.id"

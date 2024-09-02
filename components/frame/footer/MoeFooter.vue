@@ -1,5 +1,5 @@
 <template>
-	<footer class="h-16 flex items-center justify-between bg-gray-800">
+	<footer class="min-h-16 flex items-center justify-between bg-gray-800">
 		<div></div>
 
 		<span>© Felix Grafschmidt {{ new Date().getFullYear() }}</span>
