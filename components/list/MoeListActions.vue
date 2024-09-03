@@ -1,11 +1,11 @@
 <template>
 	<div class="flex justify-center gap-2">
-		<MoeButton v-tooltip="'Open Gallery'" icon="fas fa-images" class="w-24 bg-gray-500" @click="mainStore.toListGallery" />
-		<MoeButton v-tooltip="'Add New Character'" icon="fas fa-user-plus" class="w-24 bg-gray-500" @click="addNewCharacter" />
+		<MoeButton v-tooltip="'Open Gallery'" icon="fa:image" class="w-24 bg-gray-500" @click="mainStore.toListGallery" />
+		<MoeButton v-tooltip="'Add New Character'" icon="fa:user-plus" class="w-24 bg-gray-500" @click="addNewCharacter" />
 
 		<MoeButton
 			v-tooltip="'Add Attributes to all Characters'"
-			icon="fas fa-folder-plus"
+			icon="fa:user-circle"
 			class="w-24 bg-gray-500"
 			@click="addListAttribute"
 		/>

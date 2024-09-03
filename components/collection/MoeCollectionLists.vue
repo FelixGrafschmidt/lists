@@ -8,7 +8,7 @@
 				'hover:bg-gray-600': list.id !== listStore.list.id,
 				'bg-gray-800': index % 2 !== 0,
 				'bg-gray-700': index % 2 === 0,
-				'bg-teal-500  hover:bg-teal-400': list.id === listStore.list.id,
+				'bg-teal-700  hover:bg-teal-600': list.id === listStore.list.id,
 			}"
 			class="my-1 h-24 flex cursor-pointer items-center rounded"
 			@click="openList(list)"
@@ -28,9 +28,9 @@
 			</div>
 			<div class="w-1/6 flex justify-center gap-2 text-center">
 				<!-- <MoeButton :text="'Share'" class="w-16" color="bg-gray-600 m-1" /> -->
-				<MoeButton v-tooltip="'Export'" class="w-10 bg-gray-500" icon="fas fa-file-export" @click.stop="exportList(list)" />
-				<MoeButton v-tooltip="'Delete'" class="w-10 bg-red-600" icon="fas fa-trash" @click.stop="deleteList(list)" />
-				<MoeButton v-tooltip="'Copy'" class="w-10 bg-gray-500" icon="fas fa-copy" @click.stop="copyList(list)" />
+				<MoeButton v-tooltip="'Export'" class="w-10 bg-gray-500" icon="fa:floppy-o" @click.stop="exportList(list)" />
+				<MoeButton v-tooltip="'Delete'" class="w-10 bg-red-600" icon="fa:trash" @click.stop="deleteList(list)" />
+				<MoeButton v-tooltip="'Copy'" class="w-10 bg-gray-500" icon="fa:copy" @click.stop="copyList(list)" />
 			</div>
 		</div>
 	</div>

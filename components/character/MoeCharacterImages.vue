@@ -18,15 +18,15 @@
 			</div>
 		</div>
 		<div class="h-7% flex flex-row items-center justify-center gap-2">
-			<MoeButton class="h-10 w-auto bg-gray-500" icon="fas fa-plus" @click="addNewImage"> Add Image </MoeButton>
-			<MoeButton class="h-10 w-auto bg-gray-500" icon="fab fa-buffer" @click="addImageMulti"> Add Images </MoeButton>
-			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-red-600" icon="fas fa-trash" @click="deleteImage">
+			<MoeButton class="h-10 w-auto bg-gray-500" icon="fa:plus" @click="addNewImage"> Add Image </MoeButton>
+			<MoeButton class="h-10 w-auto bg-gray-500" icon="fa:image" @click="addImageMulti"> Add Images </MoeButton>
+			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-red-600" icon="fa:trash" @click="deleteImage">
 				Delete this Image
 			</MoeButton>
-			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-red-600" icon="fas fa-trash" @click="deleteAllImages">
+			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-red-600" icon="fa:trash" @click="deleteAllImages">
 				Delete all Images
 			</MoeButton>
-			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-gray-500" icon="far fa-save" @click="exportImages">
+			<MoeButton v-if="character.images.length > 0" class="h-10 w-auto bg-gray-500" icon="fa:floppy-o" @click="exportImages">
 				Export all Images
 			</MoeButton>
 		</div>

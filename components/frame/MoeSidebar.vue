@@ -18,7 +18,7 @@
 			<div
 				v-for="characteritem of list.characters"
 				:key="characteritem.id"
-				:class="{ 'bg-teal-500 hover:bg-teal-400': character.id && characteritem.id === character.id }"
+				:class="{ 'bg-teal-700 hover:bg-teal-600': character.id && characteritem.id === character.id }"
 				class="cursor-pointer rounded py-1 pl-6 hover:bg-gray-800"
 				role="link"
 				@click="navigateToCharacter(characteritem)"
@@ -28,7 +28,7 @@
 		</div>
 		<h3 class="flex flex-row items-baseline gap-2 pt-4 text-lg">
 			<span class="cursor-pointer" @click="toCollection">Lists</span>
-			<MoeButton icon="fas fa-plus" @click="addList">Add</MoeButton>
+			<MoeButton icon="fa:plus" @click="addList">Add</MoeButton>
 		</h3>
 		<div
 			:class="{
@@ -40,7 +40,7 @@
 			<div
 				v-for="listitem of collection.lists"
 				:key="listitem.id"
-				:class="{ 'bg-teal-500 hover:bg-teal-400': listitem.id === list.id }"
+				:class="{ 'bg-teal-700 hover:bg-teal-600': listitem.id === list.id }"
 				class="cursor-pointer rounded py-1 pl-6 hover:bg-gray-800"
 				role="link"
 				@click="navigateToList(listitem)"

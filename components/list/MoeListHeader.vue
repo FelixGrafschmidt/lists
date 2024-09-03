@@ -5,8 +5,8 @@
 			<div
 				v-if="sortcriterion === 'NAME'"
 				:class="{
-					'fa-arrow-down': sortorder === 'ASC',
-					'fa-arrow-up': sortorder === 'DESC',
+					'fa:arrow-down': sortorder === 'ASC',
+					'fa:arrow-up': sortorder === 'DESC',
 				}"
 				class="fas"
 			></div>
@@ -16,8 +16,8 @@
 			<div
 				v-if="sortcriterion === 'ORIGIN'"
 				:class="{
-					'fa-arrow-down': sortorder === 'ASC',
-					'fa-arrow-up': sortorder === 'DESC',
+					'fa:arrow-down': sortorder === 'ASC',
+					'fa:arrow-up': sortorder === 'DESC',
 				}"
 				class="fas"
 			></div>
@@ -27,8 +27,8 @@
 			<div
 				v-if="sortcriterion === 'IMAGES'"
 				:class="{
-					'fa-arrow-down': sortorder === 'ASC',
-					'fa-arrow-up': sortorder === 'DESC',
+					'fa:arrow-down': sortorder === 'ASC',
+					'fa:arrow-up': sortorder === 'DESC',
 				}"
 				class="fas"
 			></div>

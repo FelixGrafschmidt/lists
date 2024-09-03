@@ -3,7 +3,7 @@
 		class="flex flex-row items-center justify-center gap-1 rounded-md p-2 text-sm font-medium hover:text-teal-400"
 		@click="$emit('click', $event)"
 	>
-		<i v-if="icon !== ''" :class="icon"></i>
+		<Icon v-if="icon" :name="icon" class="h-4 w-4" />
 		<slot />
 	</button>
 </template>

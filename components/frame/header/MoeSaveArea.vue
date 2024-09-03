@@ -9,7 +9,7 @@
 		<MoeButton v-if="autosave" class="h-10 w-32 bg-gray-500" @click="disableAutosave">Disable autosave</MoeButton>
 		<MoeButton v-else class="h-10 w-32 bg-gray-500" @click="enableAutosave">Enable autosave</MoeButton>
 
-		<MoeButton v-tooltip="'Save'" icon="fas fa-save" class="h-10 w-10 bg-gray-500" @click="saveChanges" />
+		<MoeButton v-tooltip="'Save'" icon="fa:save" class="h-10 w-10 bg-gray-500" @click="saveChanges" />
 		<div v-if="changes" class="w-48 text-lg text-red-600 font-medium">UNSAVED CHANGES</div>
 	</div>
 </template>

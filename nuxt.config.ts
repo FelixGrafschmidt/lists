@@ -54,6 +54,11 @@ export default defineNuxtConfig({
 			path: "~/components",
 			pathPrefix: false,
 		},
+		{
+			path: "~/components/modal",
+			pathPrefix: false,
+			global: true,
+		},
 	],
 
 	compatibilityDate: "2024-09-02",

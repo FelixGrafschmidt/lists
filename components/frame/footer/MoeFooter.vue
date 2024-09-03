@@ -10,7 +10,7 @@
 			@mouseleave="showInfomenu = false"
 		>
 			<div class="mx-auto flex items-center justify-center gap-2">
-				<span :class="showInfomenu ? 'fas fa-angle-down' : 'fas fa-angle-up'"></span>
+				<span :class="showInfomenu ? 'fa:angle-down' : 'fa:angle-up'"></span>
 				<span>Info</span>
 			</div>
 			<MoeInfobox v-show="showInfomenu" class="absolute bottom-16" />

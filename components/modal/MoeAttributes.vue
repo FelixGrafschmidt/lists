@@ -25,7 +25,7 @@
 					<div v-for="(attribute, i) in attributes" :key="i">
 						<span
 							v-tooltip="'Remove Attribute'"
-							class="fas fa-times absolute right-0 top-6 h-8 w-8 flex cursor-pointer items-center justify-center rounded-lg bg-red-600 text-gray-900 hover:bg-red-700"
+							class="fa:times absolute right-0 top-6 h-8 w-8 flex cursor-pointer items-center justify-center rounded-lg bg-red-600 text-gray-900 hover:bg-red-700"
 							@click="removeAttribute(i)"
 						></span>
 						<label>
@@ -40,7 +40,7 @@
 					<div class="flex justify-center">
 						<MoeButton
 							v-tooltip="'New Attribute'"
-							icon="fas fa-plus"
+							icon="fa:plus"
 							class="w-48 bg-gray-500 py-2"
 							@click.prevent="attributes.push('')"
 						/>
@@ -59,7 +59,7 @@
 			class="absolute right-1 top-1 h-6 w-6 flex cursor-pointer items-center justify-center rounded-2xl bg-red-600 text-gray-900 hover:bg-red-700"
 			@click="mainStore.modal = Modal.NONE"
 		>
-			<div class="fas fa-times"></div>
+			<Icon name="fa:times-circle" class="h-4 w-4" />
 		</div>
 	</div>
 </template>

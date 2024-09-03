@@ -3,7 +3,7 @@
 		<MoeButton
 			v-tooltip="'Back to List'"
 			class="sticky left-0 top-0 h-8 w-8 border border-teal-700 rounded-none rounded-br-1 -ml-6 !p-0"
-			icon="fas fa-arrow-left"
+			icon="fa:arrow-left"
 			@click="useStore().toList()"
 		/>
 

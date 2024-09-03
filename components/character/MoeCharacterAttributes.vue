@@ -28,7 +28,7 @@
 			<div v-for="(attribute, i) in character.attributeArray" :key="i" class="relative w-full py-2">
 				<span
 					v-tooltip="'Remove Attribute'"
-					class="fas fa-times absolute right-0 top-9 h-8 w-8 flex cursor-pointer items-center justify-center rounded-lg bg-red-600 text-gray-900 hover:bg-red-700"
+					class="fa:times absolute right-0 top-9 h-8 w-8 flex cursor-pointer items-center justify-center rounded-lg bg-red-600 text-gray-900 hover:bg-red-700"
 					@click.prevent="removeAttribute(attribute)"
 				/>
 				<label>
@@ -45,23 +45,19 @@
 				</label>
 			</div>
 			<div class="mt-8 flex justify-center">
-				<MoeButton icon="fas fa-plus" class="h-10 w-48 bg-gray-500 py-2" @click.prevent="addAttribute">Add Attribute</MoeButton>
+				<MoeButton icon="fa:plus" class="h-10 w-48 bg-gray-500 py-2" @click.prevent="addAttribute">Add Attribute</MoeButton>
 			</div>
 		</div>
 		<div class="h-7% flex items-center justify-center gap-2">
-			<MoeButton icon="fas fa-save" class="text-color-unset h-10 w-auto bg-green-600 py-2"> Save Character </MoeButton>
-			<MoeButton icon="fas fa-trash" class="text-color-unset h-10 w-auto bg-red-600 py-2" @click.prevent="deleteCharacter">
+			<MoeButton icon="fa:save" class="text-color-unset h-10 w-auto bg-green-600 py-2"> Save Character </MoeButton>
+			<MoeButton icon="fa:trash" class="text-color-unset h-10 w-auto bg-red-600 py-2" @click.prevent="deleteCharacter">
 				Delete character
 			</MoeButton>
 			<div v-if="copied">
-				<MoeButton icon="fas fa-trash" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="copyCharacter"> Copied! </MoeButton>
+				<MoeButton icon="fa:trash" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="copyCharacter"> Copied! </MoeButton>
 			</div>
-			<MoeButton v-else icon="fas fa-copy" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="copyCharacter"
-				>Copy Character</MoeButton
-			>
-			<MoeButton icon="fas fa-file-export" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="exportCharacter"
-				>Export Character</MoeButton
-			>
+			<MoeButton v-else icon="fa:copy" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="copyCharacter">Copy Character</MoeButton>
+			<MoeButton icon="fa:floppy-o" class="h-10 w-auto bg-gray-500 py-2" @click.prevent="exportCharacter">Export Character</MoeButton>
 		</div>
 	</form>
 </template>

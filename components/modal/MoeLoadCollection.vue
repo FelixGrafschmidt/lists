@@ -18,7 +18,7 @@
 			class="text-gray-900h-6 absolute right-1 top-1 w-6 flex cursor-pointer items-center justify-center rounded-2xl bg-red-600 hover:bg-red-700"
 			@click="mainStore.modal = Modal.NONE"
 		>
-			<div class="fas fa-times"></div>
+			<Icon name="fa:times-circle" class="h-4 w-4" />
 		</div>
 	</form>
 </template>

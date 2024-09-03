@@ -2,23 +2,7 @@
 	<div v-if="show">
 		<div class="absolute inset-0 z-20 grid h-screen w-[100vw] bg-gray-900 opacity-90" aria-role="dialog" aria-modal></div>
 		<div class="absolute inset-0 z-30 flex items-center justify-center" @click="mainStore.modal = Modal.NONE">
-			<!-- TODO: Why does this not work anymore??? -->
-			<!-- <component :is="component" /> -->
-			<MoeSaveError v-if="component === 'MoeSaveError'" />
-			<MoeContactUs v-else-if="component === 'MoeContactUs'" />
-			<MoeDeleteList v-else-if="component === 'MoeDeleteList'" />
-			<MoeDeleteCharacter v-else-if="component === 'MoeDeleteCharacter'" />
-			<MoeNewImage v-else-if="component === 'MoeNewImage'" />
-			<MoeLoadCollection v-else-if="component === 'MoeLoadCollection'" />
-			<MoeImportList v-else-if="component === 'MoeImportList'" />
-			<MoeNewList v-else-if="component === 'MoeNewList'" />
-			<MoeFullscreenImg v-else-if="component === 'MoeFullscreenImg'" />
-			<MoeTutorial v-else-if="component === 'MoeTutorial'" />
-			<MoeAttributes v-else-if="component === 'MoeAttributes'" />
-			<MoeImageMulti v-else-if="component === 'MoeImageMulti'" />
-			<MoeUnloadCollection v-else-if="component === 'MoeUnloadCollection'" />
-			<MoeUnsavedChanges v-else-if="component === 'MoeUnsavedChanges'" />
-			<MoeNewCharacter v-else-if="component === 'MoeNewCharacter'" />
+			<component :is="component" />
 		</div>
 	</div>
 </template>

@@ -21,7 +21,7 @@
 					'bg-gray-700': mainStore.tutorial !== 1,
 				}"
 				:disabled="mainStore.tutorial === 1"
-				icon="fas fa-angle-left"
+				icon="fa:angle-left"
 				@click="previous"
 			/>
 			<!-- TODO: Why does this not work anymore??? -->
@@ -35,7 +35,7 @@
 					'bg-gray-700': mainStore.tutorial !== 3,
 				}"
 				:disabled="mainStore.tutorial === 3"
-				icon="fas fa-angle-right"
+				icon="fa:angle-right"
 				@click="next"
 			/>
 		</div>

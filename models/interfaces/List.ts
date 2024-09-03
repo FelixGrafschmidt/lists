@@ -9,6 +9,7 @@ export interface List {
 	characters: Array<Character>;
 	sortcriterion: Sortcriterion;
 	sortorder: Sortorder;
+	attributes?: Record<string, string>;
 }
 
 export function newList(
@@ -16,7 +17,8 @@ export function newList(
 	name = "",
 	characters = [],
 	sortcriterion = Sortcriterion.CREATED,
-	sortorder = Sortorder.DEFAULT
+	sortorder = Sortorder.DEFAULT,
+	attributes = {}
 ): List {
-	return { id, name, characters, sortcriterion, sortorder };
+	return { id, name, characters, sortcriterion, sortorder, attributes };
 }

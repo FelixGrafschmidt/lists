@@ -6,12 +6,12 @@
 			</figure>
 		</div>
 		<div class="h-10% flex items-center justify-self-end gap-4">
-			<MoeButton v-tooltip="'Designate as Main Image'" class="h-10 w-10 bg-gray-500" icon="fas fa-star" @click="designateMainImage" />
-			<MoeButton v-tooltip="'Remove this Image'" class="h-10 w-10 bg-red-600" icon="fas fa-trash" @click="deleteImage" />
-			<MoeButton v-tooltip="'Delete all Images'" class="h-10 w-10 bg-red-600" icon="fas fa-trash" @click="deleteAllImages" />
-			<MoeButton v-tooltip="'Add Image'" class="h-10 w-10 bg-gray-500" icon="fas fa-plus" @click="addNewImage" />
-			<MoeButton v-tooltip="'Add Images'" class="h-10 w-10 bg-gray-500" icon="fab fa-buffer" @click="addImageMulti" />
-			<MoeButton v-tooltip="'Export all Images'" class="h-10 w-10 bg-gray-500" icon="far fa-save" @click="exportImages" />
+			<MoeButton v-tooltip="'Designate as Main Image'" class="h-10 w-10 bg-gray-500" icon="fa:star" @click="designateMainImage" />
+			<MoeButton v-tooltip="'Remove this Image'" class="h-10 w-10 bg-red-600" icon="fa:trash" @click="deleteImage" />
+			<MoeButton v-tooltip="'Delete all Images'" class="h-10 w-10 bg-red-600" icon="fa:trash" @click="deleteAllImages" />
+			<MoeButton v-tooltip="'Add Image'" class="h-10 w-10 bg-gray-500" icon="fa:plus" @click="addNewImage" />
+			<MoeButton v-tooltip="'Add Images'" class="h-10 w-10 bg-gray-500" icon="fa:image" @click="addImageMulti" />
+			<MoeButton v-tooltip="'Export all Images'" class="h-10 w-10 bg-gray-500" icon="fa:save" @click="exportImages" />
 		</div>
 	</div>
 </template>
