@@ -2,9 +2,16 @@
 	<div class="relative min-h-screen flex flex-col pb-4 !h-full">
 		<MoeMobileHeader />
 		<main class="mx-auto">
-			<section v-if="mode === 'collection'">
+			<section v-if="mode === 'collection'" class="flex flex-col divide-y">
 				<template v-if="collection.lists.length > 0">
-					<MoeButton v-for="(l, i) in collection.lists" :key="i" @click="selectList(l)">{{ l.name }}</MoeButton>
+					<div
+						v-for="(l, i) in collection.lists"
+						:key="i"
+						class="h-12 w-screen flex flex-row items-center justify-center text-xl"
+						@click="selectList(l)"
+					>
+						{{ l.name }}
+					</div>
 				</template>
 				<form
 					v-else
@@ -24,16 +31,16 @@
 					<MoeButton :class="{ 'cursor-not-allowed': id === '' }" class="m-auto bg-gray-500">Load Collection</MoeButton>
 				</form>
 			</section>
-			<section v-else-if="mode === 'list'" class="flex flex-col">
-				<div v-for="(origin, i) in charactersByOrigin" :key="i" class="flex flex-col divide-y">
+			<section v-else-if="mode === 'list'" class="flex flex-col shadow divide-y divide-gray-700">
+				<div v-for="(origin, i) in charactersByOrigin" :key="i" class="flex flex-col">
 					<div
-						class="sticky top-24 h-12 w-screen flex flex-row items-center justify-start gap-2 bg-gray-8 px-8 text-xl"
+						class="sticky top-24 h-12 w-screen flex flex-row items-center justify-start gap-2 bg-gray-8 px-4 text-xl"
 						@click="origin.expanded = !origin.expanded"
 					>
 						<Icon :name="origin.expanded ? 'fa6-solid:caret-down' : 'fa6-solid:caret-right'" class="h-5 w-5" />
 						<span>{{ origin.name }}</span>
 					</div>
-					<template v-if="origin.expanded">
+					<div v-if="origin.expanded" class="flex flex-col divide-y">
 						<div
 							v-for="(c, j) in origin.characters"
 							:key="j"
@@ -49,7 +56,7 @@
 								class="mx-auto h-auto max-h-128 rounded"
 							/>
 						</div>
-					</template>
+					</div>
 				</div>
 			</section>
 			<section v-else class="flex flex-col gap-4">

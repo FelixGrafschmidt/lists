@@ -2,14 +2,16 @@
 	<header class="sticky top-0 z-1 h-24 bg-gray-900">
 		<div v-if="mobileMode === 'character'" class="h-full w-screen flex flex-col divide-y divide-gray-500">
 			<div class="h-1/2 w-screen flex flex-row items-center justify-center text-xl">{{ character.name }}</div>
-			<MoeButton class="m-auto h-1/2 w-screen" @click="mainStore.setMobileMode('list')"> Back </MoeButton>
+			<div class="m-auto h-1/2 w-screen flex flex-row items-center justify-center" @click="mainStore.setMobileMode('list')">Back</div>
 		</div>
 		<div v-else-if="mobileMode === 'list'" class="h-full w-screen flex flex-col divide-y divide-gray-500">
 			<div class="h-1/2 w-screen flex flex-row items-center justify-center text-xl">{{ list.name }}</div>
-			<MoeButton class="m-auto h-1/2 w-screen" @click="mainStore.setMobileMode('collection')"> Back </MoeButton>
+			<div class="m-auto h-1/2 w-screen flex flex-row items-center justify-center" @click="mainStore.setMobileMode('collection')">
+				Back
+			</div>
 		</div>
-		<div v-else-if="collection.lists.length > 0" class="flex flex-col">
-			<span class="m-auto h-full">{{ collection.id }}</span>
+		<div v-else-if="collection.lists.length > 0" class="h-full flex flex-col items-center justify-center text-xl">
+			{{ collection.id }}
 		</div>
 	</header>
 </template>
