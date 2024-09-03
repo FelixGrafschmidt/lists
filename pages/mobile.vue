@@ -1,6 +1,6 @@
 <template>
-	<div class="relative min-h-screen flex flex-col gap-4 pb-4 !h-full">
-		<MoeMobileHeader class="sticky top-0" />
+	<div class="relative min-h-screen flex flex-col pb-4 !h-full">
+		<MoeMobileHeader />
 		<main class="mx-auto">
 			<section v-if="mode === 'collection'">
 				<template v-if="collection.lists.length > 0">
@@ -24,21 +24,32 @@
 					<MoeButton :class="{ 'cursor-not-allowed': id === '' }" class="m-auto bg-gray-500">Load Collection</MoeButton>
 				</form>
 			</section>
-			<section v-else-if="mode === 'list'" class="flex flex-col gap-4">
-				<div
-					v-for="(c, i) in list.characters"
-					:key="i"
-					class="flex flex-col cursor-pointer justify-center gap-2"
-					@click="selectCharacter(c)"
-				>
-					<span class="mx-auto text-xl">{{ c.name }}</span>
-					<img
-						loading="lazy"
-						crossorigin="anonymous"
-						:src="c.images.find((image) => image.main)!.src"
-						:alt="character.name"
-						class="mx-auto h-auto max-h-128 rounded"
-					/>
+			<section v-else-if="mode === 'list'" class="flex flex-col">
+				<div v-for="(origin, i) in charactersByOrigin" :key="i" class="flex flex-col divide-y">
+					<div
+						class="sticky top-24 h-12 w-screen flex flex-row items-center justify-start gap-2 bg-gray-8 px-8 text-xl"
+						@click="origin.expanded = !origin.expanded"
+					>
+						<Icon :name="origin.expanded ? 'fa6-solid:caret-down' : 'fa6-solid:caret-right'" class="h-5 w-5" />
+						<span>{{ origin.name }}</span>
+					</div>
+					<template v-if="origin.expanded">
+						<div
+							v-for="(c, j) in origin.characters"
+							:key="j"
+							class="flex flex-col cursor-pointer justify-center gap-2 py-4"
+							@click="selectCharacter(c)"
+						>
+							<span class="mx-auto text-xl">{{ c.name }}</span>
+							<img
+								loading="lazy"
+								crossorigin="anonymous"
+								:src="c.images.find((image) => image.main)!.src"
+								:alt="character.name"
+								class="mx-auto h-auto max-h-128 rounded"
+							/>
+						</div>
+					</template>
 				</div>
 			</section>
 			<section v-else class="flex flex-col gap-4">
@@ -60,12 +71,19 @@
 	import type { Character } from "~/models/interfaces/Character";
 	import type { List } from "~/models/interfaces/List";
 
+	interface Origin {
+		name: string;
+		characters: Character[];
+		expanded: boolean;
+	}
+
 	const mainStore = useStore();
 	const collectionStore = useCollection();
 	const listStore = useList();
 	const characterStore = useCharacter();
 
 	const id = ref("");
+	const charactersByOrigin: Ref<Origin[]> = ref([]);
 
 	const params = useRoute().params;
 
@@ -101,9 +119,6 @@
 	const collection = computed(() => {
 		return collectionStore.collection;
 	});
-	const list = computed(() => {
-		return listStore.list;
-	});
 	const character = computed(() => {
 		return characterStore.character;
 	});
@@ -111,6 +126,16 @@
 	function selectList(list: List) {
 		listStore.setList(list);
 		mainStore.mobileMode = "list";
+		const characters = list.characters;
+		const origins = characters.map((character) => character.origin);
+		const uniqueOrigins = Array.from(new Set(origins));
+		charactersByOrigin.value = uniqueOrigins.map((origin, i) => {
+			return {
+				name: origin,
+				expanded: i === 0,
+				characters: characters.filter((character) => character.origin === origin),
+			};
+		});
 	}
 	function selectCharacter(character: Character) {
 		characterStore.setCharacter(character);
