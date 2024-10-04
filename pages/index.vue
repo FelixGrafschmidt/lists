@@ -2,7 +2,7 @@
 	<div class="max-h-screen min-h-screen flex flex-col justify-between">
 		<MoeHeader class="border-b border-teal-700" />
 		<div class="max-h-[calc(100vh-128px)] flex grow flex-row">
-			<MoeSidebar class="w-1/5 border-r border-teal-700" />
+			<MoeSidebar class="min-w-1/5 w-1/5 border-r border-teal-700" />
 			<div
 				class="grow overflow-y-auto scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 scrollbar scrollbar-rounded"
 			>

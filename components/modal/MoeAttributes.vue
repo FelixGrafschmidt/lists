@@ -20,7 +20,7 @@
 			</div>
 			<form class="flex flex-col" @submit.prevent>
 				<div
-					class="overflow-y-scroll px-2 scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 scrollbar scrollbar-rounded"
+					class="overflow-y-auto px-2 scrollbar-thumb-color-gray-9 scrollbar-track-color-gray-500 scrollbar-radius-2 scrollbar-thumb-radius-4 scrollbar-track-radius-4 scrollbar-w-2 scrollbar scrollbar-rounded"
 				>
 					<div v-for="(attribute, i) in attributes" :key="i">
 						<span

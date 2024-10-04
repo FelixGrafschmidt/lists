@@ -37,7 +37,7 @@ export default defineNuxtConfig({
 		},
 	},
 
-	modules: ["@pinia/nuxt", "@unocss/nuxt", "nuxt-icon", "@vueuse/nuxt", "@nuxt/eslint", "nuxt-security", "@nuxtjs/device"],
+	modules: ["@pinia/nuxt", "@unocss/nuxt", "@nuxt/icon", "@vueuse/nuxt", "@nuxt/eslint", "nuxt-security", "@nuxtjs/device"],
 	typescript: { strict: true },
 
 	security: {
