@@ -1,4 +1,4 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+// https://nuxt.com/docs/4.x/api/nuxt-config
 export default defineNuxtConfig({
 	app: {
 		head: {
@@ -13,13 +13,12 @@ export default defineNuxtConfig({
 					content: "black",
 				},
 				{
-					hid: "description",
 					name: "description",
 					content: process.env.npm_package_description || "",
 				},
-				{ content: "#ffffff", property: "" },
-				{ content: "#00aba9", property: "" },
-				{ content: "/mstile-144x144.png", property: "" },
+				{ content: "#ffffff" },
+				{ content: "#00aba9" },
+				{ content: "/mstile-144x144.png" },
 			],
 			link: [
 				{ rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
@@ -38,7 +37,20 @@ export default defineNuxtConfig({
 	},
 
 	modules: ["@pinia/nuxt", "@unocss/nuxt", "@nuxt/icon", "@vueuse/nuxt", "@nuxt/eslint", "nuxt-security", "@nuxtjs/device"],
-	typescript: { strict: true },
+	typescript: {
+		// Customize app/server TypeScript config
+		tsConfig: {
+			compilerOptions: {
+				strict: true,
+			},
+		},
+		// Customize build-time TypeScript config
+		nodeTsConfig: {
+			compilerOptions: {
+				strict: true,
+			},
+		},
+	},
 
 	security: {
 		headers: {
@@ -51,11 +63,11 @@ export default defineNuxtConfig({
 
 	components: [
 		{
-			path: "~/components",
+			path: "@/components",
 			pathPrefix: false,
 		},
 		{
-			path: "~/components/modal",
+			path: "@/components/modal",
 			pathPrefix: false,
 			global: true,
 		},
@@ -66,4 +78,7 @@ export default defineNuxtConfig({
 	devtools: {
 		enabled: true,
 	},
+	// experimental: {
+	// 	normalizeComponentNames: false
+	// }
 });

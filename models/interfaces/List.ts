@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { Sortcriterion } from "../enums/Sortcriterion";
 import { Sortorder } from "../enums/Sortorder";
-import type { Character } from "../interfaces/Character";
+import type { Character } from "./Character";
 
 export interface List {
 	id: string;
