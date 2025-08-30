@@ -1,24 +1,24 @@
-import { nanoid } from "nanoid";
-import { Sortcriterion } from "../enums/Sortcriterion";
-import { Sortorder } from "../enums/Sortorder";
-import type { Character } from "./Character";
+import type { Character } from './Character';
+import { nanoid } from 'nanoid';
+import { Sortcriterion } from '../enums/Sortcriterion';
+import { Sortorder } from '../enums/Sortorder';
 
 export interface List {
-	id: string;
-	name: string;
-	characters: Array<Character>;
-	sortcriterion: Sortcriterion;
-	sortorder: Sortorder;
-	attributes?: Record<string, string>;
+  id: string
+  name: string
+  characters: Array<Character>
+  sortcriterion: Sortcriterion
+  sortorder: Sortorder
+  attributes?: Record<string, string>
 }
 
 export function newList(
-	id = nanoid(),
-	name = "",
-	characters = [],
-	sortcriterion = Sortcriterion.CREATED,
-	sortorder = Sortorder.DEFAULT,
-	attributes = {}
+  id = nanoid(),
+  name = '',
+  characters = [],
+  sortcriterion = Sortcriterion.CREATED,
+  sortorder = Sortorder.DEFAULT,
+  attributes = {},
 ): List {
-	return { id, name, characters, sortcriterion, sortorder, attributes };
+  return { id, name, characters, sortcriterion, sortorder, attributes };
 }

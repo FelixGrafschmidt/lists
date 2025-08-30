@@ -1,6 +1,6 @@
 export enum Sortcriterion {
-	NAME = "NAME",
-	ORIGIN = "ORIGIN",
-	IMAGES = "IMAGES",
-	CREATED = "CREATED",
+  NAME = 'NAME',
+  ORIGIN = 'ORIGIN',
+  IMAGES = 'IMAGES',
+  CREATED = 'CREATED',
 }

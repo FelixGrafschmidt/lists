@@ -1,40 +1,44 @@
 <template>
-	<div class="mr-4 w-[50%] flex items-center justify-end gap-3">
-		<span>{{ collection.id }}</span>
-		<MoeButton v-tooltip="'Copy ID'" icon="fa:copy" class="h-10 w-10 bg-gray-500" @click="copyID" />
-		<MoeButton v-tooltip="'Load Collection'" icon="fa:folder-open" class="h-10 w-10 bg-gray-500" @click="loadCollection" />
-		<MoeButton v-tooltip="'Export Collection'" icon="fa:download" class="h-10 w-10 bg-gray-500" @click="exportCollection" />
-		<MoeButton
-			v-tooltip="'Unload Collection'"
-			icon="fa:times"
-			class="h-10 w-10 bg-gray-500 hover:bg-red-700"
-			@click="unloadCollection"
-		/>
-	</div>
+  <div class="mr-4 w-[50%] flex items-center justify-end gap-3">
+    <span>{{ collection.id }}</span>
+    <FGButton
+      v-tooltip="'Copy ID'" icon="fa:copy" variant="outline" size="lg" color="gray" @click="copyID"
+    />
+    <FGButton
+      v-tooltip="'Load Collection'" variant="outline" icon="fa:folder-open" size="lg" color="gray" @click="loadCollection"
+    />
+    <FGButton
+      v-tooltip="'Export Collection'" icon="fa:download" size="lg" variant="outline" color="gray" @click="exportCollection"
+    />
+    <FGButton
+      v-tooltip="'Unload Collection'" variant="outline" icon="fa:times" size="lg" color="red" @click="unloadCollection"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
-	import pkg from "file-saver";
-	import { Modal } from "@@/models/enums/Modal";
-	const { saveAs } = pkg;
+import { Modal } from '@@/models/enums/Modal';
+import pkg from 'file-saver';
 
-	const collectionStore = useCollection();
-	const mainStore = useStore();
+const { saveAs } = pkg;
 
-	const collection = computed(() => collectionStore.collection);
+const collectionStore = useCollection();
+const mainStore = useStore();
 
-	function loadCollection() {
-		mainStore.modal = Modal.LOADCOLLECTION;
-	}
-	function copyID() {
-		useClipboard({ source: collection.value.id }).copy();
-	}
+const collection = computed(() => collectionStore.collection);
 
-	function exportCollection() {
-		saveAs(new File([JSON.stringify(collection)], collection.value.id + ".json"));
-	}
+function loadCollection() {
+  mainStore.modal = Modal.LOADCOLLECTION;
+}
+function copyID() {
+  useClipboard({ source: collection.value.id }).copy();
+}
 
-	function unloadCollection() {
-		mainStore.modal = Modal.UNLOADCOLLECTION;
-	}
+function exportCollection() {
+  saveAs(new File([JSON.stringify(collection)], `${collection.value.id}.json`));
+}
+
+function unloadCollection() {
+  mainStore.modal = Modal.UNLOADCOLLECTION;
+}
 </script>
